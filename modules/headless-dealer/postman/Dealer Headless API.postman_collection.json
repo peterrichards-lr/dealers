@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "295576f3-02a7-4090-8cc1-d3090bf976ad",
+		"name": "Dealer Headless API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Nearest Dealers By Geolocation",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/nearestDealers?longitude=-0.141588&latitude=51.501009",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"nearestDealers"
+					],
+					"query": [
+						{
+							"key": "siteId",
+							"value": "37243",
+							"disabled": true
+						},
+						{
+							"key": "longitude",
+							"value": "-0.141588"
+						},
+						{
+							"key": "latitude",
+							"value": "51.501009"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nearest Dealers By Postcode",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/nearestDealers/SW1A 1AA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"nearestDealers",
+						"SW1A 1AA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dealer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/dealers/53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"dealers",
+						"53"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dealer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/dealers/3186",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"dealers",
+						"3186"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dealer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"address\": {\r\n        \"locality\": \"Test\",\r\n        \"postalCode\": \"CV22 5HL\",\r\n        \"state\": \"Warwickshire\",\r\n        \"street\": \"Warwick Street\"\r\n    },\r\n    \"emailAddress\": \"test@raybia.com\",\r\n    \"geolocation\": {\r\n        \"latitude\": 52.370876,\r\n        \"longitude\": -1.265032\r\n    },\r\n    \"name\": \"Raybia Test\",\r\n    \"openingHours\": \"8AM - 6PM\",\r\n    \"phoneNumber\": \"0800 123 0053\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/dealers?siteId=37243",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"dealers"
+					],
+					"query": [
+						{
+							"key": "siteId",
+							"value": "37243"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dealers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/o/headless-dealers/v1.0/dealers?siteId=37243",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"o",
+						"headless-dealers",
+						"v1.0",
+						"dealers"
+					],
+					"query": [
+						{
+							"key": "siteId",
+							"value": "37243"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
