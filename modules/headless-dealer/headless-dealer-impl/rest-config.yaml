@@ -1,0 +1,10 @@
+apiDir: "../headless-dealer-api/src/main/java"
+apiPackagePath: "com.liferay.raybia.headless.dealer"
+application:
+    baseURI: "/headless-dealers"
+    className: "HeadlerssDealerApplication"
+    name: "Raybia.Headless.Dealer"
+author: "Peter Richards"
+clientDir: "../headless-dealer-client/src/main/java"
+testDir: "../headless-dealer-test/src/testIntegration/java"
+generateBatch: true

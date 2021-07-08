@@ -1,0 +1,11 @@
+Bundle-Name: Dealer API
+Bundle-SymbolicName: com.liferay.raybia.dealer.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.liferay.raybia.dealer.exception,\
+	com.liferay.raybia.dealer.model,\
+	com.liferay.raybia.dealer.service,\
+	com.liferay.raybia.dealer.service.persistence,\
+	com.liferay.raybia.dealer.validator
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../dealer-service/service.xml

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.3.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_3_0.dtd">
+
+<service-builder dependency-injector="ds"
+	package-path="com.liferay.raybia.dealer">
+	<author>Peter Richards</author>
+	<namespace>Raybia</namespace>
+	<entity name="Dealer" local-service="true" remote-service="true"
+		uuid="true">
+
+		<column name="dealerId" primary="true" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+		<column name="name" type="String" localized="true" />
+		<column name="street" type="String" localized="true" />
+		<column name="locality" type="String" localized="true" />
+		<column name="state" type="String" localized="true" />
+		<column name="postalCode" type="String" />
+		<column name="emailAddress" type="String" />
+		<column name="phoneNumber" type="String" />
+		<column name="openingHours" type="String" localized="true" />
+		<column name="latitude" type="BigDecimal" />
+		<column name="longitude" type="BigDecimal" />
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId"></finder-column>
+		</finder>
+        
+		<reference entity="Group" package-path="com.liferay.portal"></reference>
+	</entity>
+
+	<entity name="NearestDealer" local-service="true"
+		remote-service="true" data-source="noDataSource">
+		<column name="dealerId" primary="true" type="long"></column>
+		<column name="groupId" type="long"></column>
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+
+		<column name="name" type="String" localized="true" />
+		<column name="street" type="String" localized="true" />
+		<column name="locality" type="String" localized="true" />
+		<column name="state" type="String" localized="true" />
+		<column name="postalCode" type="String" />
+		<column name="emailAddress" type="String" />
+		<column name="phoneNumber" type="String" />
+		<column name="openingHours" type="String" localized="true" />
+		<column name="latitude" type="BigDecimal" />
+		<column name="longitude" type="BigDecimal" />
+
+		<column name="distance" type="BigDecimal" />
+	</entity>
+	<exceptions>
+		<exception>DealerValidation</exception>
+	</exceptions>
+</service-builder>

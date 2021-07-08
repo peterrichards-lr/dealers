@@ -1,0 +1,20 @@
+create table Raybia_Dealer (
+	uuid_ VARCHAR(75) null,
+	dealerId LONG not null primary key,
+	groupId LONG,
+	companyId LONG,
+	userId LONG,
+	userName VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	name STRING null,
+	street STRING null,
+	locality STRING null,
+	state_ STRING null,
+	postalCode VARCHAR(75) null,
+	emailAddress VARCHAR(75) null,
+	phoneNumber VARCHAR(75) null,
+	openingHours STRING null,
+	latitude DECIMAL(30, 16) null,
+	longitude DECIMAL(30, 16) null
+);

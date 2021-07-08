@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.raybia.dealer.model.Dealer">
+		<field name="uuid" type="String" />
+		<field name="dealerId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field localized="true" name="name" type="String" />
+		<field localized="true" name="street" type="String" />
+		<field localized="true" name="locality" type="String" />
+		<field localized="true" name="state" type="String" />
+		<field name="postalCode" type="String" />
+		<field name="emailAddress" type="String" />
+		<field name="phoneNumber" type="String" />
+		<field localized="true" name="openingHours" type="String" />
+		<field name="latitude" type="BigDecimal" />
+		<field name="longitude" type="BigDecimal" />
+	</model>
+	<model name="com.liferay.raybia.dealer.model.NearestDealer">
+		<field name="dealerId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field localized="true" name="name" type="String" />
+		<field localized="true" name="street" type="String" />
+		<field localized="true" name="locality" type="String" />
+		<field localized="true" name="state" type="String" />
+		<field name="postalCode" type="String" />
+		<field name="emailAddress" type="String" />
+		<field name="phoneNumber" type="String" />
+		<field localized="true" name="openingHours" type="String" />
+		<field name="latitude" type="BigDecimal" />
+		<field name="longitude" type="BigDecimal" />
+		<field name="distance" type="BigDecimal" />
+	</model>
+</model-hints>

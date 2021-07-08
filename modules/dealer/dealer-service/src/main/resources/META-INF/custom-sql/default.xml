@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+    <sql id="com.liferay.raybia.dealer.service.persistence.NearestDealerFinder.findByDistance">
+    	<![CDATA[
+    		SELECT * FROM
+    		(
+    			SELECT
+    				raybia_dealer.*,
+					(
+						? *
+						acos(cos(radians(?)) * 
+						cos(radians(latitude)) * 
+						cos(radians(longitude) - 
+						radians(?)) + 
+						sin(radians(?)) * 
+						sin(radians(latitude)))
+					) AS distance 
+				FROM raybia_dealer
+			) AS nearestDealer
+			WHERE distance < ? 
+			ORDER BY distance
+		]]>
+    </sql>
+    <sql id="com.liferay.raybia.dealer.service.persistence.NearestDealerFinder.findByDistanceAndGroupId">
+        <![CDATA[
+            SELECT * FROM
+            (
+                SELECT
+                    raybia_dealer.*,
+                    (
+                        ? *
+                        acos(cos(radians(?)) * 
+                        cos(radians(latitude)) * 
+                        cos(radians(longitude) - 
+                        radians(?)) + 
+                        sin(radians(?)) * 
+                        sin(radians(latitude)))
+                    ) AS distance 
+                FROM raybia_dealer
+                WHERE groupId = ?
+            ) AS nearestDealer
+            WHERE distance < ? 
+            ORDER BY distance
+        ]]>
+    </sql>    
+</custom-sql>

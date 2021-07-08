@@ -1,0 +1,28 @@
+repositories {
+   flatDir {
+       dirs '../../../libs'
+   }
+}
+
+dependencies {
+	compile project(":modules:dealer:dealer-api")
+    
+    compileOnly name: "com.liferay.postcodes.api-1.0.0"
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+	compileOnly group: "org.slf4j", name: "slf4j-api"
+}
+
+buildService {
+	apiDir = "../dealer-api/src/main/java"
+}
+
+group = "com.liferay.raybia.dealer"
+
+tasks.withType(JavaCompile) {
+
+	// Generated classes using Jodd library are unable to be read when compiled against JDK 11
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}

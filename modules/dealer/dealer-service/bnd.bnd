@@ -1,0 +1,7 @@
+Bundle-Name: Dealer API Implementation
+Bundle-SymbolicName: com.liferay.raybia.dealer.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-dsannotations-options: inherit
+Export-Package: com.liferay.raybia.dealer.search

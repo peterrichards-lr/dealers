@@ -1,0 +1,15 @@
+.view-dealer .container {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 0.5fr 2fr 0.25fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Address Contact Opening-Hours"
+    "Map Map Map"
+    "Created Created Created"; 
+}
+.view-dealer .address { grid-area: Address; }
+.view-dealer .contact { grid-area: Contact; }
+.view-dealer .map { grid-area: Map; }
+.view-dealer .opening-hours { grid-area: Opening-Hours; }
+.view-dealer .created { grid-area: Created; }

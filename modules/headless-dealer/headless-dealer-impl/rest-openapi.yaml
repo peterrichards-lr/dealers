@@ -1,0 +1,349 @@
+components:
+  schemas:
+    Dealer:
+      description:
+        Contains all of the data for a single dealer.
+      properties:
+        id:
+          description:
+            The Dealer identifier
+          format: int64
+          type: integer
+          readOnly: true
+        name:
+          description:
+            The Dealer's name
+          type: string
+        address:
+          $ref: "#/components/schemas/Address"
+        emailAddress:
+          description:
+            The Dealer's email address
+          format: email
+          type: string
+        phoneNumber:
+          description:
+            The Dealer's phone number
+          type: string
+        openingHours:
+          description:
+            The Dealer's opening hours
+          type: string
+        geolocation:
+           $ref: "#/components/schemas/Geolocation"
+      type: object
+    NearestDealer:
+      allOf:
+        - $ref: "#/components/schemas/Dealer"
+        - type: object
+          required:
+            - distance
+          properties:
+            distance:
+              $ref: "#/components/schemas/Distance"
+    Distance:
+      description:
+        Represents a distance between two points
+      properties:
+        value:
+          format: double
+          type: number
+          readOnly: true
+        unit:
+          type: string
+          readOnly: true
+    Geolocation:
+      description:
+        Represents a geolocation
+      properties:
+        latitude:
+          description:
+            Specifies the north-south position
+          format: double
+          type: number
+        longitude:
+          description:
+            Specifies the east-west position
+          format: double
+          type: number
+    Address:
+      description:
+        Represents an address
+      properties:
+        street:
+          description: The street
+          type: string
+        locality:
+          description:
+            The locality, i.e. the borough, town or city
+          type: string
+        state:
+          description:
+            The state or county
+          type: string
+        postalCode:
+          description:
+            The postal code
+          type: string
+info:
+    description:
+        "Dealerlocator REST API. A Java client JAR is available for use with the group ID 'com.liferay', artifact ID
+        'com.liferay.raybia.dealer.api.client', and version '1.0.0'.. A Java client JAR is available for use with the
+        group ID 'com.liferay', artifact ID 'com.liferay.raybia.headless.dealer.client', and version '1.0.0'."
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "Dealers API"
+    version: v1.0
+openapi: 3.0.1
+paths:
+  "/nearestDealers":
+    get:
+      description: "Returns the dealers which are nearest to a given geolocation"
+      operationId: getNearestDealersPage
+      parameters:
+        - in: query
+          name: latitude
+          required: true
+          schema:
+            type: number
+            format: double
+        - in: query
+          name: longitude
+          required: true
+          schema:
+            type: number
+            format: double
+        - in: query
+          name: radialDistance
+          required: false
+          schema:
+            type: number
+            format: double
+            default: 25
+        - in: query
+          name: unitOfMeasure
+          required: false
+          schema:
+            type: string
+            enum: [MILES, KILOMETERS, METERS, FEET]
+            default: MILES
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 5
+        - in: query
+          name: siteId
+          schema:
+            format: int64
+            type: integer
+      responses:
+        200:
+          description: "An array of the closest dealers"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/NearestDealer"
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: "#/components/schemas/NearestDealer"
+                type: array
+      tags: ["NearestDealer"]
+  "/nearestDealers/{postcode}":
+    get:
+      description: "Returns the dealers which are nearest to a given postcode"
+      operationId: getNearestDealersPostcodePage
+      parameters:
+        - in: path
+          name: postcode
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: radialDistance
+          required: false
+          schema:
+            type: number
+            format: double
+            default: 25
+        - in: query
+          name: unitOfMeasure
+          required: false
+          schema:
+            type: string
+            enum: [MILES, KILOMETERS, METERS, FEET]
+            default: MILES
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 5
+        - in: query
+          name: siteId
+          schema:
+            format: int64
+            type: integer
+      responses:
+        200:
+          description: "An array of the closest dealers"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/NearestDealer"
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: "#/components/schemas/NearestDealer"
+                type: array
+      tags: ["NearestDealer"]
+  "/dealers":
+    get:
+      description: "Returns all the dealers"
+      operationId: getDealersPage
+      parameters:
+        - in: query
+          name: siteId
+          required: true
+          schema:
+            format: int64
+            type: integer
+        - in: query
+          name: filter
+          schema:
+              type: string
+        - in: query
+          name: page
+          schema:
+              type: integer
+        - in: query
+          name: pageSize
+          schema:
+              type: integer
+        - in: query
+          name: search
+          schema:
+              type: string
+        - in: query
+          name: sort
+          schema:
+              type: string
+      responses:
+        200:
+          description: "An array containing all dealers"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Dealer"
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: "#/components/schemas/Dealer"
+                type: array
+      tags: ["Dealer"]
+    post:
+      description: "Creates a new dealer"
+      operationId: createDealer
+      parameters:
+        - in: query
+          name: siteId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+               $ref: "#/components/schemas/Dealer"
+          application/xml:
+            schema:
+               $ref: "#/components/schemas/Dealer"
+      responses:
+        200:
+          description: "The dealer was created"
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/Dealer"
+            application/xml:
+              schema:
+                 $ref: "#/components/schemas/Dealer"
+      tags: ["Dealer"]
+  "/dealers/{dealerId}":
+    get:
+      description: "Returns the dealer with the specified identifier"
+      operationId: getDealer
+      parameters:
+        - in: path
+          name: dealerId
+          required: true
+          schema:
+            format: int64
+            type: integer
+      responses:
+        200:
+          description: "The dealer object wtih the specified identifier"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Dealer"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Dealer"
+      tags: ["Dealer"]
+    put:
+      description: "Updates the dealer with the specified identifier"
+      operationId: updateDealer
+      parameters:
+        - in: path
+          name: dealerId
+          required: true
+          schema:
+            type: integer
+            format: int64
+            description: Identifier of the dealer.
+      requestBody:
+        content:
+          application/json:
+            schema:
+               $ref: "#/components/schemas/Dealer"
+          application/xml:
+            schema:
+               $ref: "#/components/schemas/Dealer"
+      responses:
+        200:
+          description: "The dealer was updated."
+          content:
+            application/json:
+              schema:
+                 $ref: "#/components/schemas/Dealer"
+            application/xml:
+              schema:
+                 $ref: "#/components/schemas/Dealer"
+      tags: ["Dealer"]
+    delete:
+      description: "Deletes the dealer with the specified identifier"
+      operationId: deleteDealer
+      parameters:
+        - in: path
+          name: dealerId
+          required: true
+          schema:
+            type: integer
+            format: int64
+            description: Identifier of the dealer.
+      responses:
+        204:
+          description: The dealer was deleted successfully.
+          content:
+            application/json: {}
+            application/xml: {}
+      tags: ["Dealer"]
