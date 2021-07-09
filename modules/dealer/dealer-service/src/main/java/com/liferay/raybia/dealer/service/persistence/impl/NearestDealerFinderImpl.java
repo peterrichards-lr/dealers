@@ -78,9 +78,9 @@ public class NearestDealerFinderImpl extends NearestDealerFinderBaseImpl
 	        QueryPos qPos = QueryPos.getInstance(q);
 	        
 	        qPos.add(distanceUnit.getValue());
-	        qPos.add(longitude);
 	        qPos.add(latitude);
-	        qPos.add(longitude); // Longitude is used twice in the query
+	        qPos.add(longitude);
+	        qPos.add(latitude); // Latitude is used twice in the query
 	        qPos.add(groupId);
 	        qPos.add(distance);
 
