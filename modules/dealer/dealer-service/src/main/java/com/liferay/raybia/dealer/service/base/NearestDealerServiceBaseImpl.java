@@ -121,7 +121,7 @@ public abstract class NearestDealerServiceBaseImpl
 
 	@Reference
 	protected NearestDealerFinder nearestDealerFinder;
-
+	
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService
 		counterLocalService;

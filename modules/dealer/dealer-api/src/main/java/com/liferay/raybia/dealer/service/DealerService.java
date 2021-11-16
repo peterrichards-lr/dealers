@@ -27,7 +27,6 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.raybia.dealer.model.Dealer;
 
 import java.math.BigDecimal;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -35,9 +34,9 @@ import java.util.Map;
 import org.osgi.annotation.versioning.ProviderType;
 
 /**
- * Provides the remote service interface for Dealer. Methods of this
- * service are expected to have security checks based on the propagated JAAS
- * credentials because this service can be accessed remotely.
+ * Provides the remote service interface for Dealer. Methods of this service are
+ * expected to have security checks based on the propagated JAAS credentials
+ * because this service can be accessed remotely.
  *
  * @author Peter Richards
  * @see DealerServiceUtil
@@ -46,25 +45,24 @@ import org.osgi.annotation.versioning.ProviderType;
 @AccessControlled
 @JSONWebService
 @ProviderType
-@Transactional(
-	isolation = Isolation.PORTAL,
-	rollbackFor = {PortalException.class, SystemException.class}
-)
+@Transactional(isolation = Isolation.PORTAL, rollbackFor = { PortalException.class, SystemException.class })
 public interface DealerService extends BaseService {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add custom service methods to <code>com.liferay.raybia.dealer.service.impl.DealerServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the dealer remote service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link DealerServiceUtil} if injection and service tracking are not available.
+	 * Never modify this interface directly. Add custom service methods to
+	 * <code>com.liferay.raybia.dealer.service.impl.DealerServiceImpl</code> and
+	 * rerun ServiceBuilder to automatically copy the method declarations to this
+	 * interface. Consume the dealer remote service via injection or a
+	 * <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link
+	 * DealerServiceUtil} if injection and service tracking are not available.
 	 */
-	public Dealer addDealer(
-			long groupId, Map<Locale, String> nameMap,
-			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
-			Map<Locale, String> stateMap, String postalCode,
-			String emailAddress, String phoneNumber,
-			Map<Locale, String> openingHoursMap, BigDecimal latitude,
-			BigDecimal longitude, ServiceContext serviceContext)
-		throws PortalException;
+
+	public Dealer addDealer(long groupId, Map<Locale, String> nameMap, Map<Locale, String> streetMap,
+			Map<Locale, String> localityMap, Map<Locale, String> stateMap, String postalCode, String emailAddress,
+			String phoneNumber, Map<Locale, String> openingHoursMap, BigDecimal latitude, BigDecimal longitude,
+			ServiceContext serviceContext) throws PortalException;
 
 	public Dealer deleteDealer(long dealerId) throws PortalException;
 
@@ -75,12 +73,16 @@ public interface DealerService extends BaseService {
 	public List<Dealer> getDealersByGroupId(long groupId);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Dealer> getDealersByKeywords(
-		long groupId, String keywords, int start, int end,
-		OrderByComparator<Dealer> orderByComparator);
+	public List<Dealer> getDealersByKeywords(long groupId, String keywords, int start, int end,
+			OrderByComparator<Dealer> orderByComparator);
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public long getDealersCountByKeywords(long groupId, String keywords);
+
+	public Dealer updateDealer(long dealerId, Map<Locale, String> nameMap, Map<Locale, String> streetMap,
+			Map<Locale, String> localityMap, Map<Locale, String> stateMap, String postalCode, String emailAddress,
+			String phoneNumber, Map<Locale, String> openingHoursMap, BigDecimal latitude, BigDecimal longitude,
+			ServiceContext serviceContext) throws PortalException;
 
 	/**
 	 * Returns the OSGi service identifier.
@@ -88,14 +90,5 @@ public interface DealerService extends BaseService {
 	 * @return the OSGi service identifier
 	 */
 	public String getOSGiServiceIdentifier();
-
-	public Dealer updateDealer(
-			long dealerId, Map<Locale, String> nameMap,
-			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
-			Map<Locale, String> stateMap, String postalCode,
-			String emailAddress, String phoneNumber,
-			Map<Locale, String> openingHoursMap, BigDecimal latitude,
-			BigDecimal longitude, ServiceContext serviceContext)
-		throws PortalException;
 
 }

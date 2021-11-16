@@ -1437,6 +1437,32 @@ public class NearestDealerModelImpl
 	}
 
 	@Override
+	public NearestDealer cloneWithOriginalValues() {
+		NearestDealerImpl nearestDealerImpl = new NearestDealerImpl();
+		
+		nearestDealerImpl.setDealerId(this.<Long>getColumnOriginalValue("dealerId"));
+		nearestDealerImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
+		nearestDealerImpl.setCompanyId(this.<Long>getColumnOriginalValue("companyId"));
+		nearestDealerImpl.setUserId(this.<Long>getColumnOriginalValue("userId"));
+		nearestDealerImpl.setUserName(this.<String>getColumnOriginalValue("userName"));
+		nearestDealerImpl.setCreateDate(this.<Date>getColumnOriginalValue("createDate"));
+		nearestDealerImpl.setModifiedDate(this.<Date>getColumnOriginalValue("modifiedDate"));
+		nearestDealerImpl.setName(this.<String>getColumnOriginalValue("name"));
+		nearestDealerImpl.setStreet(this.<String>getColumnOriginalValue("street"));
+		nearestDealerImpl.setLocality(this.<String>getColumnOriginalValue("locality"));
+		nearestDealerImpl.setState(this.<String>getColumnOriginalValue("state"));
+		nearestDealerImpl.setPostalCode(this.<String>getColumnOriginalValue("postalCode"));
+		nearestDealerImpl.setEmailAddress(this.<String>getColumnOriginalValue("emailAddress"));
+		nearestDealerImpl.setPhoneNumber(this.<String>getColumnOriginalValue("phoneNumber"));
+		nearestDealerImpl.setOpeningHours(this.<String>getColumnOriginalValue("openingHours"));
+		nearestDealerImpl.setLatitude(this.<BigDecimal>getColumnOriginalValue("latitude"));
+		nearestDealerImpl.setLongitude(this.<BigDecimal>getColumnOriginalValue("longitude"));
+		nearestDealerImpl.setDistance(this.<BigDecimal>getColumnOriginalValue("distance"));
+		
+		return nearestDealerImpl;
+	}
+	
+	@Override
 	public int compareTo(NearestDealer nearestDealer) {
 		long primaryKey = nearestDealer.getPrimaryKey();
 

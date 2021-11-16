@@ -43,7 +43,7 @@ import org.osgi.service.component.annotations.Component;
  * @author Peter Richards
  * @see NearestDealerServiceBaseImpl
  */
-@Component(property = { "json.web.service.context.name=dealer",
+@Component(property = { "json.web.service.context.name=raybia",
 		"json.web.service.context.path=NearestDealer" }, service = AopService.class)
 public class NearestDealerServiceImpl extends NearestDealerServiceBaseImpl {
 
@@ -54,6 +54,7 @@ public class NearestDealerServiceImpl extends NearestDealerServiceBaseImpl {
 	 * <code>com.liferay.raybia.dealer.service.NearestDealerServiceUtil</code> to
 	 * access the nearest dealer remote service.
 	 */
+
 	public List<NearestDealer> findByDistance(BigDecimal latitude, BigDecimal longitude, BigDecimal distance,
 			DistanceUnitOfMeasure distanceUnit, int limit) throws SystemException {
 

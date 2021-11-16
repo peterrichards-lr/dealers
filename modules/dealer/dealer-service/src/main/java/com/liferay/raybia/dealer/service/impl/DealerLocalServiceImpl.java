@@ -84,20 +84,20 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 		_dealerValidator.validate(nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
 				openingHoursMap, latitude, longitude);
 
-		final Group group = groupLocalService.getGroup(groupId);;
+		final Group group = groupLocalService.getGroup(groupId);
 		final long companyId = group.getCompanyId();
 		final long userId = serviceContext.getUserId();
 
 		final long dealerId = counterLocalService.increment(getModelClassName());
 
 		final Date current = new Date();
-		
+
 		Dealer dealer = createDealer(dealerId);
 
 		dealer.setCompanyId(companyId);
 		dealer.setGroupId(groupId);
 		dealer.setUserId(userId);
-		
+
 		final User user = userLocalService.fetchUser(userId);
 		if (user != null) {
 			dealer.setUserName(user.getFullName());
@@ -212,8 +212,7 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 	public Dealer updateDealer(Dealer dealer) {
 		throw new UnsupportedOperationException("Not supported.");
 	}
-	
-	
+
 	@Reference
 	private DealerValidator _dealerValidator;
 

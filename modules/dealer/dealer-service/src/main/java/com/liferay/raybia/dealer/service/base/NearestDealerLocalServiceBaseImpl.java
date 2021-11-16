@@ -14,6 +14,7 @@
 
 package com.liferay.raybia.dealer.service.base;
 
+import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.db.DB;
 import com.liferay.portal.kernel.dao.db.DBManagerUtil;
@@ -44,7 +45,6 @@ import com.liferay.raybia.dealer.service.persistence.NearestDealerFinder;
 import com.liferay.raybia.dealer.service.persistence.NearestDealerPersistence;
 
 import java.io.Serializable;
-
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -135,6 +135,18 @@ public abstract class NearestDealerLocalServiceBaseImpl
 	@Override
 	public NearestDealer deleteNearestDealer(NearestDealer nearestDealer) {
 		return nearestDealerPersistence.remove(nearestDealer);
+	}
+
+	@Override
+	public int dslQueryCount(DSLQuery dslQuery) {
+		Long count = dslQuery(dslQuery);
+
+		return count.intValue();
+	}
+	
+	@Override
+	public <T> T dslQuery(DSLQuery dslQuery) {
+		return nearestDealerPersistence.dslQuery(dslQuery);
 	}
 
 	@Override
@@ -287,6 +299,7 @@ public abstract class NearestDealerLocalServiceBaseImpl
 	/**
 	 * @throws PortalException
 	 */
+	@Override
 	public PersistedModel createPersistedModel(Serializable primaryKeyObj)
 		throws PortalException {
 
@@ -305,6 +318,7 @@ public abstract class NearestDealerLocalServiceBaseImpl
 			(NearestDealer)persistedModel);
 	}
 
+	@Override
 	public BasePersistence<NearestDealer> getBasePersistence() {
 		return nearestDealerPersistence;
 	}

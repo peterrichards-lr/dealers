@@ -1468,6 +1468,32 @@ public class DealerModelImpl
 	}
 
 	@Override
+	public Dealer cloneWithOriginalValues() {
+		DealerImpl dealerImpl = new DealerImpl();
+		
+		dealerImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
+		dealerImpl.setDealerId(this.<Long>getColumnOriginalValue("dealerId"));
+		dealerImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
+		dealerImpl.setCompanyId(this.<Long>getColumnOriginalValue("companyId"));
+		dealerImpl.setUserId(this.<Long>getColumnOriginalValue("userId"));
+		dealerImpl.setUserName(this.<String>getColumnOriginalValue("userName"));
+		dealerImpl.setCreateDate(this.<Date>getColumnOriginalValue("createDate"));
+		dealerImpl.setModifiedDate(this.<Date>getColumnOriginalValue("modifiedDate"));
+		dealerImpl.setName(this.<String>getColumnOriginalValue("name"));
+		dealerImpl.setStreet(this.<String>getColumnOriginalValue("street"));
+		dealerImpl.setLocality(this.<String>getColumnOriginalValue("locality"));
+		dealerImpl.setState(this.<String>getColumnOriginalValue("state"));
+		dealerImpl.setPostalCode(this.<String>getColumnOriginalValue("postalCode"));
+		dealerImpl.setEmailAddress(this.<String>getColumnOriginalValue("emailAddress"));
+		dealerImpl.setPhoneNumber(this.<String>getColumnOriginalValue("phoneNumber"));
+		dealerImpl.setOpeningHours(this.<String>getColumnOriginalValue("openingHours"));
+		dealerImpl.setLatitude(this.<BigDecimal>getColumnOriginalValue("latitude"));
+		dealerImpl.setLongitude(this.<BigDecimal>getColumnOriginalValue("longitude"));
+		
+		return dealerImpl;
+	}
+	
+	@Override
 	public int compareTo(Dealer dealer) {
 		int value = 0;
 

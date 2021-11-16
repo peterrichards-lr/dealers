@@ -52,7 +52,7 @@ import org.osgi.service.component.annotations.ReferencePolicyOption;
  * @author Peter Richards
  * @see DealerServiceBaseImpl
  */
-@Component(property = { "json.web.service.context.name=dealer",
+@Component(property = { "json.web.service.context.name=raybia",
 		"json.web.service.context.path=Dealer" }, service = AopService.class)
 public class DealerServiceImpl extends DealerServiceBaseImpl {
 
@@ -69,13 +69,12 @@ public class DealerServiceImpl extends DealerServiceBaseImpl {
 			final String emailAddress, final String phoneNumber, final Map<Locale, String> openingHoursMap,
 			final BigDecimal latitude, final BigDecimal longitude, final ServiceContext serviceContext)
 			throws PortalException {
-		 // Check permissions.
+		// Check permissions.
 
-        _portletResourcePermission.check(
-            getPermissionChecker(), serviceContext.getScopeGroupId(),
-            ActionKeys.ADD_ENTRY);
+		_portletResourcePermission.check(getPermissionChecker(), serviceContext.getScopeGroupId(),
+				ActionKeys.ADD_ENTRY);
 
-        return dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+		return dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
 				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, serviceContext);
 	}
 
@@ -95,29 +94,24 @@ public class DealerServiceImpl extends DealerServiceBaseImpl {
 	public Dealer deleteDealer(final long dealerId) throws PortalException {
 		// Check permissions.
 
-        _dealerModelResourcePermission.check(
-            getPermissionChecker(), dealerId, ActionKeys.DELETE);
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealerId, ActionKeys.DELETE);
 
-        Dealer dealer =
-            dealerLocalService.getDealer(dealerId);
+		Dealer dealer = dealerLocalService.getDealer(dealerId);
 
-        return dealerLocalService.deleteDealer(dealer);
+		return dealerLocalService.deleteDealer(dealer);
 	}
-	
-    public Dealer getDealer(long dealerId)
-            throws PortalException {
 
-            Dealer dealer =
-                dealerLocalService.getDealer(dealerId);
+	public Dealer getDealer(long dealerId) throws PortalException {
 
-            // Check permissions.
+		Dealer dealer = dealerLocalService.getDealer(dealerId);
 
-            _dealerModelResourcePermission.check(
-                getPermissionChecker(), dealer, ActionKeys.VIEW);
+		// Check permissions.
 
-            return dealer;
-        }
-    
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealer, ActionKeys.VIEW);
+
+		return dealer;
+	}
+
 	public List<Dealer> getDealersByGroupId(long groupId) {
 		return dealerPersistence.findByGroupId(groupId);
 	}

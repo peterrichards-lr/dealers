@@ -23,50 +23,47 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @see DealerLocalService
  * @generated
  */
-public class DealerLocalServiceWrapper
-	implements DealerLocalService, ServiceWrapper<DealerLocalService> {
+public class DealerLocalServiceWrapper implements DealerLocalService, ServiceWrapper<DealerLocalService> {
 
 	public DealerLocalServiceWrapper(DealerLocalService dealerLocalService) {
 		_dealerLocalService = dealerLocalService;
 	}
 
 	/**
-	 * Adds the dealer to the database. Also notifies the appropriate model listeners.
+	 * Adds the dealer to the database. Also notifies the appropriate model
+	 * listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
+	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded
+	 * versions of the method. If provided, use these entry points to the API, as
+	 * the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param dealer the dealer
 	 * @return the dealer that was added
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer addDealer(
-		com.liferay.raybia.dealer.model.Dealer dealer) {
+	public com.liferay.raybia.dealer.model.Dealer addDealer(com.liferay.raybia.dealer.model.Dealer dealer) {
 
 		return _dealerLocalService.addDealer(dealer);
 	}
 
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer addDealer(
-			long groupId, java.util.Map<java.util.Locale, String> nameMap,
-			java.util.Map<java.util.Locale, String> streetMap,
-			java.util.Map<java.util.Locale, String> localityMap,
-			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
-			String emailAddress, String phoneNumber,
-			java.util.Map<java.util.Locale, String> openingHoursMap,
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
-			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.Dealer addDealer(long groupId,
+			java.util.Map<java.util.Locale, String> nameMap, java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap, java.util.Map<java.util.Locale, String> stateMap,
+			String postalCode, String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap, java.math.BigDecimal latitude,
+			java.math.BigDecimal longitude, com.liferay.portal.kernel.service.ServiceContext serviceContext)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _dealerLocalService.addDealer(
-			groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
-			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
-			serviceContext);
+		return _dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, serviceContext);
 	}
 
 	/**
-	 * Creates a new dealer with the primary key. Does not add the dealer to the database.
+	 * Creates a new dealer with the primary key. Does not add the dealer to the
+	 * database.
 	 *
 	 * @param dealerId the primary key for the new dealer
 	 * @return the new dealer
@@ -80,37 +77,40 @@ public class DealerLocalServiceWrapper
 	 * @throws PortalException
 	 */
 	@Override
-	public com.liferay.portal.kernel.model.PersistedModel createPersistedModel(
-			java.io.Serializable primaryKeyObj)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.portal.kernel.model.PersistedModel createPersistedModel(java.io.Serializable primaryKeyObj)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.createPersistedModel(primaryKeyObj);
 	}
 
 	/**
-	 * Deletes the dealer from the database. Also notifies the appropriate model listeners.
+	 * Deletes the dealer from the database. Also notifies the appropriate model
+	 * listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
+	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded
+	 * versions of the method. If provided, use these entry points to the API, as
+	 * the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param dealer the dealer
 	 * @return the dealer that was removed
-	 * @throws PortalException
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer deleteDealer(
-			com.liferay.raybia.dealer.model.Dealer dealer)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.Dealer deleteDealer(com.liferay.raybia.dealer.model.Dealer dealer)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.deleteDealer(dealer);
 	}
 
 	/**
-	 * Deletes the dealer with the primary key from the database. Also notifies the appropriate model listeners.
+	 * Deletes the dealer with the primary key from the database. Also notifies the
+	 * appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
+	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded
+	 * versions of the method. If provided, use these entry points to the API, as
+	 * the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param dealerId the primary key of the dealer
@@ -119,7 +119,7 @@ public class DealerLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.raybia.dealer.model.Dealer deleteDealer(long dealerId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.deleteDealer(dealerId);
 	}
@@ -130,9 +130,19 @@ public class DealerLocalServiceWrapper
 	@Override
 	public com.liferay.portal.kernel.model.PersistedModel deletePersistedModel(
 			com.liferay.portal.kernel.model.PersistedModel persistedModel)
-		throws com.liferay.portal.kernel.exception.PortalException {
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.deletePersistedModel(persistedModel);
+	}
+
+	@Override
+	public int dslQueryCount(com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
+		return _dealerLocalService.dslQueryCount(dslQuery);
+	}
+
+	@Override
+	public <T> T dslQuery(com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
+		return _dealerLocalService.dslQuery(dslQuery);
 	}
 
 	@Override
@@ -147,53 +157,71 @@ public class DealerLocalServiceWrapper
 	 * @return the matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
 
 		return _dealerLocalService.dynamicQuery(dynamicQuery);
 	}
 
 	/**
-	 * Performs a dynamic query on the database and returns a range of the matching rows.
+	 * Performs a dynamic query on the database and returns a range of the matching
+	 * rows.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
+	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
+	 * are indexes in the result set. Thus, <code>0</code> refers to the first
+	 * result in the set. Setting both <code>start</code> and <code>end</code> to
+	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
+	 * the full result set. If <code>orderByComparator</code> is specified, then the
+	 * query will include the given ORDER BY logic. If
+	 * <code>orderByComparator</code> is absent, then the query will include the
+	 * default ORDER BY logic from
+	 * <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
 	 * </p>
 	 *
 	 * @param dynamicQuery the dynamic query
-	 * @param start the lower bound of the range of model instances
-	 * @param end the upper bound of the range of model instances (not inclusive)
+	 * @param start        the lower bound of the range of model instances
+	 * @param end          the upper bound of the range of model instances (not
+	 *                     inclusive)
 	 * @return the range of matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-		int end) {
+	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+			int end) {
 
 		return _dealerLocalService.dynamicQuery(dynamicQuery, start, end);
 	}
 
 	/**
-	 * Performs a dynamic query on the database and returns an ordered range of the matching rows.
+	 * Performs a dynamic query on the database and returns an ordered range of the
+	 * matching rows.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
+	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
+	 * are indexes in the result set. Thus, <code>0</code> refers to the first
+	 * result in the set. Setting both <code>start</code> and <code>end</code> to
+	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
+	 * the full result set. If <code>orderByComparator</code> is specified, then the
+	 * query will include the given ORDER BY logic. If
+	 * <code>orderByComparator</code> is absent, then the query will include the
+	 * default ORDER BY logic from
+	 * <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
 	 * </p>
 	 *
-	 * @param dynamicQuery the dynamic query
-	 * @param start the lower bound of the range of model instances
-	 * @param end the upper bound of the range of model instances (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param dynamicQuery      the dynamic query
+	 * @param start             the lower bound of the range of model instances
+	 * @param end               the upper bound of the range of model instances (not
+	 *                          inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally
+	 *                          <code>null</code>)
 	 * @return the ordered range of matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-		int end,
-		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
+	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+			int end, com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
 
-		return _dealerLocalService.dynamicQuery(
-			dynamicQuery, start, end, orderByComparator);
+		return _dealerLocalService.dynamicQuery(dynamicQuery, start, end, orderByComparator);
 	}
 
 	/**
@@ -203,8 +231,7 @@ public class DealerLocalServiceWrapper
 	 * @return the number of rows matching the dynamic query
 	 */
 	@Override
-	public long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+	public long dynamicQueryCount(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
 
 		return _dealerLocalService.dynamicQueryCount(dynamicQuery);
 	}
@@ -213,13 +240,12 @@ public class DealerLocalServiceWrapper
 	 * Returns the number of rows matching the dynamic query.
 	 *
 	 * @param dynamicQuery the dynamic query
-	 * @param projection the projection to apply to the query
+	 * @param projection   the projection to apply to the query
 	 * @return the number of rows matching the dynamic query
 	 */
 	@Override
-	public long dynamicQueryCount(
-		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
-		com.liferay.portal.kernel.dao.orm.Projection projection) {
+	public long dynamicQueryCount(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+			com.liferay.portal.kernel.dao.orm.Projection projection) {
 
 		return _dealerLocalService.dynamicQueryCount(dynamicQuery, projection);
 	}
@@ -232,20 +258,19 @@ public class DealerLocalServiceWrapper
 	/**
 	 * Returns the dealer matching the UUID and group.
 	 *
-	 * @param uuid the dealer's UUID
+	 * @param uuid    the dealer's UUID
 	 * @param groupId the primary key of the group
-	 * @return the matching dealer, or <code>null</code> if a matching dealer could not be found
+	 * @return the matching dealer, or <code>null</code> if a matching dealer could
+	 *         not be found
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer fetchDealerByUuidAndGroupId(
-		String uuid, long groupId) {
+	public com.liferay.raybia.dealer.model.Dealer fetchDealerByUuidAndGroupId(String uuid, long groupId) {
 
 		return _dealerLocalService.fetchDealerByUuidAndGroupId(uuid, groupId);
 	}
 
 	@Override
-	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
-		getActionableDynamicQuery() {
+	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
 
 		return _dealerLocalService.getActionableDynamicQuery();
 	}
@@ -259,7 +284,7 @@ public class DealerLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.raybia.dealer.model.Dealer getDealer(long dealerId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.getDealer(dealerId);
 	}
@@ -267,15 +292,14 @@ public class DealerLocalServiceWrapper
 	/**
 	 * Returns the dealer matching the UUID and group.
 	 *
-	 * @param uuid the dealer's UUID
+	 * @param uuid    the dealer's UUID
 	 * @param groupId the primary key of the group
 	 * @return the matching dealer
 	 * @throws PortalException if a matching dealer could not be found
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer getDealerByUuidAndGroupId(
-			String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.Dealer getDealerByUuidAndGroupId(String uuid, long groupId)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.getDealerByUuidAndGroupId(uuid, groupId);
 	}
@@ -284,90 +308,89 @@ public class DealerLocalServiceWrapper
 	 * Returns a range of all the dealers.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
+	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
+	 * are indexes in the result set. Thus, <code>0</code> refers to the first
+	 * result in the set. Setting both <code>start</code> and <code>end</code> to
+	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
+	 * the full result set. If <code>orderByComparator</code> is specified, then the
+	 * query will include the given ORDER BY logic. If
+	 * <code>orderByComparator</code> is absent, then the query will include the
+	 * default ORDER BY logic from
+	 * <code>com.liferay.raybia.dealer.model.impl.DealerModelImpl</code>.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of dealers
-	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param end   the upper bound of the range of dealers (not inclusive)
 	 * @return the range of dealers
 	 */
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealers(
-		int start, int end) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealers(int start, int end) {
 
 		return _dealerLocalService.getDealers(start, end);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByGroupId(long groupId) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByGroupId(long groupId) {
 
 		return _dealerLocalService.getDealersByGroupId(groupId);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByGroupId(long groupId, int start, int end) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByGroupId(long groupId, int start,
+			int end) {
 
 		return _dealerLocalService.getDealersByGroupId(groupId, start, end);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByGroupId(
-			long groupId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByGroupId(long groupId, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
 
-		return _dealerLocalService.getDealersByGroupId(
-			groupId, start, end, orderByComparator);
+		return _dealerLocalService.getDealersByGroupId(groupId, start, end, orderByComparator);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByKeywords(
-			long groupId, String keywords, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByKeywords(long groupId, String keywords,
+			int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
 
-		return _dealerLocalService.getDealersByKeywords(
-			groupId, keywords, start, end, orderByComparator);
+		return _dealerLocalService.getDealersByKeywords(groupId, keywords, start, end, orderByComparator);
 	}
 
 	/**
 	 * Returns all the dealers matching the UUID and company.
 	 *
-	 * @param uuid the UUID of the dealers
+	 * @param uuid      the UUID of the dealers
 	 * @param companyId the primary key of the company
 	 * @return the matching dealers, or an empty list if no matches were found
 	 */
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByUuidAndCompanyId(String uuid, long companyId) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByUuidAndCompanyId(String uuid,
+			long companyId) {
 
-		return _dealerLocalService.getDealersByUuidAndCompanyId(
-			uuid, companyId);
+		return _dealerLocalService.getDealersByUuidAndCompanyId(uuid, companyId);
 	}
 
 	/**
 	 * Returns a range of dealers matching the UUID and company.
 	 *
-	 * @param uuid the UUID of the dealers
-	 * @param companyId the primary key of the company
-	 * @param start the lower bound of the range of dealers
-	 * @param end the upper bound of the range of dealers (not inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-	 * @return the range of matching dealers, or an empty list if no matches were found
+	 * @param uuid              the UUID of the dealers
+	 * @param companyId         the primary key of the company
+	 * @param start             the lower bound of the range of dealers
+	 * @param end               the upper bound of the range of dealers (not
+	 *                          inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally
+	 *                          <code>null</code>)
+	 * @return the range of matching dealers, or an empty list if no matches were
+	 *         found
 	 */
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.Dealer>
-		getDealersByUuidAndCompanyId(
-			String uuid, long companyId, int start, int end,
-			com.liferay.portal.kernel.util.OrderByComparator
-				<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
+	public java.util.List<com.liferay.raybia.dealer.model.Dealer> getDealersByUuidAndCompanyId(String uuid,
+			long companyId, int start, int end,
+			com.liferay.portal.kernel.util.OrderByComparator<com.liferay.raybia.dealer.model.Dealer> orderByComparator) {
 
-		return _dealerLocalService.getDealersByUuidAndCompanyId(
-			uuid, companyId, start, end, orderByComparator);
+		return _dealerLocalService.getDealersByUuidAndCompanyId(uuid, companyId, start, end, orderByComparator);
 	}
 
 	/**
@@ -386,18 +409,14 @@ public class DealerLocalServiceWrapper
 	}
 
 	@Override
-	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery
-		getExportActionableDynamicQuery(
-			com.liferay.exportimport.kernel.lar.PortletDataContext
-				portletDataContext) {
+	public com.liferay.portal.kernel.dao.orm.ExportActionableDynamicQuery getExportActionableDynamicQuery(
+			com.liferay.exportimport.kernel.lar.PortletDataContext portletDataContext) {
 
-		return _dealerLocalService.getExportActionableDynamicQuery(
-			portletDataContext);
+		return _dealerLocalService.getExportActionableDynamicQuery(portletDataContext);
 	}
 
 	@Override
-	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
-		getIndexableActionableDynamicQuery() {
+	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
 
 		return _dealerLocalService.getIndexableActionableDynamicQuery();
 	}
@@ -416,46 +435,42 @@ public class DealerLocalServiceWrapper
 	 * @throws PortalException
 	 */
 	@Override
-	public com.liferay.portal.kernel.model.PersistedModel getPersistedModel(
-			java.io.Serializable primaryKeyObj)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.portal.kernel.model.PersistedModel getPersistedModel(java.io.Serializable primaryKeyObj)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _dealerLocalService.getPersistedModel(primaryKeyObj);
 	}
 
 	/**
-	 * Updates the dealer in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
+	 * Updates the dealer in the database or adds it if it does not yet exist. Also
+	 * notifies the appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
+	 * <strong>Important:</strong> Inspect DealerLocalServiceImpl for overloaded
+	 * versions of the method. If provided, use these entry points to the API, as
+	 * the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param dealer the dealer
 	 * @return the dealer that was updated
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer updateDealer(
-		com.liferay.raybia.dealer.model.Dealer dealer) {
+	public com.liferay.raybia.dealer.model.Dealer updateDealer(com.liferay.raybia.dealer.model.Dealer dealer) {
 
 		return _dealerLocalService.updateDealer(dealer);
 	}
 
 	@Override
-	public com.liferay.raybia.dealer.model.Dealer updateDealer(
-			long dealerId, java.util.Map<java.util.Locale, String> nameMap,
-			java.util.Map<java.util.Locale, String> streetMap,
-			java.util.Map<java.util.Locale, String> localityMap,
-			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
-			String emailAddress, String phoneNumber,
-			java.util.Map<java.util.Locale, String> openingHoursMap,
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
-			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.Dealer updateDealer(long dealerId,
+			java.util.Map<java.util.Locale, String> nameMap, java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap, java.util.Map<java.util.Locale, String> stateMap,
+			String postalCode, String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap, java.math.BigDecimal latitude,
+			java.math.BigDecimal longitude, com.liferay.portal.kernel.service.ServiceContext serviceContext)
+			throws com.liferay.portal.kernel.exception.PortalException {
 
-		return _dealerLocalService.updateDealer(
-			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
-			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
-			serviceContext);
+		return _dealerLocalService.updateDealer(dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, serviceContext);
 	}
 
 	@Override
