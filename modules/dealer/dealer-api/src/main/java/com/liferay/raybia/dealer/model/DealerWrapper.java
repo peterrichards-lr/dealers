@@ -176,7 +176,7 @@ public class DealerWrapper
 			setLongitude(longitude);
 		}
 	}
-	
+
 	@Override
 	public Dealer cloneWithOriginalValues() {
 		return wrap(model.cloneWithOriginalValues());

@@ -23,30 +23,41 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @see NearestDealerService
  * @generated
  */
-public class NearestDealerServiceWrapper implements NearestDealerService, ServiceWrapper<NearestDealerService> {
+public class NearestDealerServiceWrapper
+	implements NearestDealerService, ServiceWrapper<NearestDealerService> {
 
-	public NearestDealerServiceWrapper(NearestDealerService nearestDealerService) {
+	public NearestDealerServiceWrapper(
+		NearestDealerService nearestDealerService) {
 
 		_nearestDealerService = nearestDealerService;
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistance(java.math.BigDecimal latitude,
-			java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
+	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer>
+			findByDistance(
+				java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+				java.math.BigDecimal distance,
+				com.liferay.raybia.dealer.model.DistanceUnitOfMeasure
+					distanceUnit,
+				int limit)
+		throws com.liferay.portal.kernel.exception.SystemException {
 
-		return _nearestDealerService.findByDistance(latitude, longitude, distance, distanceUnit, limit);
+		return _nearestDealerService.findByDistance(
+			latitude, longitude, distance, distanceUnit, limit);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistanceAndGroupId(long groupId,
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
+	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer>
+			findByDistanceAndGroupId(
+				long groupId, java.math.BigDecimal latitude,
+				java.math.BigDecimal longitude, java.math.BigDecimal distance,
+				com.liferay.raybia.dealer.model.DistanceUnitOfMeasure
+					distanceUnit,
+				int limit)
+		throws com.liferay.portal.kernel.exception.SystemException {
 
-		return _nearestDealerService.findByDistanceAndGroupId(groupId, latitude, longitude, distance, distanceUnit,
-				limit);
+		return _nearestDealerService.findByDistanceAndGroupId(
+			groupId, latitude, longitude, distance, distanceUnit, limit);
 	}
 
 	/**

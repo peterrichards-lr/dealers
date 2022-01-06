@@ -85,13 +85,4 @@ public abstract class NearestDealerFinderBaseImpl
 	private static final Log _log = LogFactoryUtil.getLog(
 		NearestDealerFinderBaseImpl.class);
 
-	static {
-		try {
-			Class.forName(RaybiaPersistenceConstants.class.getName());
-		}
-		catch (ClassNotFoundException classNotFoundException) {
-			throw new ExceptionInInitializerError(classNotFoundException);
-		}
-	}
-
 }

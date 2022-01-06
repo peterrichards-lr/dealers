@@ -4,6 +4,8 @@ import com.liferay.petra.function.UnsafeConsumer;
 import com.liferay.petra.function.UnsafeFunction;
 import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.search.filter.Filter;
+import com.liferay.portal.kernel.service.GroupLocalService;
+import com.liferay.portal.kernel.service.RoleLocalService;
 import com.liferay.portal.vulcan.accept.language.AcceptLanguage;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLField;
 import com.liferay.portal.vulcan.graphql.annotation.GraphQLName;
@@ -150,6 +152,7 @@ public class Query {
 
 		public DealerPage(Page dealerPage) {
 			actions = dealerPage.getActions();
+
 			items = dealerPage.getItems();
 			lastPage = dealerPage.getLastPage();
 			page = dealerPage.getPage();
@@ -182,6 +185,7 @@ public class Query {
 
 		public NearestDealerPage(Page nearestDealerPage) {
 			actions = nearestDealerPage.getActions();
+
 			items = nearestDealerPage.getItems();
 			lastPage = nearestDealerPage.getLastPage();
 			page = nearestDealerPage.getPage();
@@ -237,6 +241,8 @@ public class Query {
 		dealerResource.setContextHttpServletResponse(_httpServletResponse);
 		dealerResource.setContextUriInfo(_uriInfo);
 		dealerResource.setContextUser(_user);
+		dealerResource.setGroupLocalService(_groupLocalService);
+		dealerResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private void _populateResourceContext(
@@ -250,6 +256,8 @@ public class Query {
 			_httpServletResponse);
 		nearestDealerResource.setContextUriInfo(_uriInfo);
 		nearestDealerResource.setContextUser(_user);
+		nearestDealerResource.setGroupLocalService(_groupLocalService);
+		nearestDealerResource.setRoleLocalService(_roleLocalService);
 	}
 
 	private static ComponentServiceObjects<DealerResource>
@@ -258,12 +266,14 @@ public class Query {
 		_nearestDealerResourceComponentServiceObjects;
 
 	private AcceptLanguage _acceptLanguage;
-	private BiFunction<Object, String, Filter> _filterBiFunction;
-	private BiFunction<Object, String, Sort[]> _sortsBiFunction;
 	private com.liferay.portal.kernel.model.Company _company;
-	private com.liferay.portal.kernel.model.User _user;
+	private BiFunction<Object, String, Filter> _filterBiFunction;
+	private GroupLocalService _groupLocalService;
 	private HttpServletRequest _httpServletRequest;
 	private HttpServletResponse _httpServletResponse;
+	private RoleLocalService _roleLocalService;
+	private BiFunction<Object, String, Sort[]> _sortsBiFunction;
 	private UriInfo _uriInfo;
+	private com.liferay.portal.kernel.model.User _user;
 
 }

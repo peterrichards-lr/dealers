@@ -13,7 +13,6 @@ import com.liferay.petra.string.StringBundler;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
-import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.model.Group;
@@ -34,7 +33,6 @@ import com.liferay.raybia.headless.dealer.client.pagination.Page;
 import com.liferay.raybia.headless.dealer.client.resource.v1_0.NearestDealerResource;
 import com.liferay.raybia.headless.dealer.client.serdes.v1_0.NearestDealerSerDes;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 import java.text.DateFormat;
@@ -92,7 +90,9 @@ public abstract class BaseNearestDealerResourceTestCase {
 
 		NearestDealerResource.Builder builder = NearestDealerResource.builder();
 
-		nearestDealerResource = builder.locale(
+		nearestDealerResource = builder.authentication(
+			"test@liferay.com", "test"
+		).locale(
 			LocaleUtil.getDefault()
 		).build();
 	}
@@ -174,7 +174,7 @@ public abstract class BaseNearestDealerResourceTestCase {
 		Page<NearestDealer> page = nearestDealerResource.getNearestDealersPage(
 			null, null, null, RandomTestUtil.randomString(), null, null);
 
-		Assert.assertEquals(0, page.getTotalCount());
+		long totalCount = page.getTotalCount();
 
 		NearestDealer nearestDealer1 =
 			testGetNearestDealersPage_addNearestDealer(randomNearestDealer());
@@ -185,11 +185,10 @@ public abstract class BaseNearestDealerResourceTestCase {
 		page = nearestDealerResource.getNearestDealersPage(
 			null, null, null, null, null, null);
 
-		Assert.assertEquals(2, page.getTotalCount());
+		Assert.assertEquals(totalCount + 2, page.getTotalCount());
 
-		assertEqualsIgnoringOrder(
-			Arrays.asList(nearestDealer1, nearestDealer2),
-			(List<NearestDealer>)page.getItems());
+		assertContains(nearestDealer1, (List<NearestDealer>)page.getItems());
+		assertContains(nearestDealer2, (List<NearestDealer>)page.getItems());
 		assertValid(page);
 	}
 
@@ -208,18 +207,17 @@ public abstract class BaseNearestDealerResourceTestCase {
 
 	@Test
 	public void testGetNearestDealersPostcodePage() throws Exception {
-		Page<NearestDealer> page =
-			nearestDealerResource.getNearestDealersPostcodePage(
-				testGetNearestDealersPostcodePage_getPostcode(), null,
-				RandomTestUtil.randomString(), null, null);
-
-		Assert.assertEquals(0, page.getTotalCount());
-
 		String postcode = testGetNearestDealersPostcodePage_getPostcode();
 		String irrelevantPostcode =
 			testGetNearestDealersPostcodePage_getIrrelevantPostcode();
 
-		if ((irrelevantPostcode != null)) {
+		Page<NearestDealer> page =
+			nearestDealerResource.getNearestDealersPostcodePage(
+				postcode, null, RandomTestUtil.randomString(), null, null);
+
+		Assert.assertEquals(0, page.getTotalCount());
+
+		if (irrelevantPostcode != null) {
 			NearestDealer irrelevantNearestDealer =
 				testGetNearestDealersPostcodePage_addNearestDealer(
 					irrelevantPostcode, randomIrrelevantNearestDealer());
@@ -275,6 +273,23 @@ public abstract class BaseNearestDealerResourceTestCase {
 		return null;
 	}
 
+	protected void assertContains(
+		NearestDealer nearestDealer, List<NearestDealer> nearestDealers) {
+
+		boolean contains = false;
+
+		for (NearestDealer item : nearestDealers) {
+			if (equals(nearestDealer, item)) {
+				contains = true;
+
+				break;
+			}
+		}
+
+		Assert.assertTrue(
+			nearestDealers + " does not contain " + nearestDealer, contains);
+	}
+
 	protected void assertHttpResponseStatusCode(
 		int expectedHttpResponseStatusCode,
 		HttpInvoker.HttpResponse actualHttpResponse) {
@@ -328,7 +343,7 @@ public abstract class BaseNearestDealerResourceTestCase {
 		}
 	}
 
-	protected void assertValid(NearestDealer nearestDealer) {
+	protected void assertValid(NearestDealer nearestDealer) throws Exception {
 		boolean valid = true;
 
 		for (String additionalAssertFieldName :
@@ -382,8 +397,8 @@ public abstract class BaseNearestDealerResourceTestCase {
 	protected List<GraphQLField> getGraphQLFields() throws Exception {
 		List<GraphQLField> graphQLFields = new ArrayList<>();
 
-		for (Field field :
-				ReflectionUtil.getDeclaredFields(
+		for (java.lang.reflect.Field field :
+				getDeclaredFields(
 					com.liferay.raybia.headless.dealer.dto.v1_0.NearestDealer.
 						class)) {
 
@@ -399,12 +414,13 @@ public abstract class BaseNearestDealerResourceTestCase {
 		return graphQLFields;
 	}
 
-	protected List<GraphQLField> getGraphQLFields(Field... fields)
+	protected List<GraphQLField> getGraphQLFields(
+			java.lang.reflect.Field... fields)
 		throws Exception {
 
 		List<GraphQLField> graphQLFields = new ArrayList<>();
 
-		for (Field field : fields) {
+		for (java.lang.reflect.Field field : fields) {
 			com.liferay.portal.vulcan.graphql.annotation.GraphQLField
 				vulcanGraphQLField = field.getAnnotation(
 					com.liferay.portal.vulcan.graphql.annotation.GraphQLField.
@@ -418,7 +434,7 @@ public abstract class BaseNearestDealerResourceTestCase {
 				}
 
 				List<GraphQLField> childrenGraphQLFields = getGraphQLFields(
-					ReflectionUtil.getDeclaredFields(clazz));
+					getDeclaredFields(clazz));
 
 				graphQLFields.add(
 					new GraphQLField(field.getName(), childrenGraphQLFields));
@@ -491,9 +507,24 @@ public abstract class BaseNearestDealerResourceTestCase {
 					return false;
 				}
 			}
+
+			return true;
 		}
 
-		return true;
+		return false;
+	}
+
+	protected java.lang.reflect.Field[] getDeclaredFields(Class clazz)
+		throws Exception {
+
+		Stream<java.lang.reflect.Field> stream = Stream.of(
+			ReflectionUtil.getDeclaredFields(clazz));
+
+		return stream.filter(
+			field -> !field.isSynthetic()
+		).toArray(
+			java.lang.reflect.Field[]::new
+		);
 	}
 
 	protected java.util.Collection<EntityField> getEntityFields()
@@ -658,12 +689,12 @@ public abstract class BaseNearestDealerResourceTestCase {
 						_parameterMap.entrySet()) {
 
 					sb.append(entry.getKey());
-					sb.append(":");
+					sb.append(": ");
 					sb.append(entry.getValue());
-					sb.append(",");
+					sb.append(", ");
 				}
 
-				sb.setLength(sb.length() - 1);
+				sb.setLength(sb.length() - 2);
 
 				sb.append(")");
 			}
@@ -673,10 +704,10 @@ public abstract class BaseNearestDealerResourceTestCase {
 
 				for (GraphQLField graphQLField : _graphQLFields) {
 					sb.append(graphQLField.toString());
-					sb.append(",");
+					sb.append(", ");
 				}
 
-				sb.setLength(sb.length() - 1);
+				sb.setLength(sb.length() - 2);
 
 				sb.append("}");
 			}
@@ -690,8 +721,8 @@ public abstract class BaseNearestDealerResourceTestCase {
 
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		BaseNearestDealerResourceTestCase.class);
+	private static final com.liferay.portal.kernel.log.Log _log =
+		LogFactoryUtil.getLog(BaseNearestDealerResourceTestCase.class);
 
 	private static BeanUtilsBean _beanUtilsBean = new BeanUtilsBean() {
 

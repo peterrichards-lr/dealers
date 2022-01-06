@@ -12,6 +12,8 @@ import com.liferay.portal.vulcan.util.ObjectMapperUtil;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.io.Serializable;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -26,13 +28,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @Generated("")
-@GraphQLName("Geolocation")
+@GraphQLName(description = "Represents a geolocation", value = "Geolocation")
 @JsonFilter("Liferay.Vulcan")
 @XmlRootElement(name = "Geolocation")
-public class Geolocation {
+public class Geolocation implements Serializable {
 
 	public static Geolocation toDTO(String json) {
 		return ObjectMapperUtil.readValue(Geolocation.class, json);
+	}
+
+	public static Geolocation unsafeToDTO(String json) {
+		return ObjectMapperUtil.unsafeReadValue(Geolocation.class, json);
 	}
 
 	@Schema(description = "Specifies the north-south position")
@@ -144,6 +150,7 @@ public class Geolocation {
 	}
 
 	@Schema(
+		accessMode = Schema.AccessMode.READ_ONLY,
 		defaultValue = "com.liferay.raybia.headless.dealer.dto.v1_0.Geolocation",
 		name = "x-class-name"
 	)
@@ -153,6 +160,16 @@ public class Geolocation {
 		String string = String.valueOf(object);
 
 		return string.replaceAll("\"", "\\\\\"");
+	}
+
+	private static boolean _isArray(Object value) {
+		if (value == null) {
+			return false;
+		}
+
+		Class<?> clazz = value.getClass();
+
+		return clazz.isArray();
 	}
 
 	private static String _toJSON(Map<String, ?> map) {
@@ -169,13 +186,11 @@ public class Geolocation {
 
 			sb.append("\"");
 			sb.append(entry.getKey());
-			sb.append("\":");
+			sb.append("\": ");
 
 			Object value = entry.getValue();
 
-			Class<?> clazz = value.getClass();
-
-			if (clazz.isArray()) {
+			if (_isArray(value)) {
 				sb.append("[");
 
 				Object[] valueArray = (Object[])value;
@@ -210,7 +225,7 @@ public class Geolocation {
 			}
 
 			if (iterator.hasNext()) {
-				sb.append(",");
+				sb.append(", ");
 			}
 		}
 

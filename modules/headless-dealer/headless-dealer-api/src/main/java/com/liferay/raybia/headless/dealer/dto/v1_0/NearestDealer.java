@@ -12,6 +12,8 @@ import com.liferay.portal.vulcan.util.ObjectMapperUtil;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.io.Serializable;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -31,10 +33,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @GraphQLName("NearestDealer")
 @JsonFilter("Liferay.Vulcan")
 @XmlRootElement(name = "NearestDealer")
-public class NearestDealer {
+public class NearestDealer implements Serializable {
 
 	public static NearestDealer toDTO(String json) {
 		return ObjectMapperUtil.readValue(NearestDealer.class, json);
+	}
+
+	public static NearestDealer unsafeToDTO(String json) {
+		return ObjectMapperUtil.unsafeReadValue(NearestDealer.class, json);
 	}
 
 	@Schema
@@ -148,6 +154,7 @@ public class NearestDealer {
 	}
 
 	@Schema(
+		accessMode = Schema.AccessMode.READ_ONLY,
 		defaultValue = "com.liferay.raybia.headless.dealer.dto.v1_0.NearestDealer",
 		name = "x-class-name"
 	)
@@ -157,6 +164,16 @@ public class NearestDealer {
 		String string = String.valueOf(object);
 
 		return string.replaceAll("\"", "\\\\\"");
+	}
+
+	private static boolean _isArray(Object value) {
+		if (value == null) {
+			return false;
+		}
+
+		Class<?> clazz = value.getClass();
+
+		return clazz.isArray();
 	}
 
 	private static String _toJSON(Map<String, ?> map) {
@@ -173,13 +190,11 @@ public class NearestDealer {
 
 			sb.append("\"");
 			sb.append(entry.getKey());
-			sb.append("\":");
+			sb.append("\": ");
 
 			Object value = entry.getValue();
 
-			Class<?> clazz = value.getClass();
-
-			if (clazz.isArray()) {
+			if (_isArray(value)) {
 				sb.append("[");
 
 				Object[] valueArray = (Object[])value;
@@ -214,7 +229,7 @@ public class NearestDealer {
 			}
 
 			if (iterator.hasNext()) {
-				sb.append(",");
+				sb.append(", ");
 			}
 		}
 

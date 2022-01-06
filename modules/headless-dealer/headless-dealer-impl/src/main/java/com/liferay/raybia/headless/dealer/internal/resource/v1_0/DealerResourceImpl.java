@@ -1,8 +1,10 @@
 package com.liferay.raybia.headless.dealer.internal.resource.v1_0;
 
 import com.liferay.headless.common.spi.service.context.ServiceContextRequestUtil;
+import com.liferay.petra.function.UnsafeFunction;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
+import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Sort;
 import com.liferay.portal.kernel.search.filter.Filter;
@@ -44,21 +46,16 @@ import org.slf4j.LoggerFactory;
 public class DealerResourceImpl extends BaseDealerResourceImpl {
 
 	@Override
-	public Page<Dealer> getDealersPage(@NotNull Long siteId, String search, Filter filter,
-			Pagination pagination, Sort[] sorts) throws Exception {
+	public Page<Dealer> getDealersPage(@NotNull Long siteId, String search, Filter filter, Pagination pagination,
+			Sort[] sorts) throws Exception {
 
-		return SearchUtil.search(
-				Collections.EMPTY_MAP,
-				booleanQuery -> {
-		}, filter, com.liferay.raybia.dealer.model.Dealer.class, search, pagination,
+		return SearchUtil.search(Collections.EMPTY_MAP, booleanQuery -> {
+		}, filter, com.liferay.raybia.dealer.model.Dealer.class.getName(), search, pagination,
 				queryConfig -> queryConfig.setSelectedFieldNames(Field.ENTRY_CLASS_PK), searchContext -> {
 					searchContext.setCompanyId(contextCompany.getCompanyId());
 					searchContext.setGroupIds(new long[] { siteId });
-				},
-				sorts,
-				document -> toDealer(
-						dealerLocalService.getDealer(GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK))))
-				);
+				}, sorts, document -> toDealer(
+						dealerLocalService.getDealer(GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK)))));
 	}
 
 	@Override

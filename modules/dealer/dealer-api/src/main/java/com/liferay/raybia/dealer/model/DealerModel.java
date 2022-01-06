@@ -796,4 +796,7 @@ public interface DealerModel
 	public void prepareLocalizedFieldsForImport(Locale defaultImportLocale)
 		throws LocaleException;
 
+	@Override
+	public Dealer cloneWithOriginalValues();
+
 }

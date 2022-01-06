@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.raybia.dealer.model.Dealer;
 import com.liferay.raybia.dealer.model.DealerModel;
@@ -45,6 +46,7 @@ import java.lang.reflect.InvocationHandler;
 
 import java.math.BigDecimal;
 
+import java.sql.Blob;
 import java.sql.Types;
 
 import java.util.ArrayList;
@@ -55,6 +57,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.BiConsumer;
@@ -135,26 +138,26 @@ public class DealerModelImpl
 	public static final String TX_MANAGER = "liferayTransactionManager";
 
 	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long COMPANYID_COLUMN_BITMASK = 1L;
 
 	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long GROUPID_COLUMN_BITMASK = 2L;
 
 	/**
-	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long UUID_COLUMN_BITMASK = 4L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *		#getColumnBitmask(String)
+	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long NAME_COLUMN_BITMASK = 8L;
@@ -1254,7 +1257,9 @@ public class DealerModelImpl
 		for (Map.Entry<String, Object> entry :
 				_columnOriginalValues.entrySet()) {
 
-			if (entry.getValue() != getColumnValue(entry.getKey())) {
+			if (!Objects.equals(
+					entry.getValue(), getColumnValue(entry.getKey()))) {
+
 				_columnBitmask |= _columnBitmasks.get(entry.getKey());
 			}
 		}
@@ -1470,29 +1475,37 @@ public class DealerModelImpl
 	@Override
 	public Dealer cloneWithOriginalValues() {
 		DealerImpl dealerImpl = new DealerImpl();
-		
+
 		dealerImpl.setUuid(this.<String>getColumnOriginalValue("uuid_"));
 		dealerImpl.setDealerId(this.<Long>getColumnOriginalValue("dealerId"));
 		dealerImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
 		dealerImpl.setCompanyId(this.<Long>getColumnOriginalValue("companyId"));
 		dealerImpl.setUserId(this.<Long>getColumnOriginalValue("userId"));
 		dealerImpl.setUserName(this.<String>getColumnOriginalValue("userName"));
-		dealerImpl.setCreateDate(this.<Date>getColumnOriginalValue("createDate"));
-		dealerImpl.setModifiedDate(this.<Date>getColumnOriginalValue("modifiedDate"));
+		dealerImpl.setCreateDate(
+			this.<Date>getColumnOriginalValue("createDate"));
+		dealerImpl.setModifiedDate(
+			this.<Date>getColumnOriginalValue("modifiedDate"));
 		dealerImpl.setName(this.<String>getColumnOriginalValue("name"));
 		dealerImpl.setStreet(this.<String>getColumnOriginalValue("street"));
 		dealerImpl.setLocality(this.<String>getColumnOriginalValue("locality"));
-		dealerImpl.setState(this.<String>getColumnOriginalValue("state"));
-		dealerImpl.setPostalCode(this.<String>getColumnOriginalValue("postalCode"));
-		dealerImpl.setEmailAddress(this.<String>getColumnOriginalValue("emailAddress"));
-		dealerImpl.setPhoneNumber(this.<String>getColumnOriginalValue("phoneNumber"));
-		dealerImpl.setOpeningHours(this.<String>getColumnOriginalValue("openingHours"));
-		dealerImpl.setLatitude(this.<BigDecimal>getColumnOriginalValue("latitude"));
-		dealerImpl.setLongitude(this.<BigDecimal>getColumnOriginalValue("longitude"));
-		
+		dealerImpl.setState(this.<String>getColumnOriginalValue("state_"));
+		dealerImpl.setPostalCode(
+			this.<String>getColumnOriginalValue("postalCode"));
+		dealerImpl.setEmailAddress(
+			this.<String>getColumnOriginalValue("emailAddress"));
+		dealerImpl.setPhoneNumber(
+			this.<String>getColumnOriginalValue("phoneNumber"));
+		dealerImpl.setOpeningHours(
+			this.<String>getColumnOriginalValue("openingHours"));
+		dealerImpl.setLatitude(
+			this.<BigDecimal>getColumnOriginalValue("latitude"));
+		dealerImpl.setLongitude(
+			this.<BigDecimal>getColumnOriginalValue("longitude"));
+
 		return dealerImpl;
 	}
-	
+
 	@Override
 	public int compareTo(Dealer dealer) {
 		int value = 0;
@@ -1683,7 +1696,7 @@ public class DealerModelImpl
 			getAttributeGetterFunctions();
 
 		StringBundler sb = new StringBundler(
-			(4 * attributeGetterFunctions.size()) + 2);
+			(5 * attributeGetterFunctions.size()) + 2);
 
 		sb.append("{");
 
@@ -1693,9 +1706,26 @@ public class DealerModelImpl
 			String attributeName = entry.getKey();
 			Function<Dealer, Object> attributeGetterFunction = entry.getValue();
 
+			sb.append("\"");
 			sb.append(attributeName);
-			sb.append("=");
-			sb.append(attributeGetterFunction.apply((Dealer)this));
+			sb.append("\": ");
+
+			Object value = attributeGetterFunction.apply((Dealer)this);
+
+			if (value == null) {
+				sb.append("null");
+			}
+			else if (value instanceof Blob || value instanceof Date ||
+					 value instanceof Map || value instanceof String) {
+
+				sb.append(
+					"\"" + StringUtil.replace(value.toString(), "\"", "'") +
+						"\"");
+			}
+			else {
+				sb.append(value);
+			}
+
 			sb.append(", ");
 		}
 

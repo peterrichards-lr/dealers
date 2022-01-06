@@ -15,7 +15,6 @@ import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.json.JSONUtil;
-import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.model.Company;
 import com.liferay.portal.kernel.model.Group;
@@ -24,13 +23,12 @@ import com.liferay.portal.kernel.test.util.GroupTestUtil;
 import com.liferay.portal.kernel.test.util.RandomTestUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.DateFormatFactoryUtil;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.odata.entity.EntityField;
 import com.liferay.portal.odata.entity.EntityModel;
 import com.liferay.portal.search.test.util.SearchTestRule;
-import com.liferay.portal.test.log.CaptureAppender;
-import com.liferay.portal.test.log.Log4JLoggerTestUtil;
 import com.liferay.portal.test.rule.Inject;
 import com.liferay.portal.test.rule.LiferayIntegrationTestRule;
 import com.liferay.portal.vulcan.resource.EntityModelResource;
@@ -41,9 +39,7 @@ import com.liferay.raybia.headless.dealer.client.pagination.Pagination;
 import com.liferay.raybia.headless.dealer.client.resource.v1_0.DealerResource;
 import com.liferay.raybia.headless.dealer.client.serdes.v1_0.DealerSerDes;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 import java.text.DateFormat;
 
@@ -65,7 +61,6 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.lang.time.DateUtils;
-import org.apache.log4j.Level;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -105,7 +100,9 @@ public abstract class BaseDealerResourceTestCase {
 
 		DealerResource.Builder builder = DealerResource.builder();
 
-		dealerResource = builder.locale(
+		dealerResource = builder.authentication(
+			"test@liferay.com", "test"
+		).locale(
 			LocaleUtil.getDefault()
 		).build();
 	}
@@ -195,22 +192,21 @@ public abstract class BaseDealerResourceTestCase {
 	@Test
 	public void testGetDealersPage() throws Exception {
 		Page<Dealer> page = dealerResource.getDealersPage(
-			null, RandomTestUtil.randomString(), null, Pagination.of(1, 2),
-			null);
+			null, null, null, Pagination.of(1, 10), null);
 
-		Assert.assertEquals(0, page.getTotalCount());
+		long totalCount = page.getTotalCount();
 
 		Dealer dealer1 = testGetDealersPage_addDealer(randomDealer());
 
 		Dealer dealer2 = testGetDealersPage_addDealer(randomDealer());
 
 		page = dealerResource.getDealersPage(
-			null, null, null, Pagination.of(1, 2), null);
+			null, null, null, Pagination.of(1, 10), null);
 
-		Assert.assertEquals(2, page.getTotalCount());
+		Assert.assertEquals(totalCount + 2, page.getTotalCount());
 
-		assertEqualsIgnoringOrder(
-			Arrays.asList(dealer1, dealer2), (List<Dealer>)page.getItems());
+		assertContains(dealer1, (List<Dealer>)page.getItems());
+		assertContains(dealer2, (List<Dealer>)page.getItems());
 		assertValid(page);
 
 		dealerResource.deleteDealer(dealer1.getId());
@@ -269,6 +265,11 @@ public abstract class BaseDealerResourceTestCase {
 
 	@Test
 	public void testGetDealersPageWithPagination() throws Exception {
+		Page<Dealer> totalPage = dealerResource.getDealersPage(
+			null, null, null, null, null);
+
+		int totalCount = GetterUtil.getInteger(totalPage.getTotalCount());
+
 		Dealer dealer1 = testGetDealersPage_addDealer(randomDealer());
 
 		Dealer dealer2 = testGetDealersPage_addDealer(randomDealer());
@@ -276,27 +277,28 @@ public abstract class BaseDealerResourceTestCase {
 		Dealer dealer3 = testGetDealersPage_addDealer(randomDealer());
 
 		Page<Dealer> page1 = dealerResource.getDealersPage(
-			null, null, null, Pagination.of(1, 2), null);
+			null, null, null, Pagination.of(1, totalCount + 2), null);
 
 		List<Dealer> dealers1 = (List<Dealer>)page1.getItems();
 
-		Assert.assertEquals(dealers1.toString(), 2, dealers1.size());
+		Assert.assertEquals(
+			dealers1.toString(), totalCount + 2, dealers1.size());
 
 		Page<Dealer> page2 = dealerResource.getDealersPage(
-			null, null, null, Pagination.of(2, 2), null);
+			null, null, null, Pagination.of(2, totalCount + 2), null);
 
-		Assert.assertEquals(3, page2.getTotalCount());
+		Assert.assertEquals(totalCount + 3, page2.getTotalCount());
 
 		List<Dealer> dealers2 = (List<Dealer>)page2.getItems();
 
 		Assert.assertEquals(dealers2.toString(), 1, dealers2.size());
 
 		Page<Dealer> page3 = dealerResource.getDealersPage(
-			null, null, null, Pagination.of(1, 3), null);
+			null, null, null, Pagination.of(1, totalCount + 3), null);
 
-		assertEqualsIgnoringOrder(
-			Arrays.asList(dealer1, dealer2, dealer3),
-			(List<Dealer>)page3.getItems());
+		assertContains(dealer1, (List<Dealer>)page3.getItems());
+		assertContains(dealer2, (List<Dealer>)page3.getItems());
+		assertContains(dealer3, (List<Dealer>)page3.getItems());
 	}
 
 	@Test
@@ -329,7 +331,7 @@ public abstract class BaseDealerResourceTestCase {
 
 				String entityFieldName = entityField.getName();
 
-				Method method = clazz.getMethod(
+				java.lang.reflect.Method method = clazz.getMethod(
 					"get" + StringUtil.upperCaseFirstLetter(entityFieldName));
 
 				Class<?> returnType = method.getReturnType();
@@ -427,7 +429,7 @@ public abstract class BaseDealerResourceTestCase {
 			new HashMap<String, Object>() {
 				{
 					put("page", 1);
-					put("pageSize", 2);
+					put("pageSize", 10);
 				}
 			},
 			new GraphQLField("items", getGraphQLFields()),
@@ -437,7 +439,7 @@ public abstract class BaseDealerResourceTestCase {
 			invokeGraphQLQuery(graphQLField), "JSONObject/data",
 			"JSONObject/dealers");
 
-		Assert.assertEquals(0, dealersJSONObject.get("totalCount"));
+		long totalCount = dealersJSONObject.getLong("totalCount");
 
 		Dealer dealer1 = testGraphQLDealer_addDealer();
 		Dealer dealer2 = testGraphQLDealer_addDealer();
@@ -446,10 +448,15 @@ public abstract class BaseDealerResourceTestCase {
 			invokeGraphQLQuery(graphQLField), "JSONObject/data",
 			"JSONObject/dealers");
 
-		Assert.assertEquals(2, dealersJSONObject.get("totalCount"));
+		Assert.assertEquals(
+			totalCount + 2, dealersJSONObject.getLong("totalCount"));
 
-		assertEqualsIgnoringOrder(
-			Arrays.asList(dealer1, dealer2),
+		assertContains(
+			dealer1,
+			Arrays.asList(
+				DealerSerDes.toDTOs(dealersJSONObject.getString("items"))));
+		assertContains(
+			dealer2,
 			Arrays.asList(
 				DealerSerDes.toDTOs(dealersJSONObject.getString("items"))));
 	}
@@ -507,25 +514,19 @@ public abstract class BaseDealerResourceTestCase {
 						})),
 				"JSONObject/data", "Object/deleteDealer"));
 
-		try (CaptureAppender captureAppender =
-				Log4JLoggerTestUtil.configureLog4JLogger(
-					"graphql.execution.SimpleDataFetcherExceptionHandler",
-					Level.WARN)) {
+		JSONArray errorsJSONArray = JSONUtil.getValueAsJSONArray(
+			invokeGraphQLQuery(
+				new GraphQLField(
+					"dealer",
+					new HashMap<String, Object>() {
+						{
+							put("dealerId", dealer.getId());
+						}
+					},
+					new GraphQLField("id"))),
+			"JSONArray/errors");
 
-			JSONArray errorsJSONArray = JSONUtil.getValueAsJSONArray(
-				invokeGraphQLQuery(
-					new GraphQLField(
-						"dealer",
-						new HashMap<String, Object>() {
-							{
-								put("dealerId", dealer.getId());
-							}
-						},
-						new GraphQLField("id"))),
-				"JSONArray/errors");
-
-			Assert.assertTrue(errorsJSONArray.length() > 0);
-		}
+		Assert.assertTrue(errorsJSONArray.length() > 0);
 	}
 
 	@Test
@@ -615,6 +616,20 @@ public abstract class BaseDealerResourceTestCase {
 			"This method needs to be implemented");
 	}
 
+	protected void assertContains(Dealer dealer, List<Dealer> dealers) {
+		boolean contains = false;
+
+		for (Dealer item : dealers) {
+			if (equals(dealer, item)) {
+				contains = true;
+
+				break;
+			}
+		}
+
+		Assert.assertTrue(dealers + " does not contain " + dealer, contains);
+	}
+
 	protected void assertHttpResponseStatusCode(
 		int expectedHttpResponseStatusCode,
 		HttpInvoker.HttpResponse actualHttpResponse) {
@@ -660,7 +675,7 @@ public abstract class BaseDealerResourceTestCase {
 		}
 	}
 
-	protected void assertValid(Dealer dealer) {
+	protected void assertValid(Dealer dealer) throws Exception {
 		boolean valid = true;
 
 		if (dealer.getId() == null) {
@@ -750,8 +765,8 @@ public abstract class BaseDealerResourceTestCase {
 	protected List<GraphQLField> getGraphQLFields() throws Exception {
 		List<GraphQLField> graphQLFields = new ArrayList<>();
 
-		for (Field field :
-				ReflectionUtil.getDeclaredFields(
+		for (java.lang.reflect.Field field :
+				getDeclaredFields(
 					com.liferay.raybia.headless.dealer.dto.v1_0.Dealer.class)) {
 
 			if (!ArrayUtil.contains(
@@ -766,12 +781,13 @@ public abstract class BaseDealerResourceTestCase {
 		return graphQLFields;
 	}
 
-	protected List<GraphQLField> getGraphQLFields(Field... fields)
+	protected List<GraphQLField> getGraphQLFields(
+			java.lang.reflect.Field... fields)
 		throws Exception {
 
 		List<GraphQLField> graphQLFields = new ArrayList<>();
 
-		for (Field field : fields) {
+		for (java.lang.reflect.Field field : fields) {
 			com.liferay.portal.vulcan.graphql.annotation.GraphQLField
 				vulcanGraphQLField = field.getAnnotation(
 					com.liferay.portal.vulcan.graphql.annotation.GraphQLField.
@@ -785,7 +801,7 @@ public abstract class BaseDealerResourceTestCase {
 				}
 
 				List<GraphQLField> childrenGraphQLFields = getGraphQLFields(
-					ReflectionUtil.getDeclaredFields(clazz));
+					getDeclaredFields(clazz));
 
 				graphQLFields.add(
 					new GraphQLField(field.getName(), childrenGraphQLFields));
@@ -900,9 +916,24 @@ public abstract class BaseDealerResourceTestCase {
 					return false;
 				}
 			}
+
+			return true;
 		}
 
-		return true;
+		return false;
+	}
+
+	protected java.lang.reflect.Field[] getDeclaredFields(Class clazz)
+		throws Exception {
+
+		Stream<java.lang.reflect.Field> stream = Stream.of(
+			ReflectionUtil.getDeclaredFields(clazz));
+
+		return stream.filter(
+			field -> !field.isSynthetic()
+		).toArray(
+			java.lang.reflect.Field[]::new
+		);
 	}
 
 	protected java.util.Collection<EntityField> getEntityFields()
@@ -1113,12 +1144,12 @@ public abstract class BaseDealerResourceTestCase {
 						_parameterMap.entrySet()) {
 
 					sb.append(entry.getKey());
-					sb.append(":");
+					sb.append(": ");
 					sb.append(entry.getValue());
-					sb.append(",");
+					sb.append(", ");
 				}
 
-				sb.setLength(sb.length() - 1);
+				sb.setLength(sb.length() - 2);
 
 				sb.append(")");
 			}
@@ -1128,10 +1159,10 @@ public abstract class BaseDealerResourceTestCase {
 
 				for (GraphQLField graphQLField : _graphQLFields) {
 					sb.append(graphQLField.toString());
-					sb.append(",");
+					sb.append(", ");
 				}
 
-				sb.setLength(sb.length() - 1);
+				sb.setLength(sb.length() - 2);
 
 				sb.append("}");
 			}
@@ -1145,8 +1176,8 @@ public abstract class BaseDealerResourceTestCase {
 
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
-		BaseDealerResourceTestCase.class);
+	private static final com.liferay.portal.kernel.log.Log _log =
+		LogFactoryUtil.getLog(BaseDealerResourceTestCase.class);
 
 	private static BeanUtilsBean _beanUtilsBean = new BeanUtilsBean() {
 

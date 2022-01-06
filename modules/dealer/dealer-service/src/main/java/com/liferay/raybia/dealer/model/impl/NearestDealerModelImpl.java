@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.raybia.dealer.model.NearestDealer;
 import com.liferay.raybia.dealer.model.NearestDealerModel;
@@ -42,6 +43,7 @@ import java.lang.reflect.InvocationHandler;
 
 import java.math.BigDecimal;
 
+import java.sql.Blob;
 import java.sql.Types;
 
 import java.util.ArrayList;
@@ -52,6 +54,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.BiConsumer;
@@ -135,7 +138,7 @@ public class NearestDealerModelImpl
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
-	 *		#getColumnBitmask(String)
+	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
 	public static final long DEALERID_COLUMN_BITMASK = 1L;
@@ -1223,7 +1226,9 @@ public class NearestDealerModelImpl
 		for (Map.Entry<String, Object> entry :
 				_columnOriginalValues.entrySet()) {
 
-			if (entry.getValue() != getColumnValue(entry.getKey())) {
+			if (!Objects.equals(
+					entry.getValue(), getColumnValue(entry.getKey()))) {
+
 				_columnBitmask |= _columnBitmasks.get(entry.getKey());
 			}
 		}
@@ -1439,29 +1444,46 @@ public class NearestDealerModelImpl
 	@Override
 	public NearestDealer cloneWithOriginalValues() {
 		NearestDealerImpl nearestDealerImpl = new NearestDealerImpl();
-		
-		nearestDealerImpl.setDealerId(this.<Long>getColumnOriginalValue("dealerId"));
-		nearestDealerImpl.setGroupId(this.<Long>getColumnOriginalValue("groupId"));
-		nearestDealerImpl.setCompanyId(this.<Long>getColumnOriginalValue("companyId"));
-		nearestDealerImpl.setUserId(this.<Long>getColumnOriginalValue("userId"));
-		nearestDealerImpl.setUserName(this.<String>getColumnOriginalValue("userName"));
-		nearestDealerImpl.setCreateDate(this.<Date>getColumnOriginalValue("createDate"));
-		nearestDealerImpl.setModifiedDate(this.<Date>getColumnOriginalValue("modifiedDate"));
+
+		nearestDealerImpl.setDealerId(
+			this.<Long>getColumnOriginalValue("dealerId"));
+		nearestDealerImpl.setGroupId(
+			this.<Long>getColumnOriginalValue("groupId"));
+		nearestDealerImpl.setCompanyId(
+			this.<Long>getColumnOriginalValue("companyId"));
+		nearestDealerImpl.setUserId(
+			this.<Long>getColumnOriginalValue("userId"));
+		nearestDealerImpl.setUserName(
+			this.<String>getColumnOriginalValue("userName"));
+		nearestDealerImpl.setCreateDate(
+			this.<Date>getColumnOriginalValue("createDate"));
+		nearestDealerImpl.setModifiedDate(
+			this.<Date>getColumnOriginalValue("modifiedDate"));
 		nearestDealerImpl.setName(this.<String>getColumnOriginalValue("name"));
-		nearestDealerImpl.setStreet(this.<String>getColumnOriginalValue("street"));
-		nearestDealerImpl.setLocality(this.<String>getColumnOriginalValue("locality"));
-		nearestDealerImpl.setState(this.<String>getColumnOriginalValue("state"));
-		nearestDealerImpl.setPostalCode(this.<String>getColumnOriginalValue("postalCode"));
-		nearestDealerImpl.setEmailAddress(this.<String>getColumnOriginalValue("emailAddress"));
-		nearestDealerImpl.setPhoneNumber(this.<String>getColumnOriginalValue("phoneNumber"));
-		nearestDealerImpl.setOpeningHours(this.<String>getColumnOriginalValue("openingHours"));
-		nearestDealerImpl.setLatitude(this.<BigDecimal>getColumnOriginalValue("latitude"));
-		nearestDealerImpl.setLongitude(this.<BigDecimal>getColumnOriginalValue("longitude"));
-		nearestDealerImpl.setDistance(this.<BigDecimal>getColumnOriginalValue("distance"));
-		
+		nearestDealerImpl.setStreet(
+			this.<String>getColumnOriginalValue("street"));
+		nearestDealerImpl.setLocality(
+			this.<String>getColumnOriginalValue("locality"));
+		nearestDealerImpl.setState(
+			this.<String>getColumnOriginalValue("state_"));
+		nearestDealerImpl.setPostalCode(
+			this.<String>getColumnOriginalValue("postalCode"));
+		nearestDealerImpl.setEmailAddress(
+			this.<String>getColumnOriginalValue("emailAddress"));
+		nearestDealerImpl.setPhoneNumber(
+			this.<String>getColumnOriginalValue("phoneNumber"));
+		nearestDealerImpl.setOpeningHours(
+			this.<String>getColumnOriginalValue("openingHours"));
+		nearestDealerImpl.setLatitude(
+			this.<BigDecimal>getColumnOriginalValue("latitude"));
+		nearestDealerImpl.setLongitude(
+			this.<BigDecimal>getColumnOriginalValue("longitude"));
+		nearestDealerImpl.setDistance(
+			this.<BigDecimal>getColumnOriginalValue("distance"));
+
 		return nearestDealerImpl;
 	}
-	
+
 	@Override
 	public int compareTo(NearestDealer nearestDealer) {
 		long primaryKey = nearestDealer.getPrimaryKey();
@@ -1649,7 +1671,7 @@ public class NearestDealerModelImpl
 			getAttributeGetterFunctions();
 
 		StringBundler sb = new StringBundler(
-			(4 * attributeGetterFunctions.size()) + 2);
+			(5 * attributeGetterFunctions.size()) + 2);
 
 		sb.append("{");
 
@@ -1660,9 +1682,26 @@ public class NearestDealerModelImpl
 			Function<NearestDealer, Object> attributeGetterFunction =
 				entry.getValue();
 
+			sb.append("\"");
 			sb.append(attributeName);
-			sb.append("=");
-			sb.append(attributeGetterFunction.apply((NearestDealer)this));
+			sb.append("\": ");
+
+			Object value = attributeGetterFunction.apply((NearestDealer)this);
+
+			if (value == null) {
+				sb.append("null");
+			}
+			else if (value instanceof Blob || value instanceof Date ||
+					 value instanceof Map || value instanceof String) {
+
+				sb.append(
+					"\"" + StringUtil.replace(value.toString(), "\"", "'") +
+						"\"");
+			}
+			else {
+				sb.append(value);
+			}
+
 			sb.append(", ");
 		}
 

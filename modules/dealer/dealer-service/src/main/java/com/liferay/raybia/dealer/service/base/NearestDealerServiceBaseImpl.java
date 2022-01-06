@@ -25,12 +25,16 @@ import com.liferay.portal.kernel.service.BaseServiceImpl;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.raybia.dealer.model.NearestDealer;
 import com.liferay.raybia.dealer.service.NearestDealerService;
+import com.liferay.raybia.dealer.service.NearestDealerServiceUtil;
 import com.liferay.raybia.dealer.service.persistence.DealerPersistence;
 import com.liferay.raybia.dealer.service.persistence.NearestDealerFinder;
 import com.liferay.raybia.dealer.service.persistence.NearestDealerPersistence;
 
+import java.lang.reflect.Field;
+
 import javax.sql.DataSource;
 
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
 /**
@@ -51,8 +55,13 @@ public abstract class NearestDealerServiceBaseImpl
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Use <code>NearestDealerService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.raybia.dealer.service.NearestDealerServiceUtil</code>.
+	 * Never modify or reference this class directly. Use <code>NearestDealerService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>NearestDealerServiceUtil</code>.
 	 */
+	@Deactivate
+	protected void deactivate() {
+		_setServiceUtilService(null);
+	}
+
 	@Override
 	public Class<?>[] getAopInterfaces() {
 		return new Class<?>[] {
@@ -63,6 +72,8 @@ public abstract class NearestDealerServiceBaseImpl
 	@Override
 	public void setAopProxy(Object aopProxy) {
 		nearestDealerService = (NearestDealerService)aopProxy;
+
+		_setServiceUtilService(nearestDealerService);
 	}
 
 	/**
@@ -107,6 +118,22 @@ public abstract class NearestDealerServiceBaseImpl
 		}
 	}
 
+	private void _setServiceUtilService(
+		NearestDealerService nearestDealerService) {
+
+		try {
+			Field field = NearestDealerServiceUtil.class.getDeclaredField(
+				"_service");
+
+			field.setAccessible(true);
+
+			field.set(null, nearestDealerService);
+		}
+		catch (ReflectiveOperationException reflectiveOperationException) {
+			throw new RuntimeException(reflectiveOperationException);
+		}
+	}
+
 	@Reference
 	protected DealerPersistence dealerPersistence;
 
@@ -121,7 +148,7 @@ public abstract class NearestDealerServiceBaseImpl
 
 	@Reference
 	protected NearestDealerFinder nearestDealerFinder;
-	
+
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService
 		counterLocalService;

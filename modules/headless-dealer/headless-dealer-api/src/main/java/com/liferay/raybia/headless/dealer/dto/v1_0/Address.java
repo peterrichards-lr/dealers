@@ -12,6 +12,8 @@ import com.liferay.portal.vulcan.util.ObjectMapperUtil;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.io.Serializable;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -26,13 +28,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @generated
  */
 @Generated("")
-@GraphQLName("Address")
+@GraphQLName(description = "Represents an address", value = "Address")
 @JsonFilter("Liferay.Vulcan")
 @XmlRootElement(name = "Address")
-public class Address {
+public class Address implements Serializable {
 
 	public static Address toDTO(String json) {
 		return ObjectMapperUtil.readValue(Address.class, json);
+	}
+
+	public static Address unsafeToDTO(String json) {
+		return ObjectMapperUtil.unsafeReadValue(Address.class, json);
 	}
 
 	@Schema(description = "The locality, i.e. the borough, town or city")
@@ -236,6 +242,7 @@ public class Address {
 	}
 
 	@Schema(
+		accessMode = Schema.AccessMode.READ_ONLY,
 		defaultValue = "com.liferay.raybia.headless.dealer.dto.v1_0.Address",
 		name = "x-class-name"
 	)
@@ -245,6 +252,16 @@ public class Address {
 		String string = String.valueOf(object);
 
 		return string.replaceAll("\"", "\\\\\"");
+	}
+
+	private static boolean _isArray(Object value) {
+		if (value == null) {
+			return false;
+		}
+
+		Class<?> clazz = value.getClass();
+
+		return clazz.isArray();
 	}
 
 	private static String _toJSON(Map<String, ?> map) {
@@ -261,13 +278,11 @@ public class Address {
 
 			sb.append("\"");
 			sb.append(entry.getKey());
-			sb.append("\":");
+			sb.append("\": ");
 
 			Object value = entry.getValue();
 
-			Class<?> clazz = value.getClass();
-
-			if (clazz.isArray()) {
+			if (_isArray(value)) {
 				sb.append("[");
 
 				Object[] valueArray = (Object[])value;
@@ -302,7 +317,7 @@ public class Address {
 			}
 
 			if (iterator.hasNext()) {
-				sb.append(",");
+				sb.append(", ");
 			}
 		}
 

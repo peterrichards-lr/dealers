@@ -176,7 +176,7 @@ public class NearestDealerWrapper
 			setDistance(distance);
 		}
 	}
-	
+
 	@Override
 	public NearestDealer cloneWithOriginalValues() {
 		return wrap(model.cloneWithOriginalValues());

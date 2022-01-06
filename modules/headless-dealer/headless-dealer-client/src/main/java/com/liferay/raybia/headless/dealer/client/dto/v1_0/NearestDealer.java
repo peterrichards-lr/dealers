@@ -3,6 +3,8 @@ package com.liferay.raybia.headless.dealer.client.dto.v1_0;
 import com.liferay.raybia.headless.dealer.client.function.UnsafeSupplier;
 import com.liferay.raybia.headless.dealer.client.serdes.v1_0.NearestDealerSerDes;
 
+import java.io.Serializable;
+
 import java.util.Objects;
 
 import javax.annotation.Generated;
@@ -12,7 +14,7 @@ import javax.annotation.Generated;
  * @generated
  */
 @Generated("")
-public class NearestDealer implements Cloneable {
+public class NearestDealer implements Cloneable, Serializable {
 
 	public static NearestDealer toDTO(String json) {
 		return NearestDealerSerDes.toDTO(json);

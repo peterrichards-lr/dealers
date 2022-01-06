@@ -40,15 +40,20 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.raybia.dealer.model.NearestDealer;
 import com.liferay.raybia.dealer.service.NearestDealerLocalService;
+import com.liferay.raybia.dealer.service.NearestDealerLocalServiceUtil;
 import com.liferay.raybia.dealer.service.persistence.DealerPersistence;
 import com.liferay.raybia.dealer.service.persistence.NearestDealerFinder;
 import com.liferay.raybia.dealer.service.persistence.NearestDealerPersistence;
 
 import java.io.Serializable;
+
+import java.lang.reflect.Field;
+
 import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
 /**
@@ -69,7 +74,7 @@ public abstract class NearestDealerLocalServiceBaseImpl
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Use <code>NearestDealerLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.liferay.raybia.dealer.service.NearestDealerLocalServiceUtil</code>.
+	 * Never modify or reference this class directly. Use <code>NearestDealerLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>NearestDealerLocalServiceUtil</code>.
 	 */
 
 	/**
@@ -138,15 +143,15 @@ public abstract class NearestDealerLocalServiceBaseImpl
 	}
 
 	@Override
+	public <T> T dslQuery(DSLQuery dslQuery) {
+		return nearestDealerPersistence.dslQuery(dslQuery);
+	}
+
+	@Override
 	public int dslQueryCount(DSLQuery dslQuery) {
 		Long count = dslQuery(dslQuery);
 
 		return count.intValue();
-	}
-	
-	@Override
-	public <T> T dslQuery(DSLQuery dslQuery) {
-		return nearestDealerPersistence.dslQuery(dslQuery);
 	}
 
 	@Override
@@ -375,6 +380,11 @@ public abstract class NearestDealerLocalServiceBaseImpl
 		return nearestDealerPersistence.update(nearestDealer);
 	}
 
+	@Deactivate
+	protected void deactivate() {
+		_setLocalServiceUtilService(null);
+	}
+
 	@Override
 	public Class<?>[] getAopInterfaces() {
 		return new Class<?>[] {
@@ -386,6 +396,8 @@ public abstract class NearestDealerLocalServiceBaseImpl
 	@Override
 	public void setAopProxy(Object aopProxy) {
 		nearestDealerLocalService = (NearestDealerLocalService)aopProxy;
+
+		_setLocalServiceUtilService(nearestDealerLocalService);
 	}
 
 	/**
@@ -427,6 +439,22 @@ public abstract class NearestDealerLocalServiceBaseImpl
 		}
 		catch (Exception exception) {
 			throw new SystemException(exception);
+		}
+	}
+
+	private void _setLocalServiceUtilService(
+		NearestDealerLocalService nearestDealerLocalService) {
+
+		try {
+			Field field = NearestDealerLocalServiceUtil.class.getDeclaredField(
+				"_service");
+
+			field.setAccessible(true);
+
+			field.set(null, nearestDealerLocalService);
+		}
+		catch (ReflectiveOperationException reflectiveOperationException) {
+			throw new RuntimeException(reflectiveOperationException);
 		}
 	}
 

@@ -3,6 +3,8 @@ package com.liferay.raybia.headless.dealer.client.dto.v1_0;
 import com.liferay.raybia.headless.dealer.client.function.UnsafeSupplier;
 import com.liferay.raybia.headless.dealer.client.serdes.v1_0.DistanceSerDes;
 
+import java.io.Serializable;
+
 import java.util.Objects;
 
 import javax.annotation.Generated;
@@ -12,7 +14,7 @@ import javax.annotation.Generated;
  * @generated
  */
 @Generated("")
-public class Distance implements Cloneable {
+public class Distance implements Cloneable, Serializable {
 
 	public static Distance toDTO(String json) {
 		return DistanceSerDes.toDTO(json);

@@ -14,17 +14,18 @@
 
 package com.liferay.raybia.dealer.service;
 
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.raybia.dealer.model.NearestDealer;
+
+import java.util.List;
 
 /**
  * Provides the remote service utility for NearestDealer. This utility wraps
- * <code>com.liferay.raybia.dealer.service.impl.NearestDealerServiceImpl</code>
- * and is an access point for service operations in application layer code
- * running on a remote server. Methods of this service are expected to have
- * security checks based on the propagated JAAS credentials because this service
- * can be accessed remotely.
+ * <code>com.liferay.raybia.dealer.service.impl.NearestDealerServiceImpl</code> and is an
+ * access point for service operations in application layer code running on a
+ * remote server. Methods of this service are expected to have security checks
+ * based on the propagated JAAS credentials because this service can be
+ * accessed remotely.
  *
  * @author Peter Richards
  * @see NearestDealerService
@@ -35,25 +36,28 @@ public class NearestDealerServiceUtil {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this class directly. Add custom service methods to
-	 * <code>com.liferay.raybia.dealer.service.impl.NearestDealerServiceImpl</code>
-	 * and rerun ServiceBuilder to regenerate this class.
+	 * Never modify this class directly. Add custom service methods to <code>com.liferay.raybia.dealer.service.impl.NearestDealerServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static List<NearestDealer> findByDistance(
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.math.BigDecimal distance,
+			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit,
+			int limit)
+		throws SystemException {
 
-	public static java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistance(
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
-
-		return getService().findByDistance(latitude, longitude, distance, distanceUnit, limit);
+		return getService().findByDistance(
+			latitude, longitude, distance, distanceUnit, limit);
 	}
 
-	public static java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistanceAndGroupId(long groupId,
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
+	public static List<NearestDealer> findByDistanceAndGroupId(
+			long groupId, java.math.BigDecimal latitude,
+			java.math.BigDecimal longitude, java.math.BigDecimal distance,
+			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit,
+			int limit)
+		throws SystemException {
 
-		return getService().findByDistanceAndGroupId(groupId, latitude, longitude, distance, distanceUnit, limit);
+		return getService().findByDistanceAndGroupId(
+			groupId, latitude, longitude, distance, distanceUnit, limit);
 	}
 
 	/**
@@ -66,20 +70,9 @@ public class NearestDealerServiceUtil {
 	}
 
 	public static NearestDealerService getService() {
-		return _serviceTracker.getService();
+		return _service;
 	}
 
-	private static ServiceTracker<NearestDealerService, NearestDealerService> _serviceTracker;
-
-	static {
-		Bundle bundle = FrameworkUtil.getBundle(NearestDealerService.class);
-
-		ServiceTracker<NearestDealerService, NearestDealerService> serviceTracker = new ServiceTracker<NearestDealerService, NearestDealerService>(
-				bundle.getBundleContext(), NearestDealerService.class, null);
-
-		serviceTracker.open();
-
-		_serviceTracker = serviceTracker;
-	}
+	private static volatile NearestDealerService _service;
 
 }

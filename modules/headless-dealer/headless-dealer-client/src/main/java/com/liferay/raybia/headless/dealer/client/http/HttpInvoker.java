@@ -118,12 +118,14 @@ public class HttpInvoker {
 		return this;
 	}
 
-	public HttpInvoker path(String path, Object... values) {
-		for (int i = 0; (values != null) && (i < values.length); i++) {
-			path = path.replaceFirst("\\{.*?\\}", String.valueOf(values[i]));
-		}
-
+	public HttpInvoker path(String path) {
 		_path = path;
+
+		return this;
+	}
+
+	public HttpInvoker path(String name, Object value) {
+		_path = _path.replaceFirst("\\{" + name + "\\}", String.valueOf(value));
 
 		return this;
 	}
@@ -366,13 +368,6 @@ public class HttpInvoker {
 
 		if ((_body == null) && _files.isEmpty() && _parts.isEmpty()) {
 			return;
-		}
-
-		if ((_httpMethod == HttpMethod.DELETE) ||
-			(_httpMethod == HttpMethod.GET)) {
-
-			throw new IllegalArgumentException(
-				"HTTP method " + _httpMethod + " must not contain a body");
 		}
 
 		httpURLConnection.setDoOutput(true);

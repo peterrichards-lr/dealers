@@ -24,22 +24,20 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @generated
  */
 public class NearestDealerLocalServiceWrapper
-		implements NearestDealerLocalService, ServiceWrapper<NearestDealerLocalService> {
+	implements NearestDealerLocalService,
+			   ServiceWrapper<NearestDealerLocalService> {
 
-	public NearestDealerLocalServiceWrapper(NearestDealerLocalService nearestDealerLocalService) {
+	public NearestDealerLocalServiceWrapper(
+		NearestDealerLocalService nearestDealerLocalService) {
 
 		_nearestDealerLocalService = nearestDealerLocalService;
 	}
 
 	/**
-	 * Adds the nearest dealer to the database. Also notifies the appropriate model
-	 * listeners.
+	 * Adds the nearest dealer to the database. Also notifies the appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for
-	 * overloaded versions of the method. If provided, use these entry points to the
-	 * API, as the implementation logic may require the additional parameters
-	 * defined there.
+	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param nearestDealer the nearest dealer
@@ -47,20 +45,20 @@ public class NearestDealerLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.raybia.dealer.model.NearestDealer addNearestDealer(
-			com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
+		com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
 
 		return _nearestDealerLocalService.addNearestDealer(nearestDealer);
 	}
 
 	/**
-	 * Creates a new nearest dealer with the primary key. Does not add the nearest
-	 * dealer to the database.
+	 * Creates a new nearest dealer with the primary key. Does not add the nearest dealer to the database.
 	 *
 	 * @param dealerId the primary key for the new nearest dealer
 	 * @return the new nearest dealer
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.NearestDealer createNearestDealer(long dealerId) {
+	public com.liferay.raybia.dealer.model.NearestDealer createNearestDealer(
+		long dealerId) {
 
 		return _nearestDealerLocalService.createNearestDealer(dealerId);
 	}
@@ -69,44 +67,37 @@ public class NearestDealerLocalServiceWrapper
 	 * @throws PortalException
 	 */
 	@Override
-	public com.liferay.portal.kernel.model.PersistedModel createPersistedModel(java.io.Serializable primaryKeyObj)
-			throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.portal.kernel.model.PersistedModel createPersistedModel(
+			java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _nearestDealerLocalService.createPersistedModel(primaryKeyObj);
 	}
 
 	/**
-	 * Deletes the nearest dealer with the primary key from the database. Also
-	 * notifies the appropriate model listeners.
+	 * Deletes the nearest dealer with the primary key from the database. Also notifies the appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for
-	 * overloaded versions of the method. If provided, use these entry points to the
-	 * API, as the implementation logic may require the additional parameters
-	 * defined there.
+	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param dealerId the primary key of the nearest dealer
 	 * @return the nearest dealer that was removed
-	 * @throws PortalException if a nearest dealer with the primary key could not be
-	 *                         found
+	 * @throws PortalException if a nearest dealer with the primary key could not be found
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.NearestDealer deleteNearestDealer(long dealerId)
-			throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.NearestDealer deleteNearestDealer(
+			long dealerId)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _nearestDealerLocalService.deleteNearestDealer(dealerId);
 	}
 
 	/**
-	 * Deletes the nearest dealer from the database. Also notifies the appropriate
-	 * model listeners.
+	 * Deletes the nearest dealer from the database. Also notifies the appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for
-	 * overloaded versions of the method. If provided, use these entry points to the
-	 * API, as the implementation logic may require the additional parameters
-	 * defined there.
+	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param nearestDealer the nearest dealer
@@ -114,7 +105,7 @@ public class NearestDealerLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.raybia.dealer.model.NearestDealer deleteNearestDealer(
-			com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
+		com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
 
 		return _nearestDealerLocalService.deleteNearestDealer(nearestDealer);
 	}
@@ -125,19 +116,21 @@ public class NearestDealerLocalServiceWrapper
 	@Override
 	public com.liferay.portal.kernel.model.PersistedModel deletePersistedModel(
 			com.liferay.portal.kernel.model.PersistedModel persistedModel)
-			throws com.liferay.portal.kernel.exception.PortalException {
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _nearestDealerLocalService.deletePersistedModel(persistedModel);
 	}
 
 	@Override
-	public int dslQueryCount(com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
-		return _nearestDealerLocalService.dslQueryCount(dslQuery);
+	public <T> T dslQuery(com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
+		return _nearestDealerLocalService.dslQuery(dslQuery);
 	}
 
 	@Override
-	public <T> T dslQuery(com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
-		return _nearestDealerLocalService.dslQuery(dslQuery);
+	public int dslQueryCount(
+		com.liferay.petra.sql.dsl.query.DSLQuery dslQuery) {
+
+		return _nearestDealerLocalService.dslQueryCount(dslQuery);
 	}
 
 	@Override
@@ -152,71 +145,54 @@ public class NearestDealerLocalServiceWrapper
 	 * @return the matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
 
 		return _nearestDealerLocalService.dynamicQuery(dynamicQuery);
 	}
 
 	/**
-	 * Performs a dynamic query on the database and returns a range of the matching
-	 * rows.
+	 * Performs a dynamic query on the database and returns a range of the matching rows.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
-	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
-	 * are indexes in the result set. Thus, <code>0</code> refers to the first
-	 * result in the set. Setting both <code>start</code> and <code>end</code> to
-	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
-	 * the full result set. If <code>orderByComparator</code> is specified, then the
-	 * query will include the given ORDER BY logic. If
-	 * <code>orderByComparator</code> is absent, then the query will include the
-	 * default ORDER BY logic from
-	 * <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
 	 * </p>
 	 *
 	 * @param dynamicQuery the dynamic query
-	 * @param start        the lower bound of the range of model instances
-	 * @param end          the upper bound of the range of model instances (not
-	 *                     inclusive)
+	 * @param start the lower bound of the range of model instances
+	 * @param end the upper bound of the range of model instances (not inclusive)
 	 * @return the range of matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-			int end) {
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+		int end) {
 
-		return _nearestDealerLocalService.dynamicQuery(dynamicQuery, start, end);
+		return _nearestDealerLocalService.dynamicQuery(
+			dynamicQuery, start, end);
 	}
 
 	/**
-	 * Performs a dynamic query on the database and returns an ordered range of the
-	 * matching rows.
+	 * Performs a dynamic query on the database and returns an ordered range of the matching rows.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
-	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
-	 * are indexes in the result set. Thus, <code>0</code> refers to the first
-	 * result in the set. Setting both <code>start</code> and <code>end</code> to
-	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
-	 * the full result set. If <code>orderByComparator</code> is specified, then the
-	 * query will include the given ORDER BY logic. If
-	 * <code>orderByComparator</code> is absent, then the query will include the
-	 * default ORDER BY logic from
-	 * <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
 	 * </p>
 	 *
-	 * @param dynamicQuery      the dynamic query
-	 * @param start             the lower bound of the range of model instances
-	 * @param end               the upper bound of the range of model instances (not
-	 *                          inclusive)
-	 * @param orderByComparator the comparator to order the results by (optionally
-	 *                          <code>null</code>)
+	 * @param dynamicQuery the dynamic query
+	 * @param start the lower bound of the range of model instances
+	 * @param end the upper bound of the range of model instances (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
 	 * @return the ordered range of matching rows
 	 */
 	@Override
-	public <T> java.util.List<T> dynamicQuery(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
-			int end, com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
+	public <T> java.util.List<T> dynamicQuery(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery, int start,
+		int end,
+		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
 
-		return _nearestDealerLocalService.dynamicQuery(dynamicQuery, start, end, orderByComparator);
+		return _nearestDealerLocalService.dynamicQuery(
+			dynamicQuery, start, end, orderByComparator);
 	}
 
 	/**
@@ -226,7 +202,8 @@ public class NearestDealerLocalServiceWrapper
 	 * @return the number of rows matching the dynamic query
 	 */
 	@Override
-	public long dynamicQueryCount(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery) {
 
 		return _nearestDealerLocalService.dynamicQueryCount(dynamicQuery);
 	}
@@ -235,49 +212,63 @@ public class NearestDealerLocalServiceWrapper
 	 * Returns the number of rows matching the dynamic query.
 	 *
 	 * @param dynamicQuery the dynamic query
-	 * @param projection   the projection to apply to the query
+	 * @param projection the projection to apply to the query
 	 * @return the number of rows matching the dynamic query
 	 */
 	@Override
-	public long dynamicQueryCount(com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
-			com.liferay.portal.kernel.dao.orm.Projection projection) {
+	public long dynamicQueryCount(
+		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
+		com.liferay.portal.kernel.dao.orm.Projection projection) {
 
-		return _nearestDealerLocalService.dynamicQueryCount(dynamicQuery, projection);
+		return _nearestDealerLocalService.dynamicQueryCount(
+			dynamicQuery, projection);
 	}
 
 	@Override
-	public com.liferay.raybia.dealer.model.NearestDealer fetchNearestDealer(long dealerId) {
+	public com.liferay.raybia.dealer.model.NearestDealer fetchNearestDealer(
+		long dealerId) {
 
 		return _nearestDealerLocalService.fetchNearestDealer(dealerId);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistance(java.math.BigDecimal latitude,
-			java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
+	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer>
+			findByDistance(
+				java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+				java.math.BigDecimal distance,
+				com.liferay.raybia.dealer.model.DistanceUnitOfMeasure
+					distanceUnit,
+				int limit)
+		throws com.liferay.portal.kernel.exception.SystemException {
 
-		return _nearestDealerLocalService.findByDistance(latitude, longitude, distance, distanceUnit, limit);
+		return _nearestDealerLocalService.findByDistance(
+			latitude, longitude, distance, distanceUnit, limit);
 	}
 
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer> findByDistanceAndGroupId(long groupId,
-			java.math.BigDecimal latitude, java.math.BigDecimal longitude, java.math.BigDecimal distance,
-			com.liferay.raybia.dealer.model.DistanceUnitOfMeasure distanceUnit, int limit)
-			throws com.liferay.portal.kernel.exception.SystemException {
+	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer>
+			findByDistanceAndGroupId(
+				long groupId, java.math.BigDecimal latitude,
+				java.math.BigDecimal longitude, java.math.BigDecimal distance,
+				com.liferay.raybia.dealer.model.DistanceUnitOfMeasure
+					distanceUnit,
+				int limit)
+		throws com.liferay.portal.kernel.exception.SystemException {
 
-		return _nearestDealerLocalService.findByDistanceAndGroupId(groupId, latitude, longitude, distance, distanceUnit,
-				limit);
+		return _nearestDealerLocalService.findByDistanceAndGroupId(
+			groupId, latitude, longitude, distance, distanceUnit, limit);
 	}
 
 	@Override
-	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
+	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
+		getActionableDynamicQuery() {
 
 		return _nearestDealerLocalService.getActionableDynamicQuery();
 	}
 
 	@Override
-	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery getIndexableActionableDynamicQuery() {
+	public com.liferay.portal.kernel.dao.orm.IndexableActionableDynamicQuery
+		getIndexableActionableDynamicQuery() {
 
 		return _nearestDealerLocalService.getIndexableActionableDynamicQuery();
 	}
@@ -287,12 +278,12 @@ public class NearestDealerLocalServiceWrapper
 	 *
 	 * @param dealerId the primary key of the nearest dealer
 	 * @return the nearest dealer
-	 * @throws PortalException if a nearest dealer with the primary key could not be
-	 *                         found
+	 * @throws PortalException if a nearest dealer with the primary key could not be found
 	 */
 	@Override
-	public com.liferay.raybia.dealer.model.NearestDealer getNearestDealer(long dealerId)
-			throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.raybia.dealer.model.NearestDealer getNearestDealer(
+			long dealerId)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _nearestDealerLocalService.getNearestDealer(dealerId);
 	}
@@ -301,24 +292,16 @@ public class NearestDealerLocalServiceWrapper
 	 * Returns a range of all the nearest dealers.
 	 *
 	 * <p>
-	 * Useful when paginating results. Returns a maximum of <code>end - start</code>
-	 * instances. <code>start</code> and <code>end</code> are not primary keys, they
-	 * are indexes in the result set. Thus, <code>0</code> refers to the first
-	 * result in the set. Setting both <code>start</code> and <code>end</code> to
-	 * <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return
-	 * the full result set. If <code>orderByComparator</code> is specified, then the
-	 * query will include the given ORDER BY logic. If
-	 * <code>orderByComparator</code> is absent, then the query will include the
-	 * default ORDER BY logic from
-	 * <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>com.liferay.raybia.dealer.model.impl.NearestDealerModelImpl</code>.
 	 * </p>
 	 *
 	 * @param start the lower bound of the range of nearest dealers
-	 * @param end   the upper bound of the range of nearest dealers (not inclusive)
+	 * @param end the upper bound of the range of nearest dealers (not inclusive)
 	 * @return the range of nearest dealers
 	 */
 	@Override
-	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer> getNearestDealers(int start, int end) {
+	public java.util.List<com.liferay.raybia.dealer.model.NearestDealer>
+		getNearestDealers(int start, int end) {
 
 		return _nearestDealerLocalService.getNearestDealers(start, end);
 	}
@@ -347,21 +330,18 @@ public class NearestDealerLocalServiceWrapper
 	 * @throws PortalException
 	 */
 	@Override
-	public com.liferay.portal.kernel.model.PersistedModel getPersistedModel(java.io.Serializable primaryKeyObj)
-			throws com.liferay.portal.kernel.exception.PortalException {
+	public com.liferay.portal.kernel.model.PersistedModel getPersistedModel(
+			java.io.Serializable primaryKeyObj)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _nearestDealerLocalService.getPersistedModel(primaryKeyObj);
 	}
 
 	/**
-	 * Updates the nearest dealer in the database or adds it if it does not yet
-	 * exist. Also notifies the appropriate model listeners.
+	 * Updates the nearest dealer in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
 	 * <p>
-	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for
-	 * overloaded versions of the method. If provided, use these entry points to the
-	 * API, as the implementation logic may require the additional parameters
-	 * defined there.
+	 * <strong>Important:</strong> Inspect NearestDealerLocalServiceImpl for overloaded versions of the method. If provided, use these entry points to the API, as the implementation logic may require the additional parameters defined there.
 	 * </p>
 	 *
 	 * @param nearestDealer the nearest dealer
@@ -369,7 +349,7 @@ public class NearestDealerLocalServiceWrapper
 	 */
 	@Override
 	public com.liferay.raybia.dealer.model.NearestDealer updateNearestDealer(
-			com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
+		com.liferay.raybia.dealer.model.NearestDealer nearestDealer) {
 
 		return _nearestDealerLocalService.updateNearestDealer(nearestDealer);
 	}
@@ -380,7 +360,8 @@ public class NearestDealerLocalServiceWrapper
 	}
 
 	@Override
-	public void setWrappedService(NearestDealerLocalService nearestDealerLocalService) {
+	public void setWrappedService(
+		NearestDealerLocalService nearestDealerLocalService) {
 
 		_nearestDealerLocalService = nearestDealerLocalService;
 	}
