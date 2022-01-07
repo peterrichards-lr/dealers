@@ -1,4 +1,4 @@
 Bundle-Name: Dealers Admin Portlet
 Bundle-SymbolicName: com.liferay.raybia.dealer.web
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 Export-Package: com.liferay.raybia.dealer.web.constants

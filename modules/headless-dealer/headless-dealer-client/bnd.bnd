@@ -1,6 +1,6 @@
 Bundle-Name: Headless Dealers Client
 Bundle-SymbolicName: com.liferay.raybia.headless.dealer.client
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 
 Export-Package: com.liferay.raybia.headless.dealer.client.client.dto.v1_0, \
     com.liferay.raybia.headless.dealer.client.resource.v1_0, \

@@ -1,6 +1,6 @@
 Bundle-Name: Headless Dealers API
 Bundle-SymbolicName: com.liferay.raybia.headless.dealer.api
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 Export-Package:\
 	com.liferay.raybia.headless.dealer.dto.v1_0,\
 	com.liferay.raybia.headless.dealer.resource.v1_0
