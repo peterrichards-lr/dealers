@@ -26,6 +26,7 @@ import com.liferay.raybia.dealer.model.Dealer;
 import com.liferay.raybia.dealer.service.base.DealerServiceBaseImpl;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -69,14 +70,38 @@ public class DealerServiceImpl extends DealerServiceBaseImpl {
 			final String emailAddress, final String phoneNumber, final Map<Locale, String> openingHoursMap,
 			final BigDecimal latitude, final BigDecimal longitude, final ServiceContext serviceContext)
 			throws PortalException {
-		 // Check permissions.
+		// Check permissions.
 
-        _portletResourcePermission.check(
-            getPermissionChecker(), serviceContext.getScopeGroupId(),
-            ActionKeys.ADD_ENTRY);
+		_portletResourcePermission.check(getPermissionChecker(), serviceContext.getScopeGroupId(),
+				ActionKeys.ADD_ENTRY);
 
-        return dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+		return dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
 				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, serviceContext);
+	}
+
+	public Dealer addDealer(final long groupId, final Map<Locale, String> nameMap, final Map<Locale, String> streetMap,
+			final Map<Locale, String> localityMap, final Map<Locale, String> stateMap, final String postalCode,
+			final String emailAddress, final String phoneNumber, final Map<Locale, String> openingHoursMap,
+			final BigDecimal latitude, final BigDecimal longitude, final Date displayDate,
+			final ServiceContext serviceContext) throws PortalException {
+		// Check permissions.
+		_portletResourcePermission.check(getPermissionChecker(), serviceContext.getScopeGroupId(),
+				ActionKeys.ADD_ENTRY);
+
+		return dealerLocalService.addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, displayDate, serviceContext);
+	}
+
+	public Dealer updateDealer(final long dealerId, final Map<Locale, String> nameMap,
+			final Map<Locale, String> streetMap, final Map<Locale, String> localityMap,
+			final Map<Locale, String> stateMap, final String postalCode, final String emailAddress,
+			final String phoneNumber, final Map<Locale, String> openingHoursMap, final ServiceContext serviceContext)
+			throws PortalException {
+		// Check permissions.
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealerId, ActionKeys.UPDATE);
+
+		return dealerLocalService.updateDealer(dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+				emailAddress, phoneNumber, openingHoursMap, serviceContext);
 	}
 
 	public Dealer updateDealer(final long dealerId, final Map<Locale, String> nameMap,
@@ -92,32 +117,40 @@ public class DealerServiceImpl extends DealerServiceBaseImpl {
 				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, serviceContext);
 	}
 
+	public Dealer updateDealer(final long dealerId, final Map<Locale, String> nameMap,
+			final Map<Locale, String> streetMap, final Map<Locale, String> localityMap,
+			final Map<Locale, String> stateMap, final String postalCode, final String emailAddress,
+			final String phoneNumber, final Map<Locale, String> openingHoursMap, final BigDecimal latitude,
+			final BigDecimal longitude, final Date displayDate, final ServiceContext serviceContext)
+			throws PortalException {
+		// Check permissions.
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealerId, ActionKeys.UPDATE);
+
+		return dealerLocalService.updateDealer(dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+				emailAddress, phoneNumber, openingHoursMap, latitude, longitude, displayDate, serviceContext);
+	}
+
 	public Dealer deleteDealer(final long dealerId) throws PortalException {
 		// Check permissions.
 
-        _dealerModelResourcePermission.check(
-            getPermissionChecker(), dealerId, ActionKeys.DELETE);
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealerId, ActionKeys.DELETE);
 
-        Dealer dealer =
-            dealerLocalService.getDealer(dealerId);
+		Dealer dealer = dealerLocalService.getDealer(dealerId);
 
-        return dealerLocalService.deleteDealer(dealer);
+		return dealerLocalService.deleteDealer(dealer);
 	}
-	
-    public Dealer getDealer(long dealerId)
-            throws PortalException {
 
-            Dealer dealer =
-                dealerLocalService.getDealer(dealerId);
+	public Dealer getDealer(long dealerId) throws PortalException {
 
-            // Check permissions.
+		Dealer dealer = dealerLocalService.getDealer(dealerId);
 
-            _dealerModelResourcePermission.check(
-                getPermissionChecker(), dealer, ActionKeys.VIEW);
+		// Check permissions.
 
-            return dealer;
-        }
-    
+		_dealerModelResourcePermission.check(getPermissionChecker(), dealer, ActionKeys.VIEW);
+
+		return dealer;
+	}
+
 	public List<Dealer> getDealersByGroupId(long groupId) {
 		return dealerPersistence.findByGroupId(groupId);
 	}

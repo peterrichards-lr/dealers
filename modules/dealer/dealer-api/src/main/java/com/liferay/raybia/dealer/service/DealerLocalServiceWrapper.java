@@ -56,6 +56,25 @@ public class DealerLocalServiceWrapper
 			String emailAddress, String phoneNumber,
 			java.util.Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _dealerLocalService.addDealer(
+			groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	@Override
+	public com.liferay.raybia.dealer.model.Dealer addDealer(
+			long groupId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -423,6 +442,18 @@ public class DealerLocalServiceWrapper
 		return _dealerLocalService.getPersistedModel(primaryKeyObj);
 	}
 
+	@Override
+	public void updateAsset(
+			long userId, com.liferay.raybia.dealer.model.Dealer entry,
+			long[] assetCategoryIds, String[] assetTagNames,
+			long[] assetLinkEntryIds, Double priority)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		_dealerLocalService.updateAsset(
+			userId, entry, assetCategoryIds, assetTagNames, assetLinkEntryIds,
+			priority);
+	}
+
 	/**
 	 * Updates the dealer in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
@@ -449,6 +480,25 @@ public class DealerLocalServiceWrapper
 			String emailAddress, String phoneNumber,
 			java.util.Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _dealerLocalService.updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	@Override
+	public com.liferay.raybia.dealer.model.Dealer updateDealer(
+			long dealerId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -456,6 +506,33 @@ public class DealerLocalServiceWrapper
 			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
 			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
 			serviceContext);
+	}
+
+	@Override
+	public com.liferay.raybia.dealer.model.Dealer updateDealer(
+			long dealerId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _dealerLocalService.updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, serviceContext);
+	}
+
+	@Override
+	public com.liferay.raybia.dealer.model.Dealer updateStatus(
+			long userId, long dealerId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext,
+			java.util.Map<String, java.io.Serializable> workflowContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _dealerLocalService.updateStatus(
+			userId, dealerId, status, serviceContext, workflowContext);
 	}
 
 	@Override

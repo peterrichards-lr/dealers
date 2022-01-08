@@ -53,6 +53,11 @@ public class DealerSoap implements Serializable {
 		soapModel.setOpeningHours(model.getOpeningHours());
 		soapModel.setLatitude(model.getLatitude());
 		soapModel.setLongitude(model.getLongitude());
+		soapModel.setDisplayDate(model.getDisplayDate());
+		soapModel.setStatus(model.getStatus());
+		soapModel.setStatusByUserId(model.getStatusByUserId());
+		soapModel.setStatusByUserName(model.getStatusByUserName());
+		soapModel.setStatusDate(model.getStatusDate());
 
 		return soapModel;
 	}
@@ -249,6 +254,46 @@ public class DealerSoap implements Serializable {
 		_longitude = longitude;
 	}
 
+	public Date getDisplayDate() {
+		return _displayDate;
+	}
+
+	public void setDisplayDate(Date displayDate) {
+		_displayDate = displayDate;
+	}
+
+	public int getStatus() {
+		return _status;
+	}
+
+	public void setStatus(int status) {
+		_status = status;
+	}
+
+	public long getStatusByUserId() {
+		return _statusByUserId;
+	}
+
+	public void setStatusByUserId(long statusByUserId) {
+		_statusByUserId = statusByUserId;
+	}
+
+	public String getStatusByUserName() {
+		return _statusByUserName;
+	}
+
+	public void setStatusByUserName(String statusByUserName) {
+		_statusByUserName = statusByUserName;
+	}
+
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	public void setStatusDate(Date statusDate) {
+		_statusDate = statusDate;
+	}
+
 	private String _uuid;
 	private long _dealerId;
 	private long _groupId;
@@ -267,5 +312,10 @@ public class DealerSoap implements Serializable {
 	private String _openingHours;
 	private BigDecimal _latitude;
 	private BigDecimal _longitude;
+	private Date _displayDate;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
 
 }

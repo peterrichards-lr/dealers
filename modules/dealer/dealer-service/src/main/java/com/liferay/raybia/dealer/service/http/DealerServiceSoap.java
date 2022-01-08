@@ -108,6 +108,88 @@ public class DealerServiceSoap {
 		}
 	}
 
+	public static com.liferay.raybia.dealer.model.DealerSoap addDealer(
+			long groupId, String[] nameMapLanguageIds, String[] nameMapValues,
+			String[] streetMapLanguageIds, String[] streetMapValues,
+			String[] localityMapLanguageIds, String[] localityMapValues,
+			String[] stateMapLanguageIds, String[] stateMapValues,
+			String postalCode, String emailAddress, String phoneNumber,
+			String[] openingHoursMapLanguageIds, String[] openingHoursMapValues,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			Map<Locale, String> nameMap = LocalizationUtil.getLocalizationMap(
+				nameMapLanguageIds, nameMapValues);
+			Map<Locale, String> streetMap = LocalizationUtil.getLocalizationMap(
+				streetMapLanguageIds, streetMapValues);
+			Map<Locale, String> localityMap =
+				LocalizationUtil.getLocalizationMap(
+					localityMapLanguageIds, localityMapValues);
+			Map<Locale, String> stateMap = LocalizationUtil.getLocalizationMap(
+				stateMapLanguageIds, stateMapValues);
+			Map<Locale, String> openingHoursMap =
+				LocalizationUtil.getLocalizationMap(
+					openingHoursMapLanguageIds, openingHoursMapValues);
+
+			com.liferay.raybia.dealer.model.Dealer returnValue =
+				DealerServiceUtil.addDealer(
+					groupId, nameMap, streetMap, localityMap, stateMap,
+					postalCode, emailAddress, phoneNumber, openingHoursMap,
+					latitude, longitude, displayDate, serviceContext);
+
+			return com.liferay.raybia.dealer.model.DealerSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.raybia.dealer.model.DealerSoap updateDealer(
+			long dealerId, String[] nameMapLanguageIds, String[] nameMapValues,
+			String[] streetMapLanguageIds, String[] streetMapValues,
+			String[] localityMapLanguageIds, String[] localityMapValues,
+			String[] stateMapLanguageIds, String[] stateMapValues,
+			String postalCode, String emailAddress, String phoneNumber,
+			String[] openingHoursMapLanguageIds, String[] openingHoursMapValues,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			Map<Locale, String> nameMap = LocalizationUtil.getLocalizationMap(
+				nameMapLanguageIds, nameMapValues);
+			Map<Locale, String> streetMap = LocalizationUtil.getLocalizationMap(
+				streetMapLanguageIds, streetMapValues);
+			Map<Locale, String> localityMap =
+				LocalizationUtil.getLocalizationMap(
+					localityMapLanguageIds, localityMapValues);
+			Map<Locale, String> stateMap = LocalizationUtil.getLocalizationMap(
+				stateMapLanguageIds, stateMapValues);
+			Map<Locale, String> openingHoursMap =
+				LocalizationUtil.getLocalizationMap(
+					openingHoursMapLanguageIds, openingHoursMapValues);
+
+			com.liferay.raybia.dealer.model.Dealer returnValue =
+				DealerServiceUtil.updateDealer(
+					dealerId, nameMap, streetMap, localityMap, stateMap,
+					postalCode, emailAddress, phoneNumber, openingHoursMap,
+					serviceContext);
+
+			return com.liferay.raybia.dealer.model.DealerSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
 	public static com.liferay.raybia.dealer.model.DealerSoap updateDealer(
 			long dealerId, String[] nameMapLanguageIds, String[] nameMapValues,
 			String[] streetMapLanguageIds, String[] streetMapValues,
@@ -138,6 +220,48 @@ public class DealerServiceSoap {
 					dealerId, nameMap, streetMap, localityMap, stateMap,
 					postalCode, emailAddress, phoneNumber, openingHoursMap,
 					latitude, longitude, serviceContext);
+
+			return com.liferay.raybia.dealer.model.DealerSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.raybia.dealer.model.DealerSoap updateDealer(
+			long dealerId, String[] nameMapLanguageIds, String[] nameMapValues,
+			String[] streetMapLanguageIds, String[] streetMapValues,
+			String[] localityMapLanguageIds, String[] localityMapValues,
+			String[] stateMapLanguageIds, String[] stateMapValues,
+			String postalCode, String emailAddress, String phoneNumber,
+			String[] openingHoursMapLanguageIds, String[] openingHoursMapValues,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			Map<Locale, String> nameMap = LocalizationUtil.getLocalizationMap(
+				nameMapLanguageIds, nameMapValues);
+			Map<Locale, String> streetMap = LocalizationUtil.getLocalizationMap(
+				streetMapLanguageIds, streetMapValues);
+			Map<Locale, String> localityMap =
+				LocalizationUtil.getLocalizationMap(
+					localityMapLanguageIds, localityMapValues);
+			Map<Locale, String> stateMap = LocalizationUtil.getLocalizationMap(
+				stateMapLanguageIds, stateMapValues);
+			Map<Locale, String> openingHoursMap =
+				LocalizationUtil.getLocalizationMap(
+					openingHoursMapLanguageIds, openingHoursMapValues);
+
+			com.liferay.raybia.dealer.model.Dealer returnValue =
+				DealerServiceUtil.updateDealer(
+					dealerId, nameMap, streetMap, localityMap, stateMap,
+					postalCode, emailAddress, phoneNumber, openingHoursMap,
+					latitude, longitude, displayDate, serviceContext);
 
 			return com.liferay.raybia.dealer.model.DealerSoap.toSoapModel(
 				returnValue);

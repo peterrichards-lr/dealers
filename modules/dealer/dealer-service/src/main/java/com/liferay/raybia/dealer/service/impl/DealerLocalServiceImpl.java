@@ -14,6 +14,9 @@
 
 package com.liferay.raybia.dealer.service.impl;
 
+import com.liferay.asset.kernel.model.AssetEntry;
+import com.liferay.asset.kernel.model.AssetLinkConstants;
+import com.liferay.blogs.model.BlogsEntry;
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.dao.orm.Disjunction;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -27,12 +30,18 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.systemevent.SystemEvent;
+import com.liferay.portal.kernel.util.ContentTypes;
+import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 import com.liferay.raybia.dealer.model.Dealer;
 import com.liferay.raybia.dealer.service.base.DealerLocalServiceBaseImpl;
 import com.liferay.raybia.dealer.validator.DealerValidator;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -73,34 +82,44 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 	 * <code>com.liferay.raybia.dealer.service.DealerLocalServiceUtil</code>.
 	 */
 
-	@Indexable(type = IndexableType.REINDEX)
-	@SystemEvent(type = SystemEventConstants.TYPE_DEFAULT)
 	public Dealer addDealer(final long groupId, final Map<Locale, String> nameMap, final Map<Locale, String> streetMap,
 			final Map<Locale, String> localityMap, final Map<Locale, String> stateMap, final String postalCode,
 			final String emailAddress, final String phoneNumber, final Map<Locale, String> openingHoursMap,
 			final BigDecimal latitude, final BigDecimal longitude, final ServiceContext serviceContext)
 			throws PortalException {
+		return addDealer(groupId, nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
+				openingHoursMap, latitude, longitude, new Date(), serviceContext);
+	}
+
+	@Indexable(type = IndexableType.REINDEX)
+	@SystemEvent(type = SystemEventConstants.TYPE_DEFAULT)
+	public Dealer addDealer(final long groupId, final Map<Locale, String> nameMap, final Map<Locale, String> streetMap,
+			final Map<Locale, String> localityMap, final Map<Locale, String> stateMap, final String postalCode,
+			final String emailAddress, final String phoneNumber, final Map<Locale, String> openingHoursMap,
+			final BigDecimal latitude, final BigDecimal longitude, final Date displayDate,
+			final ServiceContext serviceContext) throws PortalException {
+
+		final int status = WorkflowConstants.STATUS_DRAFT;
 
 		_dealerValidator.validate(nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
-				openingHoursMap, latitude, longitude);
+				openingHoursMap, latitude, longitude, status);
 
-		final Group group = groupLocalService.getGroup(groupId);;
+		final Group group = groupLocalService.getGroup(groupId);
 		final long companyId = group.getCompanyId();
 		final long userId = serviceContext.getUserId();
-
+		final Date current = new Date();
 		final long dealerId = counterLocalService.increment(getModelClassName());
 
-		final Date current = new Date();
-		
 		Dealer dealer = createDealer(dealerId);
 
 		dealer.setCompanyId(companyId);
 		dealer.setGroupId(groupId);
 		dealer.setUserId(userId);
-		
+
 		final User user = userLocalService.fetchUser(userId);
 		if (user != null) {
 			dealer.setUserName(user.getFullName());
+			dealer.setStatusByUserName(user.getFullName());
 		}
 
 		dealer.setCreateDate(serviceContext.getCreateDate(current));
@@ -115,13 +134,49 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 		dealer.setOpeningHoursMap(openingHoursMap);
 		dealer.setLatitude(latitude);
 		dealer.setLongitude(longitude);
+		dealer.setDisplayDate(displayDate);
+
+		dealer.setStatus(status);
+		dealer.setStatusByUserId(userId);
+		dealer.setStatusDate(serviceContext.getModifiedDate(null));
 
 		dealer = super.addDealer(dealer);
 
 		resourceLocalService.addResources(companyId, groupId, userId, Dealer.class.getName(), dealer.getDealerId(),
 				false, serviceContext.isAddGroupPermissions(), serviceContext.isAddGuestPermissions());
 
+		// Asset
+		updateAsset(userId, dealer, serviceContext.getAssetCategoryIds(), serviceContext.getAssetTagNames(),
+				serviceContext.getAssetLinkEntryIds(), serviceContext.getAssetPriority());
+
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(dealer.getCompanyId(), dealer.getGroupId(),
+				dealer.getUserId(), Dealer.class.getName(), dealer.getPrimaryKey(), dealer, serviceContext);
+
 		return dealer;
+	}
+
+	public Dealer updateDealer(final long dealerId, final Map<Locale, String> nameMap,
+			final Map<Locale, String> streetMap, final Map<Locale, String> localityMap,
+			final Map<Locale, String> stateMap, final String postalCode, final String emailAddress,
+			final String phoneNumber, final Map<Locale, String> openingHoursMap, final ServiceContext serviceContext)
+			throws PortalException {
+
+		Dealer dealer = dealerPersistence.findByPrimaryKey(dealerId);
+
+		return updateDealer(dealerId, nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
+				openingHoursMap, dealer.getLatitude(), dealer.getLongitude(), dealer.getDisplayDate(), serviceContext);
+	}
+
+	public Dealer updateDealer(final long dealerId, final Map<Locale, String> nameMap,
+			final Map<Locale, String> streetMap, final Map<Locale, String> localityMap,
+			final Map<Locale, String> stateMap, final String postalCode, final String emailAddress,
+			final String phoneNumber, final Map<Locale, String> openingHoursMap, final BigDecimal latitude,
+			final BigDecimal longitude, final ServiceContext serviceContext) throws PortalException {
+
+		Dealer dealer = dealerPersistence.findByPrimaryKey(dealerId);
+
+		return updateDealer(dealerId, nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
+				openingHoursMap, latitude, longitude, dealer.getDisplayDate(), serviceContext);
 	}
 
 	@Indexable(type = IndexableType.REINDEX)
@@ -130,12 +185,21 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 			final Map<Locale, String> streetMap, final Map<Locale, String> localityMap,
 			final Map<Locale, String> stateMap, final String postalCode, final String emailAddress,
 			final String phoneNumber, final Map<Locale, String> openingHoursMap, final BigDecimal latitude,
-			final BigDecimal longitude, final ServiceContext serviceContext) throws PortalException {
+			final BigDecimal longitude, final Date displayDate, final ServiceContext serviceContext)
+			throws PortalException {
 
-		_dealerValidator.validate(nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
-				openingHoursMap, latitude, longitude);
+		final long userId = serviceContext.getUserId();
 
 		Dealer dealer = getDealer(dealerId);
+
+		int status = dealer.getStatus();
+
+		if (!dealer.isPending() && !dealer.isDraft()) {
+			status = WorkflowConstants.STATUS_DRAFT;
+		}
+
+		_dealerValidator.validate(nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
+				openingHoursMap, latitude, longitude, status);
 
 		dealer.setModifiedDate(new Date());
 		dealer.setNameMap(nameMap);
@@ -148,8 +212,71 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 		dealer.setOpeningHoursMap(openingHoursMap);
 		dealer.setLatitude(latitude);
 		dealer.setLongitude(longitude);
+		dealer.setStatus(status);
 
 		dealer = super.updateDealer(dealer);
+
+		// Asset
+
+		updateAsset(userId, dealer, serviceContext.getAssetCategoryIds(), serviceContext.getAssetTagNames(),
+				serviceContext.getAssetLinkEntryIds(), serviceContext.getAssetPriority());
+
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(dealer.getCompanyId(), dealer.getGroupId(), userId,
+				Dealer.class.getName(), dealer.getDealerId(), dealer, serviceContext);
+
+		return dealer;
+	}
+
+	@Override
+	public void updateAsset(long userId, Dealer entry, long[] assetCategoryIds, String[] assetTagNames,
+			long[] assetLinkEntryIds, Double priority) throws PortalException {
+
+		boolean visible = false;
+
+		if (entry.isApproved()) {
+			visible = true;
+		}
+
+		String summary = HtmlUtil.extractText(StringUtil.shorten(entry.getState(), 500));
+
+		AssetEntry assetEntry = assetEntryLocalService.updateEntry(userId, entry.getGroupId(), entry.getCreateDate(),
+				entry.getModifiedDate(), Dealer.class.getName(), entry.getDealerId(), entry.getUuid(), 0,
+				assetCategoryIds, assetTagNames, true, visible, null, null, null, null, ContentTypes.TEXT_HTML,
+				entry.getName(), null, summary, null, null, 0, 0, priority);
+
+		assetLinkLocalService.updateLinks(userId, assetEntry.getEntryId(), assetLinkEntryIds,
+				AssetLinkConstants.TYPE_RELATED);
+	}
+
+	@Indexable(type = IndexableType.REINDEX)
+	@Override
+	public Dealer updateStatus(long userId, long dealerId, int status, ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext) throws PortalException {
+
+		User user = userLocalService.getUser(userId);
+		Date now = new Date();
+
+		Dealer dealer = dealerPersistence.findByPrimaryKey(dealerId);
+
+		_dealerValidator.validate(dealer.getNameMap(), dealer.getStreetMap(), dealer.getLocalityMap(),
+				dealer.getStateMap(), dealer.getPostalCode(), dealer.getEmailAddress(), dealer.getPhoneNumber(),
+				dealer.getOpeningHoursMap(), dealer.getLatitude(), dealer.getLongitude(), status);
+
+		dealer.setStatus(status);
+		dealer.setStatusByUserId(user.getUserId());
+		dealer.setStatusByUserName(user.getFullName());
+		dealer.setStatusDate(serviceContext.getModifiedDate(now));
+
+		if (status == WorkflowConstants.STATUS_APPROVED) {
+
+			assetEntryLocalService.updateEntry(Dealer.class.getName(), dealerId, dealer.getDisplayDate(), null, true,
+					true);
+		}
+
+		else {
+
+			assetEntryLocalService.updateVisible(Dealer.class.getName(), dealerId, false);
+		}
 
 		return dealer;
 	}
@@ -158,6 +285,13 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 	public Dealer deleteDealer(Dealer dealer) throws PortalException {
 
 		resourceLocalService.deleteResource(dealer, ResourceConstants.SCOPE_INDIVIDUAL);
+
+		// Asset
+
+		assetEntryLocalService.deleteEntry(BlogsEntry.class.getName(), dealer.getDealerId());
+
+		workflowInstanceLinkLocalService.deleteWorkflowInstanceLinks(dealer.getCompanyId(), dealer.getGroupId(),
+				Dealer.class.getName(), dealer.getDealerId());
 
 		return super.deleteDealer(dealer);
 	}
@@ -212,10 +346,9 @@ public class DealerLocalServiceImpl extends DealerLocalServiceBaseImpl {
 	public Dealer updateDealer(Dealer dealer) {
 		throw new UnsupportedOperationException("Not supported.");
 	}
-	
-	
+
 	@Reference
 	private DealerValidator _dealerValidator;
 
-	private static final Logger _log = LoggerFactory.getLogger(DealerLocalServiceImpl.class);
+	private static final Logger _logger = LoggerFactory.getLogger(DealerLocalServiceImpl.class);
 }

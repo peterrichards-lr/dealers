@@ -25,8 +25,10 @@
 <%@ page import="com.liferay.portal.kernel.util.Validator" %>
 <%@ page import="com.liferay.raybia.dealer.model.Dealer" %>
 <%@ page
-        import="com.liferay.raybia.dealer.web.constants.MVCCommandNames" %>
-<%@ page import="com.liferay.portal.kernel.servlet.SessionErrors" %>
+	import="com.liferay.raybia.dealer.web.constants.MVCCommandNames"%>
+<%@ page import="com.liferay.portal.kernel.servlet.SessionErrors"%>
+<%@ page import="com.liferay.asset.kernel.model.AssetRenderer"%>
+<%@ page import="com.liferay.portal.kernel.util.WebKeys"%>
 
 <liferay-frontend:defineObjects/>
 

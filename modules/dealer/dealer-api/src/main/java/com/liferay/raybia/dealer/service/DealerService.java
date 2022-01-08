@@ -28,6 +28,7 @@ import com.liferay.raybia.dealer.model.Dealer;
 
 import java.math.BigDecimal;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -57,6 +58,16 @@ public interface DealerService extends BaseService {
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.liferay.raybia.dealer.service.impl.DealerServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the dealer remote service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link DealerServiceUtil} if injection and service tracking are not available.
 	 */
+	public Dealer addDealer(
+			long groupId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, BigDecimal latitude,
+			BigDecimal longitude, Date displayDate,
+			ServiceContext serviceContext)
+		throws PortalException;
+
 	public Dealer addDealer(
 			long groupId, Map<Locale, String> nameMap,
 			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
@@ -95,7 +106,25 @@ public interface DealerService extends BaseService {
 			Map<Locale, String> stateMap, String postalCode,
 			String emailAddress, String phoneNumber,
 			Map<Locale, String> openingHoursMap, BigDecimal latitude,
+			BigDecimal longitude, Date displayDate,
+			ServiceContext serviceContext)
+		throws PortalException;
+
+	public Dealer updateDealer(
+			long dealerId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, BigDecimal latitude,
 			BigDecimal longitude, ServiceContext serviceContext)
+		throws PortalException;
+
+	public Dealer updateDealer(
+			long dealerId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, ServiceContext serviceContext)
 		throws PortalException;
 
 }

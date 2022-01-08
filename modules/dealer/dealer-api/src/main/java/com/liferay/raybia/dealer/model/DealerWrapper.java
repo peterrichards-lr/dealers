@@ -62,6 +62,11 @@ public class DealerWrapper
 		attributes.put("openingHours", getOpeningHours());
 		attributes.put("latitude", getLatitude());
 		attributes.put("longitude", getLongitude());
+		attributes.put("displayDate", getDisplayDate());
+		attributes.put("status", getStatus());
+		attributes.put("statusByUserId", getStatusByUserId());
+		attributes.put("statusByUserName", getStatusByUserName());
+		attributes.put("statusDate", getStatusDate());
 
 		return attributes;
 	}
@@ -175,6 +180,36 @@ public class DealerWrapper
 		if (longitude != null) {
 			setLongitude(longitude);
 		}
+
+		Date displayDate = (Date)attributes.get("displayDate");
+
+		if (displayDate != null) {
+			setDisplayDate(displayDate);
+		}
+
+		Integer status = (Integer)attributes.get("status");
+
+		if (status != null) {
+			setStatus(status);
+		}
+
+		Long statusByUserId = (Long)attributes.get("statusByUserId");
+
+		if (statusByUserId != null) {
+			setStatusByUserId(statusByUserId);
+		}
+
+		String statusByUserName = (String)attributes.get("statusByUserName");
+
+		if (statusByUserName != null) {
+			setStatusByUserName(statusByUserName);
+		}
+
+		Date statusDate = (Date)attributes.get("statusDate");
+
+		if (statusDate != null) {
+			setStatusDate(statusDate);
+		}
 	}
 
 	@Override
@@ -215,6 +250,16 @@ public class DealerWrapper
 	@Override
 	public String getDefaultLanguageId() {
 		return model.getDefaultLanguageId();
+	}
+
+	/**
+	 * Returns the display date of this dealer.
+	 *
+	 * @return the display date of this dealer
+	 */
+	@Override
+	public Date getDisplayDate() {
+		return model.getDisplayDate();
 	}
 
 	/**
@@ -602,6 +647,56 @@ public class DealerWrapper
 	}
 
 	/**
+	 * Returns the status of this dealer.
+	 *
+	 * @return the status of this dealer
+	 */
+	@Override
+	public int getStatus() {
+		return model.getStatus();
+	}
+
+	/**
+	 * Returns the status by user ID of this dealer.
+	 *
+	 * @return the status by user ID of this dealer
+	 */
+	@Override
+	public long getStatusByUserId() {
+		return model.getStatusByUserId();
+	}
+
+	/**
+	 * Returns the status by user name of this dealer.
+	 *
+	 * @return the status by user name of this dealer
+	 */
+	@Override
+	public String getStatusByUserName() {
+		return model.getStatusByUserName();
+	}
+
+	/**
+	 * Returns the status by user uuid of this dealer.
+	 *
+	 * @return the status by user uuid of this dealer
+	 */
+	@Override
+	public String getStatusByUserUuid() {
+		return model.getStatusByUserUuid();
+	}
+
+	/**
+	 * Returns the status date of this dealer.
+	 *
+	 * @return the status date of this dealer
+	 */
+	@Override
+	public Date getStatusDate() {
+		return model.getStatusDate();
+	}
+
+	/**
 	 * Returns the street of this dealer.
 	 *
 	 * @return the street of this dealer
@@ -717,6 +812,86 @@ public class DealerWrapper
 		return model.getUuid();
 	}
 
+	/**
+	 * Returns <code>true</code> if this dealer is approved.
+	 *
+	 * @return <code>true</code> if this dealer is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved() {
+		return model.isApproved();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is denied.
+	 *
+	 * @return <code>true</code> if this dealer is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied() {
+		return model.isDenied();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is a draft.
+	 *
+	 * @return <code>true</code> if this dealer is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft() {
+		return model.isDraft();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is expired.
+	 *
+	 * @return <code>true</code> if this dealer is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired() {
+		return model.isExpired();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is inactive.
+	 *
+	 * @return <code>true</code> if this dealer is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive() {
+		return model.isInactive();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is incomplete.
+	 *
+	 * @return <code>true</code> if this dealer is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete() {
+		return model.isIncomplete();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is pending.
+	 *
+	 * @return <code>true</code> if this dealer is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending() {
+		return model.isPending();
+	}
+
+	/**
+	 * Returns <code>true</code> if this dealer is scheduled.
+	 *
+	 * @return <code>true</code> if this dealer is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled() {
+		return model.isScheduled();
+	}
+
 	@Override
 	public void persist() {
 		model.persist();
@@ -765,6 +940,16 @@ public class DealerWrapper
 	@Override
 	public void setDealerId(long dealerId) {
 		model.setDealerId(dealerId);
+	}
+
+	/**
+	 * Sets the display date of this dealer.
+	 *
+	 * @param displayDate the display date of this dealer
+	 */
+	@Override
+	public void setDisplayDate(Date displayDate) {
+		model.setDisplayDate(displayDate);
 	}
 
 	/**
@@ -1104,6 +1289,56 @@ public class DealerWrapper
 		java.util.Locale defaultLocale) {
 
 		model.setStateMap(stateMap, defaultLocale);
+	}
+
+	/**
+	 * Sets the status of this dealer.
+	 *
+	 * @param status the status of this dealer
+	 */
+	@Override
+	public void setStatus(int status) {
+		model.setStatus(status);
+	}
+
+	/**
+	 * Sets the status by user ID of this dealer.
+	 *
+	 * @param statusByUserId the status by user ID of this dealer
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		model.setStatusByUserId(statusByUserId);
+	}
+
+	/**
+	 * Sets the status by user name of this dealer.
+	 *
+	 * @param statusByUserName the status by user name of this dealer
+	 */
+	@Override
+	public void setStatusByUserName(String statusByUserName) {
+		model.setStatusByUserName(statusByUserName);
+	}
+
+	/**
+	 * Sets the status by user uuid of this dealer.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this dealer
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid) {
+		model.setStatusByUserUuid(statusByUserUuid);
+	}
+
+	/**
+	 * Sets the status date of this dealer.
+	 *
+	 * @param statusDate the status date of this dealer
+	 */
+	@Override
+	public void setStatusDate(Date statusDate) {
+		model.setStatusDate(statusDate);
 	}
 
 	/**

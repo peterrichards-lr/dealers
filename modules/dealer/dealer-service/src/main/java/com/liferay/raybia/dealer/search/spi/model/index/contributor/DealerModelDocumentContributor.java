@@ -1,5 +1,4 @@
 package com.liferay.raybia.dealer.search.spi.model.index.contributor;
-
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
@@ -13,9 +12,13 @@ import com.liferay.raybia.dealer.model.Dealer;
 import java.util.Locale;
 
 import org.osgi.service.component.annotations.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component(immediate = true, property = "indexer.class.name=com.liferay.raybia.dealer.model.Dealer", service = ModelDocumentContributor.class)
 public class DealerModelDocumentContributor implements ModelDocumentContributor<Dealer> {
+
+	private static final Logger _logger = LoggerFactory.getLogger(DealerModelDocumentContributor.class);
 
 	@Override
 	public void contribute(Document document, Dealer dealer) {
@@ -39,11 +42,13 @@ public class DealerModelDocumentContributor implements ModelDocumentContributor<
 
 			String languageId = LocaleUtil.toLanguageId(locale);
 
-			document.addText(LocalizationUtil.getLocalizedName(Field.NAME, languageId), name);
+			document.addText(LocalizationUtil.getLocalizedName(Field.NAME, languageId), dealer.getName(languageId));
 
-			document.addText(LocalizationUtil.getLocalizedName(DealerConstants.Field.STATE, languageId), name);
+			document.addText(LocalizationUtil.getLocalizedName(DealerConstants.Field.STATE, languageId),
+					dealer.getState(languageId));
 
-			document.addText(LocalizationUtil.getLocalizedName(DealerConstants.Field.LOCALITY, languageId), name);
+			document.addText(LocalizationUtil.getLocalizedName(DealerConstants.Field.LOCALITY, languageId),
+					dealer.getLocality(languageId));
 		}
 	}
 

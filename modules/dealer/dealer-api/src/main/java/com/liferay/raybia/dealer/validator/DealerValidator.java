@@ -31,6 +31,7 @@ public interface DealerValidator {
 			final String phoneNumber,
 			final Map<Locale, String> openingHours,
 			final BigDecimal latitude,
-			final BigDecimal longitude)
+			final BigDecimal longitude,
+			final int status)
 			throws DealerValidationException;
 }

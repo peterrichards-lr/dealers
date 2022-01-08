@@ -45,6 +45,24 @@ public class DealerServiceUtil {
 			String emailAddress, String phoneNumber,
 			java.util.Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return getService().addDealer(
+			groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	public static com.liferay.raybia.dealer.model.Dealer addDealer(
+			long groupId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -107,6 +125,24 @@ public class DealerServiceUtil {
 			String emailAddress, String phoneNumber,
 			java.util.Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return getService().updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	public static com.liferay.raybia.dealer.model.Dealer updateDealer(
+			long dealerId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
@@ -114,6 +150,21 @@ public class DealerServiceUtil {
 			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
 			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
 			serviceContext);
+	}
+
+	public static com.liferay.raybia.dealer.model.Dealer updateDealer(
+			long dealerId, java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return getService().updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, serviceContext);
 	}
 
 	public static DealerService getService() {
