@@ -8,13 +8,21 @@
 	<entity name="Dealer" local-service="true" remote-service="true"
 		uuid="true">
 
-		<column name="dealerId" primary="true" type="long"></column>
-		<column name="groupId" type="long"></column>
-		<column name="companyId" type="long"></column>
-		<column name="userId" type="long"></column>
-		<column name="userName" type="String"></column>
-		<column name="createDate" type="Date"></column>
-		<column name="modifiedDate" type="Date"></column>
+		<!-- PK fields -->
+
+		<column name="dealerId" primary="true" type="long" />
+		
+		<!-- Group instance -->
+				
+		<column name="groupId" type="long" />
+		
+		<!-- Audit fields -->
+		
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
 
 		<column name="name" type="String" localized="true" />
 		<column name="street" type="String" localized="true" />
@@ -26,16 +34,165 @@
 		<column name="openingHours" type="String" localized="true" />
 		<column name="latitude" type="BigDecimal" />
 		<column name="longitude" type="BigDecimal" />
+		<column name="displayDate" type="Date" />
+		
+		<!--  Workflow -->
+		
+		<column name="status" type="int" />
+		<column name="statusByUserId" type="long" />
+		<column name="statusByUserName" type="String" />
+		<column name="statusDate" type="Date" />
 
+		<!-- Order -->
+	
 		<order by="asc">
 			<order-column name="name" />
 		</order>
 
+		<!-- Finders -->
+
 		<finder name="GroupId" return-type="Collection">
 			<finder-column name="groupId"></finder-column>
 		</finder>
+
+		<finder name="CompanyId" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+		</finder>
+        
+    	<finder name="G_LtD" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+		</finder>
+		
+		<finder name="G_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_NotS" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="C_U" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="userId" />
+		</finder>
+		
+		<finder name="C_LtD" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+		</finder>
+		
+		<finder name="C_S" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="C_NotS" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="LtD_S" return-type="Collection">
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_U_LtD" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+		</finder>
+		
+		<finder name="G_U_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column arrayable-operator="OR" name="status" />
+		</finder>
+		
+		<finder name="G_U_NotS" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="G_D_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_GtD_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column comparator="&gt;" name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_LtD_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_LtD_NotS" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="C_U_S" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="userId" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="C_U_NotS" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column name="userId" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="C_LtD_S" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="C_LtD_NotS" return-type="Collection">
+			<finder-column name="companyId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+		
+		<finder name="G_U_LtD_S" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column name="status" />
+		</finder>
+		
+		<finder name="G_U_LtD_NotS" return-type="Collection">
+			<finder-column name="groupId" />
+			<finder-column name="userId" />
+			<finder-column comparator="&lt;" name="displayDate" />
+			<finder-column comparator="!=" name="status" />
+		</finder>
+        
+  		<!-- Reference to Group entity service -->
         
 		<reference entity="Group" package-path="com.liferay.portal"></reference>
+				
+		<!-- Entity services needed for the integration to Asset framework -->
+
+		<reference entity="AssetEntry"
+			package-path="com.liferay.portlet.asset"></reference>
+		<reference entity="AssetLink"
+			package-path="com.liferay.portlet.asset"></reference>
+		<reference entity="AssetTag"
+			package-path="com.liferay.portlet.asset"></reference>
+			
+		<reference entity="WorkflowInstanceLink" package-path="com.liferay.portal" />
 	</entity>
 
 	<entity name="NearestDealer" local-service="true"

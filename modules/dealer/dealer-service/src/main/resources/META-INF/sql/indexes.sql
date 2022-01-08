@@ -1,3 +1,10 @@
-create index IX_D5F43DFC on Raybia_Dealer (groupId);
+create index IX_75BFA5EC on Raybia_Dealer (companyId, displayDate, status);
+create index IX_BAE65E0 on Raybia_Dealer (companyId, status);
+create index IX_C9634A1A on Raybia_Dealer (companyId, userId, status);
+create index IX_292C84F8 on Raybia_Dealer (displayDate, status);
+create index IX_D852BE2A on Raybia_Dealer (groupId, displayDate, status);
+create index IX_6C02C0E2 on Raybia_Dealer (groupId, status);
+create index IX_C2EAEA30 on Raybia_Dealer (groupId, userId, displayDate, status);
+create index IX_11B5831C on Raybia_Dealer (groupId, userId, status);
 create index IX_B22414E2 on Raybia_Dealer (uuid_[$COLUMN_LENGTH:75$], companyId);
 create unique index IX_2E106BE4 on Raybia_Dealer (uuid_[$COLUMN_LENGTH:75$], groupId);

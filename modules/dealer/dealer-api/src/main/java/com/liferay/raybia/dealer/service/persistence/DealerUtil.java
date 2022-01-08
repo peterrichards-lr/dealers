@@ -21,6 +21,7 @@ import com.liferay.raybia.dealer.model.Dealer;
 
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -760,6 +761,5557 @@ public class DealerUtil {
 	 */
 	public static int filterCountByGroupId(long groupId) {
 		return getPersistence().filterCountByGroupId(groupId);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByCompanyId(long companyId) {
+		return getPersistence().findByCompanyId(companyId);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByCompanyId(
+		long companyId, int start, int end) {
+
+		return getPersistence().findByCompanyId(companyId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByCompanyId(
+		long companyId, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByCompanyId(
+			companyId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByCompanyId(
+		long companyId, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByCompanyId(
+			companyId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByCompanyId_First(
+			long companyId, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByCompanyId_First(
+			companyId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByCompanyId_First(
+		long companyId, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByCompanyId_First(
+			companyId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByCompanyId_Last(
+			long companyId, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByCompanyId_Last(
+			companyId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByCompanyId_Last(
+		long companyId, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByCompanyId_Last(
+			companyId, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByCompanyId_PrevAndNext(
+			long dealerId, long companyId,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByCompanyId_PrevAndNext(
+			dealerId, companyId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 */
+	public static void removeByCompanyId(long companyId) {
+		getPersistence().removeByCompanyId(companyId);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @return the number of matching dealers
+	 */
+	public static int countByCompanyId(long companyId) {
+		return getPersistence().countByCompanyId(companyId);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_LtD(long groupId, Date displayDate) {
+		return getPersistence().findByG_LtD(groupId, displayDate);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD(
+		long groupId, Date displayDate, int start, int end) {
+
+		return getPersistence().findByG_LtD(groupId, displayDate, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD(
+		long groupId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_LtD(
+			groupId, displayDate, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD(
+		long groupId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_LtD(
+			groupId, displayDate, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_First(
+			long groupId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_First(
+			groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_First(
+		long groupId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_First(
+			groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_Last(
+			long groupId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_Last(
+			groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_Last(
+		long groupId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_Last(
+			groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_LtD_PrevAndNext(
+			long dealerId, long groupId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_PrevAndNext(
+			dealerId, groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD(
+		long groupId, Date displayDate) {
+
+		return getPersistence().filterFindByG_LtD(groupId, displayDate);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD(
+		long groupId, Date displayDate, int start, int end) {
+
+		return getPersistence().filterFindByG_LtD(
+			groupId, displayDate, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD(
+		long groupId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_LtD(
+			groupId, displayDate, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_LtD_PrevAndNext(
+			long dealerId, long groupId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_LtD_PrevAndNext(
+			dealerId, groupId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and displayDate &lt; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 */
+	public static void removeByG_LtD(long groupId, Date displayDate) {
+		getPersistence().removeByG_LtD(groupId, displayDate);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_LtD(long groupId, Date displayDate) {
+		return getPersistence().countByG_LtD(groupId, displayDate);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_LtD(long groupId, Date displayDate) {
+		return getPersistence().filterCountByG_LtD(groupId, displayDate);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_S(long groupId, int status) {
+		return getPersistence().findByG_S(groupId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_S(
+		long groupId, int status, int start, int end) {
+
+		return getPersistence().findByG_S(groupId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_S(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_S(
+			groupId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_S(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_S(
+			groupId, status, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_S_First(
+			long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_S_First(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_S_First(
+		long groupId, int status, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_S_First(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_S_Last(
+			long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_S_Last(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_S_Last(
+		long groupId, int status, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_S_Last(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_S_PrevAndNext(
+			long dealerId, long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_S_PrevAndNext(
+			dealerId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_S(long groupId, int status) {
+		return getPersistence().filterFindByG_S(groupId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_S(
+		long groupId, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_S(groupId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_S(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_S(
+			groupId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_S_PrevAndNext(
+			long dealerId, long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_S_PrevAndNext(
+			dealerId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public static void removeByG_S(long groupId, int status) {
+		getPersistence().removeByG_S(groupId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_S(long groupId, int status) {
+		return getPersistence().countByG_S(groupId, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_S(long groupId, int status) {
+		return getPersistence().filterCountByG_S(groupId, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_NotS(long groupId, int status) {
+		return getPersistence().findByG_NotS(groupId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_NotS(
+		long groupId, int status, int start, int end) {
+
+		return getPersistence().findByG_NotS(groupId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_NotS(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_NotS(
+			groupId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_NotS(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_NotS(
+			groupId, status, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_NotS_First(
+			long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_NotS_First(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_NotS_First(
+		long groupId, int status, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_NotS_First(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_NotS_Last(
+			long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_NotS_Last(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_NotS_Last(
+		long groupId, int status, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_NotS_Last(
+			groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_NotS_PrevAndNext(
+			long dealerId, long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_NotS_PrevAndNext(
+			dealerId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_NotS(long groupId, int status) {
+		return getPersistence().filterFindByG_NotS(groupId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_NotS(
+		long groupId, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_NotS(groupId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_NotS(
+		long groupId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_NotS(
+			groupId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_NotS_PrevAndNext(
+			long dealerId, long groupId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_NotS_PrevAndNext(
+			dealerId, groupId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 */
+	public static void removeByG_NotS(long groupId, int status) {
+		getPersistence().removeByG_NotS(groupId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_NotS(long groupId, int status) {
+		return getPersistence().countByG_NotS(groupId, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_NotS(long groupId, int status) {
+		return getPersistence().filterCountByG_NotS(groupId, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_U(long companyId, long userId) {
+		return getPersistence().findByC_U(companyId, userId);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_U(
+		long companyId, long userId, int start, int end) {
+
+		return getPersistence().findByC_U(companyId, userId, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U(
+		long companyId, long userId, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_U(
+			companyId, userId, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U(
+		long companyId, long userId, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_U(
+			companyId, userId, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_First(
+			long companyId, long userId,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_First(
+			companyId, userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_First(
+		long companyId, long userId,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_First(
+			companyId, userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_Last(
+			long companyId, long userId,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_Last(
+			companyId, userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_Last(
+		long companyId, long userId,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_Last(
+			companyId, userId, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_U_PrevAndNext(
+			long dealerId, long companyId, long userId,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_PrevAndNext(
+			dealerId, companyId, userId, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and userId = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 */
+	public static void removeByC_U(long companyId, long userId) {
+		getPersistence().removeByC_U(companyId, userId);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and userId = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_U(long companyId, long userId) {
+		return getPersistence().countByC_U(companyId, userId);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_LtD(long companyId, Date displayDate) {
+		return getPersistence().findByC_LtD(companyId, displayDate);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD(
+		long companyId, Date displayDate, int start, int end) {
+
+		return getPersistence().findByC_LtD(companyId, displayDate, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD(
+		long companyId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_LtD(
+			companyId, displayDate, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD(
+		long companyId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_LtD(
+			companyId, displayDate, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_First(
+			long companyId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_First(
+			companyId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_First(
+		long companyId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_First(
+			companyId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_Last(
+			long companyId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_Last(
+			companyId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_Last(
+		long companyId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_Last(
+			companyId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_LtD_PrevAndNext(
+			long dealerId, long companyId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_PrevAndNext(
+			dealerId, companyId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and displayDate &lt; &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 */
+	public static void removeByC_LtD(long companyId, Date displayDate) {
+		getPersistence().removeByC_LtD(companyId, displayDate);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_LtD(long companyId, Date displayDate) {
+		return getPersistence().countByC_LtD(companyId, displayDate);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_S(long companyId, int status) {
+		return getPersistence().findByC_S(companyId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_S(
+		long companyId, int status, int start, int end) {
+
+		return getPersistence().findByC_S(companyId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_S(
+		long companyId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_S(
+			companyId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_S(
+		long companyId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_S(
+			companyId, status, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_S_First(
+			long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_S_First(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_S_First(
+		long companyId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_S_First(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_S_Last(
+			long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_S_Last(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_S_Last(
+		long companyId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_S_Last(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_S_PrevAndNext(
+			long dealerId, long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_S_PrevAndNext(
+			dealerId, companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and status = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 */
+	public static void removeByC_S(long companyId, int status) {
+		getPersistence().removeByC_S(companyId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_S(long companyId, int status) {
+		return getPersistence().countByC_S(companyId, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_NotS(long companyId, int status) {
+		return getPersistence().findByC_NotS(companyId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_NotS(
+		long companyId, int status, int start, int end) {
+
+		return getPersistence().findByC_NotS(companyId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_NotS(
+		long companyId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_NotS(
+			companyId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_NotS(
+		long companyId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_NotS(
+			companyId, status, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_NotS_First(
+			long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_NotS_First(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_NotS_First(
+		long companyId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_NotS_First(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_NotS_Last(
+			long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_NotS_Last(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_NotS_Last(
+		long companyId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_NotS_Last(
+			companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_NotS_PrevAndNext(
+			long dealerId, long companyId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_NotS_PrevAndNext(
+			dealerId, companyId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 */
+	public static void removeByC_NotS(long companyId, int status) {
+		getPersistence().removeByC_NotS(companyId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_NotS(long companyId, int status) {
+		return getPersistence().countByC_NotS(companyId, status);
+	}
+
+	/**
+	 * Returns all the dealers where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByLtD_S(Date displayDate, int status) {
+		return getPersistence().findByLtD_S(displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByLtD_S(
+		Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByLtD_S(displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByLtD_S(
+		Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByLtD_S(
+			displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByLtD_S(
+		Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByLtD_S(
+			displayDate, status, start, end, orderByComparator, useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByLtD_S_First(
+			Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByLtD_S_First(
+			displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByLtD_S_First(
+		Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByLtD_S_First(
+			displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByLtD_S_Last(
+			Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByLtD_S_Last(
+			displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByLtD_S_Last(
+		Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByLtD_S_Last(
+			displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByLtD_S_PrevAndNext(
+			long dealerId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByLtD_S_PrevAndNext(
+			dealerId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where displayDate &lt; &#63; and status = &#63; from the database.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByLtD_S(Date displayDate, int status) {
+		getPersistence().removeByLtD_S(displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByLtD_S(Date displayDate, int status) {
+		return getPersistence().countByLtD_S(displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD(
+		long groupId, long userId, Date displayDate) {
+
+		return getPersistence().findByG_U_LtD(groupId, userId, displayDate);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD(
+		long groupId, long userId, Date displayDate, int start, int end) {
+
+		return getPersistence().findByG_U_LtD(
+			groupId, userId, displayDate, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD(
+		long groupId, long userId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_LtD(
+			groupId, userId, displayDate, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD(
+		long groupId, long userId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_U_LtD(
+			groupId, userId, displayDate, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_First(
+			long groupId, long userId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_First(
+			groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_First(
+		long groupId, long userId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_First(
+			groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_Last(
+			long groupId, long userId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_Last(
+			groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_Last(
+		long groupId, long userId, Date displayDate,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_Last(
+			groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_U_LtD_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_PrevAndNext(
+			dealerId, groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD(
+		long groupId, long userId, Date displayDate) {
+
+		return getPersistence().filterFindByG_U_LtD(
+			groupId, userId, displayDate);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD(
+		long groupId, long userId, Date displayDate, int start, int end) {
+
+		return getPersistence().filterFindByG_U_LtD(
+			groupId, userId, displayDate, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD(
+		long groupId, long userId, Date displayDate, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_LtD(
+			groupId, userId, displayDate, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_U_LtD_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_U_LtD_PrevAndNext(
+			dealerId, groupId, userId, displayDate, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 */
+	public static void removeByG_U_LtD(
+		long groupId, long userId, Date displayDate) {
+
+		getPersistence().removeByG_U_LtD(groupId, userId, displayDate);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_LtD(
+		long groupId, long userId, Date displayDate) {
+
+		return getPersistence().countByG_U_LtD(groupId, userId, displayDate);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_LtD(
+		long groupId, long userId, Date displayDate) {
+
+		return getPersistence().filterCountByG_U_LtD(
+			groupId, userId, displayDate);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int status) {
+
+		return getPersistence().findByG_U_S(groupId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int status, int start, int end) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_S_First(
+			long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_S_First(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_S_First(
+		long groupId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_S_First(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_S_Last(
+			long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_S_Last(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_S_Last(
+		long groupId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_S_Last(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_U_S_PrevAndNext(
+			long dealerId, long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_S_PrevAndNext(
+			dealerId, groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int status) {
+
+		return getPersistence().filterFindByG_U_S(groupId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_U_S(
+			groupId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_S(
+			groupId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_U_S_PrevAndNext(
+			long dealerId, long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_U_S_PrevAndNext(
+			dealerId, groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int[] statuses) {
+
+		return getPersistence().filterFindByG_U_S(groupId, userId, statuses);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int[] statuses, int start, int end) {
+
+		return getPersistence().filterFindByG_U_S(
+			groupId, userId, statuses, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_S(
+		long groupId, long userId, int[] statuses, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_S(
+			groupId, userId, statuses, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int[] statuses) {
+
+		return getPersistence().findByG_U_S(groupId, userId, statuses);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int[] statuses, int start, int end) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, statuses, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int[] statuses, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, statuses, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status = &#63;, optionally using the finder cache.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_S(
+		long groupId, long userId, int[] statuses, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_U_S(
+			groupId, userId, statuses, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and userId = &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 */
+	public static void removeByG_U_S(long groupId, long userId, int status) {
+		getPersistence().removeByG_U_S(groupId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_S(long groupId, long userId, int status) {
+		return getPersistence().countByG_U_S(groupId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_S(long groupId, long userId, int[] statuses) {
+		return getPersistence().countByG_U_S(groupId, userId, statuses);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_S(
+		long groupId, long userId, int status) {
+
+		return getPersistence().filterCountByG_U_S(groupId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status = any &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param statuses the statuses
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_S(
+		long groupId, long userId, int[] statuses) {
+
+		return getPersistence().filterCountByG_U_S(groupId, userId, statuses);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_NotS(
+		long groupId, long userId, int status) {
+
+		return getPersistence().findByG_U_NotS(groupId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_NotS(
+		long groupId, long userId, int status, int start, int end) {
+
+		return getPersistence().findByG_U_NotS(
+			groupId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_NotS(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_NotS(
+			groupId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_NotS(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_U_NotS(
+			groupId, userId, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_NotS_First(
+			long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_NotS_First(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_NotS_First(
+		long groupId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_NotS_First(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_NotS_Last(
+			long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_NotS_Last(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_NotS_Last(
+		long groupId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_NotS_Last(
+			groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_U_NotS_PrevAndNext(
+			long dealerId, long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_NotS_PrevAndNext(
+			dealerId, groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_NotS(
+		long groupId, long userId, int status) {
+
+		return getPersistence().filterFindByG_U_NotS(groupId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_NotS(
+		long groupId, long userId, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_U_NotS(
+			groupId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_NotS(
+		long groupId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_NotS(
+			groupId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_U_NotS_PrevAndNext(
+			long dealerId, long groupId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_U_NotS_PrevAndNext(
+			dealerId, groupId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and userId = &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 */
+	public static void removeByG_U_NotS(long groupId, long userId, int status) {
+		getPersistence().removeByG_U_NotS(groupId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_NotS(long groupId, long userId, int status) {
+		return getPersistence().countByG_U_NotS(groupId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_NotS(
+		long groupId, long userId, int status) {
+
+		return getPersistence().filterCountByG_U_NotS(groupId, userId, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_D_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().findByG_D_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_D_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByG_D_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_D_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_D_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_D_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_D_S(
+			groupId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_D_S_First(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_D_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_D_S_First(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_D_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_D_S_Last(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_D_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_D_S_Last(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_D_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_D_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_D_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_D_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_D_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_D_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_D_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_D_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_D_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_D_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_D_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and displayDate = &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_D_S(
+		long groupId, Date displayDate, int status) {
+
+		getPersistence().removeByG_D_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_D_S(long groupId, Date displayDate, int status) {
+		return getPersistence().countByG_D_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and displayDate = &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_D_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_D_S(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_GtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().findByG_GtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_GtD_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByG_GtD_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_GtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_GtD_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_GtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_GtD_S(
+			groupId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_GtD_S_First(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_GtD_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_GtD_S_First(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_GtD_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_GtD_S_Last(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_GtD_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_GtD_S_Last(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_GtD_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_GtD_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_GtD_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_GtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_GtD_S(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_GtD_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_GtD_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_GtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_GtD_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_GtD_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_GtD_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_GtD_S(
+		long groupId, Date displayDate, int status) {
+
+		getPersistence().removeByG_GtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_GtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().countByG_GtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and displayDate &gt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_GtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_GtD_S(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().findByG_LtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByG_LtD_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_LtD_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_LtD_S(
+			groupId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_S_First(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_S_First(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_S_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_S_Last(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_S_Last(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_S_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_LtD_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_LtD_S(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_S(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_LtD_S(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_S(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_LtD_S(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_LtD_S_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_LtD_S_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_LtD_S(
+		long groupId, Date displayDate, int status) {
+
+		getPersistence().removeByG_LtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_LtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().countByG_LtD_S(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_LtD_S(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_LtD_S(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_NotS(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().findByG_LtD_NotS(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_NotS(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByG_LtD_NotS(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_NotS(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_LtD_NotS(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_LtD_NotS(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByG_LtD_NotS(
+			groupId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_NotS_First(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_NotS_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_NotS_First(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_NotS_First(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_LtD_NotS_Last(
+			long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_NotS_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_LtD_NotS_Last(
+		long groupId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_LtD_NotS_Last(
+			groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_LtD_NotS_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_LtD_NotS_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_NotS(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_LtD_NotS(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_NotS(
+		long groupId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().filterFindByG_LtD_NotS(
+			groupId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_LtD_NotS(
+		long groupId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_LtD_NotS(
+			groupId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_LtD_NotS_PrevAndNext(
+			long dealerId, long groupId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_LtD_NotS_PrevAndNext(
+			dealerId, groupId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_LtD_NotS(
+		long groupId, Date displayDate, int status) {
+
+		getPersistence().removeByG_LtD_NotS(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_LtD_NotS(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().countByG_LtD_NotS(groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_LtD_NotS(
+		long groupId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_LtD_NotS(
+			groupId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_U_S(
+		long companyId, long userId, int status) {
+
+		return getPersistence().findByC_U_S(companyId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_S(
+		long companyId, long userId, int status, int start, int end) {
+
+		return getPersistence().findByC_U_S(
+			companyId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_S(
+		long companyId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_U_S(
+			companyId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_S(
+		long companyId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_U_S(
+			companyId, userId, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_S_First(
+			long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_S_First(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_S_First(
+		long companyId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_S_First(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_S_Last(
+			long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_S_Last(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_S_Last(
+		long companyId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_S_Last(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_U_S_PrevAndNext(
+			long dealerId, long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_S_PrevAndNext(
+			dealerId, companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and userId = &#63; and status = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 */
+	public static void removeByC_U_S(long companyId, long userId, int status) {
+		getPersistence().removeByC_U_S(companyId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and userId = &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_U_S(long companyId, long userId, int status) {
+		return getPersistence().countByC_U_S(companyId, userId, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_U_NotS(
+		long companyId, long userId, int status) {
+
+		return getPersistence().findByC_U_NotS(companyId, userId, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_NotS(
+		long companyId, long userId, int status, int start, int end) {
+
+		return getPersistence().findByC_U_NotS(
+			companyId, userId, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_NotS(
+		long companyId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_U_NotS(
+			companyId, userId, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_U_NotS(
+		long companyId, long userId, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_U_NotS(
+			companyId, userId, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_NotS_First(
+			long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_NotS_First(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_NotS_First(
+		long companyId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_NotS_First(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_U_NotS_Last(
+			long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_NotS_Last(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_U_NotS_Last(
+		long companyId, long userId, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_U_NotS_Last(
+			companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_U_NotS_PrevAndNext(
+			long dealerId, long companyId, long userId, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_U_NotS_PrevAndNext(
+			dealerId, companyId, userId, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and userId = &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 */
+	public static void removeByC_U_NotS(
+		long companyId, long userId, int status) {
+
+		getPersistence().removeByC_U_NotS(companyId, userId, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and userId = &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param userId the user ID
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_U_NotS(long companyId, long userId, int status) {
+		return getPersistence().countByC_U_NotS(companyId, userId, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_S(
+		long companyId, Date displayDate, int status) {
+
+		return getPersistence().findByC_LtD_S(companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_S(
+		long companyId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByC_LtD_S(
+			companyId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_S(
+		long companyId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_LtD_S(
+			companyId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_S(
+		long companyId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_LtD_S(
+			companyId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_S_First(
+			long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_S_First(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_S_First(
+		long companyId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_S_First(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_S_Last(
+			long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_S_Last(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_S_Last(
+		long companyId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_S_Last(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_LtD_S_PrevAndNext(
+			long dealerId, long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_S_PrevAndNext(
+			dealerId, companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByC_LtD_S(
+		long companyId, Date displayDate, int status) {
+
+		getPersistence().removeByC_LtD_S(companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_LtD_S(
+		long companyId, Date displayDate, int status) {
+
+		return getPersistence().countByC_LtD_S(companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_NotS(
+		long companyId, Date displayDate, int status) {
+
+		return getPersistence().findByC_LtD_NotS(
+			companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_NotS(
+		long companyId, Date displayDate, int status, int start, int end) {
+
+		return getPersistence().findByC_LtD_NotS(
+			companyId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_NotS(
+		long companyId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByC_LtD_NotS(
+			companyId, displayDate, status, start, end, orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByC_LtD_NotS(
+		long companyId, Date displayDate, int status, int start, int end,
+		OrderByComparator<Dealer> orderByComparator, boolean useFinderCache) {
+
+		return getPersistence().findByC_LtD_NotS(
+			companyId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_NotS_First(
+			long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_NotS_First(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_NotS_First(
+		long companyId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_NotS_First(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByC_LtD_NotS_Last(
+			long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_NotS_Last(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByC_LtD_NotS_Last(
+		long companyId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByC_LtD_NotS_Last(
+			companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByC_LtD_NotS_PrevAndNext(
+			long dealerId, long companyId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByC_LtD_NotS_PrevAndNext(
+			dealerId, companyId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByC_LtD_NotS(
+		long companyId, Date displayDate, int status) {
+
+		getPersistence().removeByC_LtD_NotS(companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where companyId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param companyId the company ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByC_LtD_NotS(
+		long companyId, Date displayDate, int status) {
+
+		return getPersistence().countByC_LtD_NotS(
+			companyId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().findByG_U_LtD_S(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end) {
+
+		return getPersistence().findByG_U_LtD_S(
+			groupId, userId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_LtD_S(
+			groupId, userId, displayDate, status, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByG_U_LtD_S(
+			groupId, userId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_S_First(
+			long groupId, long userId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_S_First(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_S_First(
+		long groupId, long userId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_S_First(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_S_Last(
+			long groupId, long userId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_S_Last(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_S_Last(
+		long groupId, long userId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_S_Last(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_U_LtD_S_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			int status, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_S_PrevAndNext(
+			dealerId, groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_U_LtD_S(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end) {
+
+		return getPersistence().filterFindByG_U_LtD_S(
+			groupId, userId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_LtD_S(
+			groupId, userId, displayDate, status, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_U_LtD_S_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			int status, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_U_LtD_S_PrevAndNext(
+			dealerId, groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status) {
+
+		getPersistence().removeByG_U_LtD_S(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().countByG_U_LtD_S(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status = &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_LtD_S(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_U_LtD_S(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().findByG_U_LtD_NotS(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end) {
+
+		return getPersistence().findByG_U_LtD_NotS(
+			groupId, userId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().findByG_U_LtD_NotS(
+			groupId, userId, displayDate, status, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @param useFinderCache whether to use the finder cache
+	 * @return the ordered range of matching dealers
+	 */
+	public static List<Dealer> findByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator,
+		boolean useFinderCache) {
+
+		return getPersistence().findByG_U_LtD_NotS(
+			groupId, userId, displayDate, status, start, end, orderByComparator,
+			useFinderCache);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_NotS_First(
+			long groupId, long userId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_NotS_First(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the first dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the first matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_NotS_First(
+		long groupId, long userId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_NotS_First(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer
+	 * @throws NoSuchDealerException if a matching dealer could not be found
+	 */
+	public static Dealer findByG_U_LtD_NotS_Last(
+			long groupId, long userId, Date displayDate, int status,
+			OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_NotS_Last(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the last dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the last matching dealer, or <code>null</code> if a matching dealer could not be found
+	 */
+	public static Dealer fetchByG_U_LtD_NotS_Last(
+		long groupId, long userId, Date displayDate, int status,
+		OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().fetchByG_U_LtD_NotS_Last(
+			groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] findByG_U_LtD_NotS_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			int status, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().findByG_U_LtD_NotS_PrevAndNext(
+			dealerId, groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Returns all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().filterFindByG_U_LtD_NotS(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns a range of all the dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @return the range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end) {
+
+		return getPersistence().filterFindByG_U_LtD_NotS(
+			groupId, userId, displayDate, status, start, end);
+	}
+
+	/**
+	 * Returns an ordered range of all the dealers that the user has permissions to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * <p>
+	 * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to <code>QueryUtil#ALL_POS</code> will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent, then the query will include the default ORDER BY logic from <code>DealerModelImpl</code>.
+	 * </p>
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param start the lower bound of the range of dealers
+	 * @param end the upper bound of the range of dealers (not inclusive)
+	 * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	 * @return the ordered range of matching dealers that the user has permission to view
+	 */
+	public static List<Dealer> filterFindByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status, int start,
+		int end, OrderByComparator<Dealer> orderByComparator) {
+
+		return getPersistence().filterFindByG_U_LtD_NotS(
+			groupId, userId, displayDate, status, start, end,
+			orderByComparator);
+	}
+
+	/**
+	 * Returns the dealers before and after the current dealer in the ordered set of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param dealerId the primary key of the current dealer
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	 * @return the previous, current, and next dealer
+	 * @throws NoSuchDealerException if a dealer with the primary key could not be found
+	 */
+	public static Dealer[] filterFindByG_U_LtD_NotS_PrevAndNext(
+			long dealerId, long groupId, long userId, Date displayDate,
+			int status, OrderByComparator<Dealer> orderByComparator)
+		throws com.liferay.raybia.dealer.exception.NoSuchDealerException {
+
+		return getPersistence().filterFindByG_U_LtD_NotS_PrevAndNext(
+			dealerId, groupId, userId, displayDate, status, orderByComparator);
+	}
+
+	/**
+	 * Removes all the dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63; from the database.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 */
+	public static void removeByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status) {
+
+		getPersistence().removeByG_U_LtD_NotS(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers
+	 */
+	public static int countByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().countByG_U_LtD_NotS(
+			groupId, userId, displayDate, status);
+	}
+
+	/**
+	 * Returns the number of dealers that the user has permission to view where groupId = &#63; and userId = &#63; and displayDate &lt; &#63; and status &ne; &#63;.
+	 *
+	 * @param groupId the group ID
+	 * @param userId the user ID
+	 * @param displayDate the display date
+	 * @param status the status
+	 * @return the number of matching dealers that the user has permission to view
+	 */
+	public static int filterCountByG_U_LtD_NotS(
+		long groupId, long userId, Date displayDate, int status) {
+
+		return getPersistence().filterCountByG_U_LtD_NotS(
+			groupId, userId, displayDate, status);
 	}
 
 	/**

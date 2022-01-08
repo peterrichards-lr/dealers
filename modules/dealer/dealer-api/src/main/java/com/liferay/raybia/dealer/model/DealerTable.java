@@ -70,6 +70,16 @@ public class DealerTable extends BaseTable<DealerTable> {
 		"latitude", BigDecimal.class, Types.DECIMAL, Column.FLAG_DEFAULT);
 	public final Column<DealerTable, BigDecimal> longitude = createColumn(
 		"longitude", BigDecimal.class, Types.DECIMAL, Column.FLAG_DEFAULT);
+	public final Column<DealerTable, Date> displayDate = createColumn(
+		"displayDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
+	public final Column<DealerTable, Integer> status = createColumn(
+		"status", Integer.class, Types.INTEGER, Column.FLAG_DEFAULT);
+	public final Column<DealerTable, Long> statusByUserId = createColumn(
+		"statusByUserId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<DealerTable, String> statusByUserName = createColumn(
+		"statusByUserName", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<DealerTable, Date> statusDate = createColumn(
+		"statusDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 
 	private DealerTable() {
 		super("Raybia_Dealer", DealerTable::new);

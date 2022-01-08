@@ -3,6 +3,7 @@ package com.liferay.raybia.dealer.validator.impl;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.MapUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.postcodes.exception.PostcodeValidationException;
 import com.liferay.postcodes.validator.PostcodeValidator;
 import com.liferay.raybia.dealer.exception.DealerValidationException;
@@ -23,13 +24,13 @@ public class DealerValidatorImpl implements DealerValidator {
 	@Override
 	public void validate(Map<Locale, String> nameMap, Map<Locale, String> streetMap, Map<Locale, String> localityMap,
 			Map<Locale, String> stateMap, String postalCode, String emailAddress, String phoneNumber,
-			Map<Locale, String> openingHoursMap, BigDecimal latitude, BigDecimal longitude)
+			Map<Locale, String> openingHoursMap, BigDecimal latitude, BigDecimal longitude, int status)
 			throws DealerValidationException {
 
 		List<String> errors = new ArrayList<>();
 
 		if (!isDealerValid(nameMap, streetMap, localityMap, stateMap, postalCode, emailAddress, phoneNumber,
-				openingHoursMap, latitude, longitude, errors)) {
+				openingHoursMap, latitude, longitude, status, errors)) {
 			throw new DealerValidationException(errors);
 		}
 
@@ -38,26 +39,26 @@ public class DealerValidatorImpl implements DealerValidator {
 	private boolean isDealerValid(Map<Locale, String> nameMap, Map<Locale, String> streetMap,
 			Map<Locale, String> localityMap, Map<Locale, String> stateMap, String postalCode, String emailAddress,
 			String phoneNumber, Map<Locale, String> openingHoursMap, BigDecimal latitude, BigDecimal longitude,
-			List<String> errors) {
+			int status, List<String> errors) {
 
 		boolean result = true;
 
-		result &= isNameValid(nameMap, errors);
-		result &= isStreetValid(streetMap, errors);
-		result &= isLocalityValid(localityMap, errors);
-		result &= isStateValid(stateMap, errors);
-		result &= isPostalCodeValid(postalCode, errors);
-		result &= isEmailAddressValid(emailAddress, errors);
-		result &= isPhoneNumberValid(phoneNumber, errors);
-		result &= isOpenHoursValid(openingHoursMap, errors);
-		result &= isLatitudeValid(latitude, errors);
-		result &= isLongitudeValid(longitude, errors);
+		result &= isNameValid(nameMap, status, errors);
+		result &= isStreetValid(streetMap, status, errors);
+		result &= isLocalityValid(localityMap, status, errors);
+		result &= isStateValid(stateMap, status, errors);
+		result &= isPostalCodeValid(postalCode, status, errors);
+		result &= isEmailAddressValid(emailAddress, status, errors);
+		result &= isPhoneNumberValid(phoneNumber, status, errors);
+		result &= isOpenHoursValid(openingHoursMap, status, errors);
+		result &= isLatitudeValid(latitude, status, errors);
+		result &= isLongitudeValid(longitude, status, errors);
 
 		return result;
 	}
 
-	private boolean isLongitudeValid(BigDecimal longitude, List<String> errors) {
-		if (Validator.isNull(longitude)) {
+	private boolean isLongitudeValid(BigDecimal longitude, int status, List<String> errors) {
+		if (status == WorkflowConstants.STATUS_APPROVED && Validator.isNull(longitude)) {
 			errors.add("dealerLongitudeEmpty");
 			return false;
 		}
@@ -71,8 +72,8 @@ public class DealerValidatorImpl implements DealerValidator {
 		return false;
 	}
 
-	private boolean isLatitudeValid(BigDecimal latitude, List<String> errors) {
-		if (Validator.isNull(latitude)) {
+	private boolean isLatitudeValid(BigDecimal latitude, int status, List<String> errors) {
+		if (status == WorkflowConstants.STATUS_APPROVED && Validator.isNull(latitude)) {
 			errors.add("dealerLatitudeEmpty");
 			return false;
 		}
@@ -86,11 +87,11 @@ public class DealerValidatorImpl implements DealerValidator {
 		return false;
 	}
 
-	private boolean isOpenHoursValid(Map<Locale, String> stateMap, List<String> errors) {
+	private boolean isOpenHoursValid(Map<Locale, String> stateMap, int status, List<String> errors) {
 		return true;
 	}
 
-	private boolean isPhoneNumberValid(String phoneNumber, List<String> errors) {
+	private boolean isPhoneNumberValid(String phoneNumber, int status, List<String> errors) {
 		if (Validator.isBlank(phoneNumber))
 			return true;
 
@@ -101,7 +102,7 @@ public class DealerValidatorImpl implements DealerValidator {
 		return false;
 	}
 
-	private boolean isEmailAddressValid(String emailAddress, List<String> errors) {
+	private boolean isEmailAddressValid(String emailAddress, int status, List<String> errors) {
 		if (Validator.isBlank(emailAddress))
 			return true;
 
@@ -112,12 +113,12 @@ public class DealerValidatorImpl implements DealerValidator {
 		return false;
 	}
 
-	private boolean isStateValid(Map<Locale, String> stateMap, List<String> errors) {
+	private boolean isStateValid(Map<Locale, String> stateMap, int status, List<String> errors) {
 		boolean result = true;
 
 		// Verify the map has something
 
-		if (MapUtil.isEmpty(stateMap)) {
+		if (status == WorkflowConstants.STATUS_APPROVED && MapUtil.isEmpty(stateMap)) {
 			errors.add("dealerStateEmpty");
 			result = false;
 		} else {
@@ -134,8 +135,8 @@ public class DealerValidatorImpl implements DealerValidator {
 		return result;
 	}
 
-	private boolean isPostalCodeValid(String postalCode, List<String> errors) {
-		if (Validator.isBlank(postalCode)) {
+	private boolean isPostalCodeValid(String postalCode, int status, List<String> errors) {
+		if (status == WorkflowConstants.STATUS_APPROVED && Validator.isBlank(postalCode)) {
 			errors.add("dealerPostalCodeEmpty");
 			return false;
 		}
@@ -149,12 +150,12 @@ public class DealerValidatorImpl implements DealerValidator {
 		}
 	}
 
-	private boolean isNameValid(Map<Locale, String> nameMap, List<String> errors) {
+	private boolean isNameValid(Map<Locale, String> nameMap, int status, List<String> errors) {
 		boolean result = true;
 
 		// Verify the map has something
 
-		if (MapUtil.isEmpty(nameMap)) {
+		if (status == WorkflowConstants.STATUS_APPROVED && MapUtil.isEmpty(nameMap)) {
 			errors.add("dealerNameEmpty");
 			result = false;
 		} else {
@@ -171,11 +172,11 @@ public class DealerValidatorImpl implements DealerValidator {
 		return result;
 	}
 
-	private boolean isStreetValid(Map<Locale, String> streetMap, List<String> errors) {
+	private boolean isStreetValid(Map<Locale, String> streetMap, int status, List<String> errors) {
 		return true;
 	}
 
-	private boolean isLocalityValid(Map<Locale, String> localityMap, List<String> errors) {
+	private boolean isLocalityValid(Map<Locale, String> localityMap, int status, List<String> errors) {
 		return true;
 	}
 

@@ -6,6 +6,7 @@ import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.raybia.dealer.model.DistanceUnitOfMeasure;
 import com.liferay.raybia.dealer.model.NearestDealer;
 import com.liferay.raybia.dealer.model.impl.NearestDealerImpl;
@@ -42,6 +43,7 @@ public class NearestDealerFinderImpl extends NearestDealerFinderBaseImpl
 	        qPos.add(latitude);
 	        qPos.add(longitude);
 	        qPos.add(latitude); // Latitude is used twice in the query
+	        qPos.add(WorkflowConstants.STATUS_APPROVED);
 	        qPos.add(distance);
 
 	        return (List<NearestDealer>) QueryUtil.list(q, getDialect(), 0, limit);
@@ -82,6 +84,7 @@ public class NearestDealerFinderImpl extends NearestDealerFinderBaseImpl
 	        qPos.add(longitude);
 	        qPos.add(latitude); // Latitude is used twice in the query
 	        qPos.add(groupId);
+	        qPos.add(WorkflowConstants.STATUS_APPROVED);
 	        qPos.add(distance);
 
 	        return (List<NearestDealer>) QueryUtil.list(q, getDialect(), 0, limit);

@@ -62,7 +62,7 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(37);
+		StringBundler sb = new StringBundler(47);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -100,6 +100,16 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 		sb.append(latitude);
 		sb.append(", longitude=");
 		sb.append(longitude);
+		sb.append(", displayDate=");
+		sb.append(displayDate);
+		sb.append(", status=");
+		sb.append(status);
+		sb.append(", statusByUserId=");
+		sb.append(statusByUserId);
+		sb.append(", statusByUserName=");
+		sb.append(statusByUserName);
+		sb.append(", statusDate=");
+		sb.append(statusDate);
 		sb.append("}");
 
 		return sb.toString();
@@ -201,6 +211,30 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 		dealerImpl.setLatitude(latitude);
 		dealerImpl.setLongitude(longitude);
 
+		if (displayDate == Long.MIN_VALUE) {
+			dealerImpl.setDisplayDate(null);
+		}
+		else {
+			dealerImpl.setDisplayDate(new Date(displayDate));
+		}
+
+		dealerImpl.setStatus(status);
+		dealerImpl.setStatusByUserId(statusByUserId);
+
+		if (statusByUserName == null) {
+			dealerImpl.setStatusByUserName("");
+		}
+		else {
+			dealerImpl.setStatusByUserName(statusByUserName);
+		}
+
+		if (statusDate == Long.MIN_VALUE) {
+			dealerImpl.setStatusDate(null);
+		}
+		else {
+			dealerImpl.setStatusDate(new Date(statusDate));
+		}
+
 		dealerImpl.resetOriginalValues();
 
 		return dealerImpl;
@@ -232,6 +266,13 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 		openingHours = objectInput.readUTF();
 		latitude = (BigDecimal)objectInput.readObject();
 		longitude = (BigDecimal)objectInput.readObject();
+		displayDate = objectInput.readLong();
+
+		status = objectInput.readInt();
+
+		statusByUserId = objectInput.readLong();
+		statusByUserName = objectInput.readUTF();
+		statusDate = objectInput.readLong();
 	}
 
 	@Override
@@ -319,6 +360,20 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 
 		objectOutput.writeObject(latitude);
 		objectOutput.writeObject(longitude);
+		objectOutput.writeLong(displayDate);
+
+		objectOutput.writeInt(status);
+
+		objectOutput.writeLong(statusByUserId);
+
+		if (statusByUserName == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(statusByUserName);
+		}
+
+		objectOutput.writeLong(statusDate);
 	}
 
 	public String uuid;
@@ -339,5 +394,10 @@ public class DealerCacheModel implements CacheModel<Dealer>, Externalizable {
 	public String openingHours;
 	public BigDecimal latitude;
 	public BigDecimal longitude;
+	public long displayDate;
+	public int status;
+	public long statusByUserId;
+	public String statusByUserName;
+	public long statusDate;
 
 }

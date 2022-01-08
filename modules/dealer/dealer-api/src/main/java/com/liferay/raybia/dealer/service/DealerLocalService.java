@@ -41,6 +41,7 @@ import java.io.Serializable;
 
 import java.math.BigDecimal;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -86,6 +87,16 @@ public interface DealerLocalService
 
 	@Indexable(type = IndexableType.REINDEX)
 	@SystemEvent(type = SystemEventConstants.TYPE_DEFAULT)
+	public Dealer addDealer(
+			long groupId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, BigDecimal latitude,
+			BigDecimal longitude, Date displayDate,
+			ServiceContext serviceContext)
+		throws PortalException;
+
 	public Dealer addDealer(
 			long groupId, Map<Locale, String> nameMap,
 			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
@@ -344,6 +355,11 @@ public interface DealerLocalService
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
 
+	public void updateAsset(
+			long userId, Dealer entry, long[] assetCategoryIds,
+			String[] assetTagNames, long[] assetLinkEntryIds, Double priority)
+		throws PortalException;
+
 	/**
 	 * Updates the dealer in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
@@ -365,7 +381,32 @@ public interface DealerLocalService
 			Map<Locale, String> stateMap, String postalCode,
 			String emailAddress, String phoneNumber,
 			Map<Locale, String> openingHoursMap, BigDecimal latitude,
+			BigDecimal longitude, Date displayDate,
+			ServiceContext serviceContext)
+		throws PortalException;
+
+	public Dealer updateDealer(
+			long dealerId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, BigDecimal latitude,
 			BigDecimal longitude, ServiceContext serviceContext)
+		throws PortalException;
+
+	public Dealer updateDealer(
+			long dealerId, Map<Locale, String> nameMap,
+			Map<Locale, String> streetMap, Map<Locale, String> localityMap,
+			Map<Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<Locale, String> openingHoursMap, ServiceContext serviceContext)
+		throws PortalException;
+
+	@Indexable(type = IndexableType.REINDEX)
+	public Dealer updateStatus(
+			long userId, long dealerId, int status,
+			ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext)
 		throws PortalException;
 
 }

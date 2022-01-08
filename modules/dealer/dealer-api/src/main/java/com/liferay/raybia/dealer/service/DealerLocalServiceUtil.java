@@ -68,6 +68,24 @@ public class DealerLocalServiceUtil {
 			String emailAddress, String phoneNumber,
 			Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().addDealer(
+			groupId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	public static Dealer addDealer(
+			long groupId, Map<java.util.Locale, String> nameMap,
+			Map<java.util.Locale, String> streetMap,
+			Map<java.util.Locale, String> localityMap,
+			Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
@@ -390,6 +408,16 @@ public class DealerLocalServiceUtil {
 		return getService().getPersistedModel(primaryKeyObj);
 	}
 
+	public static void updateAsset(
+			long userId, Dealer entry, long[] assetCategoryIds,
+			String[] assetTagNames, long[] assetLinkEntryIds, Double priority)
+		throws PortalException {
+
+		getService().updateAsset(
+			userId, entry, assetCategoryIds, assetTagNames, assetLinkEntryIds,
+			priority);
+	}
+
 	/**
 	 * Updates the dealer in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	 *
@@ -412,6 +440,24 @@ public class DealerLocalServiceUtil {
 			String emailAddress, String phoneNumber,
 			Map<java.util.Locale, String> openingHoursMap,
 			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
+			displayDate, serviceContext);
+	}
+
+	public static Dealer updateDealer(
+			long dealerId, Map<java.util.Locale, String> nameMap,
+			Map<java.util.Locale, String> streetMap,
+			Map<java.util.Locale, String> localityMap,
+			Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
@@ -419,6 +465,31 @@ public class DealerLocalServiceUtil {
 			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
 			emailAddress, phoneNumber, openingHoursMap, latitude, longitude,
 			serviceContext);
+	}
+
+	public static Dealer updateDealer(
+			long dealerId, Map<java.util.Locale, String> nameMap,
+			Map<java.util.Locale, String> streetMap,
+			Map<java.util.Locale, String> localityMap,
+			Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			Map<java.util.Locale, String> openingHoursMap,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updateDealer(
+			dealerId, nameMap, streetMap, localityMap, stateMap, postalCode,
+			emailAddress, phoneNumber, openingHoursMap, serviceContext);
+	}
+
+	public static Dealer updateStatus(
+			long userId, long dealerId, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext,
+			Map<String, Serializable> workflowContext)
+		throws PortalException {
+
+		return getService().updateStatus(
+			userId, dealerId, status, serviceContext, workflowContext);
 	}
 
 	public static DealerLocalService getService() {

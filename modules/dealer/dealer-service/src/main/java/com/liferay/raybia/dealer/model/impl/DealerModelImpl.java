@@ -35,6 +35,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.raybia.dealer.model.Dealer;
 import com.liferay.raybia.dealer.model.DealerModel;
 import com.liferay.raybia.dealer.model.DealerSoap;
@@ -94,7 +95,10 @@ public class DealerModelImpl
 		{"locality", Types.VARCHAR}, {"state_", Types.VARCHAR},
 		{"postalCode", Types.VARCHAR}, {"emailAddress", Types.VARCHAR},
 		{"phoneNumber", Types.VARCHAR}, {"openingHours", Types.VARCHAR},
-		{"latitude", Types.DECIMAL}, {"longitude", Types.DECIMAL}
+		{"latitude", Types.DECIMAL}, {"longitude", Types.DECIMAL},
+		{"displayDate", Types.TIMESTAMP}, {"status", Types.INTEGER},
+		{"statusByUserId", Types.BIGINT}, {"statusByUserName", Types.VARCHAR},
+		{"statusDate", Types.TIMESTAMP}
 	};
 
 	public static final Map<String, Integer> TABLE_COLUMNS_MAP =
@@ -119,10 +123,15 @@ public class DealerModelImpl
 		TABLE_COLUMNS_MAP.put("openingHours", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("latitude", Types.DECIMAL);
 		TABLE_COLUMNS_MAP.put("longitude", Types.DECIMAL);
+		TABLE_COLUMNS_MAP.put("displayDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("status", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("statusByUserId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("statusByUserName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("statusDate", Types.TIMESTAMP);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table Raybia_Dealer (uuid_ VARCHAR(75) null,dealerId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name STRING null,street STRING null,locality STRING null,state_ STRING null,postalCode VARCHAR(75) null,emailAddress VARCHAR(75) null,phoneNumber VARCHAR(75) null,openingHours STRING null,latitude DECIMAL(30, 16) null,longitude DECIMAL(30, 16) null)";
+		"create table Raybia_Dealer (uuid_ VARCHAR(75) null,dealerId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name STRING null,street STRING null,locality STRING null,state_ STRING null,postalCode VARCHAR(75) null,emailAddress VARCHAR(75) null,phoneNumber VARCHAR(75) null,openingHours STRING null,latitude DECIMAL(30, 16) null,longitude DECIMAL(30, 16) null,displayDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null)";
 
 	public static final String TABLE_SQL_DROP = "drop table Raybia_Dealer";
 
@@ -147,20 +156,38 @@ public class DealerModelImpl
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long GROUPID_COLUMN_BITMASK = 2L;
+	public static final long DISPLAYDATE_COLUMN_BITMASK = 2L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long UUID_COLUMN_BITMASK = 4L;
+	public static final long GROUPID_COLUMN_BITMASK = 4L;
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
+	 */
+	@Deprecated
+	public static final long STATUS_COLUMN_BITMASK = 8L;
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
+	 */
+	@Deprecated
+	public static final long USERID_COLUMN_BITMASK = 16L;
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link #getColumnBitmask(String)}
+	 */
+	@Deprecated
+	public static final long UUID_COLUMN_BITMASK = 32L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
 	 *		#getColumnBitmask(String)}
 	 */
 	@Deprecated
-	public static final long NAME_COLUMN_BITMASK = 8L;
+	public static final long NAME_COLUMN_BITMASK = 64L;
 
 	/**
 	 * @deprecated As of Athanasius (7.3.x), with no direct replacement
@@ -209,6 +236,11 @@ public class DealerModelImpl
 		model.setOpeningHours(soapModel.getOpeningHours());
 		model.setLatitude(soapModel.getLatitude());
 		model.setLongitude(soapModel.getLongitude());
+		model.setDisplayDate(soapModel.getDisplayDate());
+		model.setStatus(soapModel.getStatus());
+		model.setStatusByUserId(soapModel.getStatusByUserId());
+		model.setStatusByUserName(soapModel.getStatusByUserName());
+		model.setStatusDate(soapModel.getStatusDate());
 
 		return model;
 	}
@@ -410,6 +442,25 @@ public class DealerModelImpl
 		attributeGetterFunctions.put("longitude", Dealer::getLongitude);
 		attributeSetterBiConsumers.put(
 			"longitude", (BiConsumer<Dealer, BigDecimal>)Dealer::setLongitude);
+		attributeGetterFunctions.put("displayDate", Dealer::getDisplayDate);
+		attributeSetterBiConsumers.put(
+			"displayDate", (BiConsumer<Dealer, Date>)Dealer::setDisplayDate);
+		attributeGetterFunctions.put("status", Dealer::getStatus);
+		attributeSetterBiConsumers.put(
+			"status", (BiConsumer<Dealer, Integer>)Dealer::setStatus);
+		attributeGetterFunctions.put(
+			"statusByUserId", Dealer::getStatusByUserId);
+		attributeSetterBiConsumers.put(
+			"statusByUserId",
+			(BiConsumer<Dealer, Long>)Dealer::setStatusByUserId);
+		attributeGetterFunctions.put(
+			"statusByUserName", Dealer::getStatusByUserName);
+		attributeSetterBiConsumers.put(
+			"statusByUserName",
+			(BiConsumer<Dealer, String>)Dealer::setStatusByUserName);
+		attributeGetterFunctions.put("statusDate", Dealer::getStatusDate);
+		attributeSetterBiConsumers.put(
+			"statusDate", (BiConsumer<Dealer, Date>)Dealer::setStatusDate);
 
 		_attributeGetterFunctions = Collections.unmodifiableMap(
 			attributeGetterFunctions);
@@ -539,6 +590,15 @@ public class DealerModelImpl
 
 	@Override
 	public void setUserUuid(String userUuid) {
+	}
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 *             #getColumnOriginalValue(String)}
+	 */
+	@Deprecated
+	public long getOriginalUserId() {
+		return GetterUtil.getLong(this.<Long>getColumnOriginalValue("userId"));
 	}
 
 	@JSON
@@ -1237,10 +1297,205 @@ public class DealerModelImpl
 		_longitude = longitude;
 	}
 
+	@JSON
+	@Override
+	public Date getDisplayDate() {
+		return _displayDate;
+	}
+
+	@Override
+	public void setDisplayDate(Date displayDate) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_displayDate = displayDate;
+	}
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 *             #getColumnOriginalValue(String)}
+	 */
+	@Deprecated
+	public Date getOriginalDisplayDate() {
+		return getColumnOriginalValue("displayDate");
+	}
+
+	@JSON
+	@Override
+	public int getStatus() {
+		return _status;
+	}
+
+	@Override
+	public void setStatus(int status) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_status = status;
+	}
+
+	/**
+	 * @deprecated As of Athanasius (7.3.x), replaced by {@link
+	 *             #getColumnOriginalValue(String)}
+	 */
+	@Deprecated
+	public int getOriginalStatus() {
+		return GetterUtil.getInteger(
+			this.<Integer>getColumnOriginalValue("status"));
+	}
+
+	@JSON
+	@Override
+	public long getStatusByUserId() {
+		return _statusByUserId;
+	}
+
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusByUserId = statusByUserId;
+	}
+
+	@Override
+	public String getStatusByUserUuid() {
+		try {
+			User user = UserLocalServiceUtil.getUserById(getStatusByUserId());
+
+			return user.getUuid();
+		}
+		catch (PortalException portalException) {
+			return "";
+		}
+	}
+
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid) {
+	}
+
+	@JSON
+	@Override
+	public String getStatusByUserName() {
+		if (_statusByUserName == null) {
+			return "";
+		}
+		else {
+			return _statusByUserName;
+		}
+	}
+
+	@Override
+	public void setStatusByUserName(String statusByUserName) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusByUserName = statusByUserName;
+	}
+
+	@JSON
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusDate = statusDate;
+	}
+
 	@Override
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
 			PortalUtil.getClassNameId(Dealer.class.getName()));
+	}
+
+	@Override
+	public boolean isApproved() {
+		if (getStatus() == WorkflowConstants.STATUS_APPROVED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDenied() {
+		if (getStatus() == WorkflowConstants.STATUS_DENIED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDraft() {
+		if (getStatus() == WorkflowConstants.STATUS_DRAFT) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isExpired() {
+		if (getStatus() == WorkflowConstants.STATUS_EXPIRED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isInactive() {
+		if (getStatus() == WorkflowConstants.STATUS_INACTIVE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isIncomplete() {
+		if (getStatus() == WorkflowConstants.STATUS_INCOMPLETE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isPending() {
+		if (getStatus() == WorkflowConstants.STATUS_PENDING) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isScheduled() {
+		if (getStatus() == WorkflowConstants.STATUS_SCHEDULED) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public long getColumnBitmask() {
@@ -1466,6 +1721,11 @@ public class DealerModelImpl
 		dealerImpl.setOpeningHours(getOpeningHours());
 		dealerImpl.setLatitude(getLatitude());
 		dealerImpl.setLongitude(getLongitude());
+		dealerImpl.setDisplayDate(getDisplayDate());
+		dealerImpl.setStatus(getStatus());
+		dealerImpl.setStatusByUserId(getStatusByUserId());
+		dealerImpl.setStatusByUserName(getStatusByUserName());
+		dealerImpl.setStatusDate(getStatusDate());
 
 		dealerImpl.resetOriginalValues();
 
@@ -1502,6 +1762,15 @@ public class DealerModelImpl
 			this.<BigDecimal>getColumnOriginalValue("latitude"));
 		dealerImpl.setLongitude(
 			this.<BigDecimal>getColumnOriginalValue("longitude"));
+		dealerImpl.setDisplayDate(
+			this.<Date>getColumnOriginalValue("displayDate"));
+		dealerImpl.setStatus(this.<Integer>getColumnOriginalValue("status"));
+		dealerImpl.setStatusByUserId(
+			this.<Long>getColumnOriginalValue("statusByUserId"));
+		dealerImpl.setStatusByUserName(
+			this.<String>getColumnOriginalValue("statusByUserName"));
+		dealerImpl.setStatusDate(
+			this.<Date>getColumnOriginalValue("statusDate"));
 
 		return dealerImpl;
 	}
@@ -1687,6 +1956,36 @@ public class DealerModelImpl
 
 		dealerCacheModel.longitude = getLongitude();
 
+		Date displayDate = getDisplayDate();
+
+		if (displayDate != null) {
+			dealerCacheModel.displayDate = displayDate.getTime();
+		}
+		else {
+			dealerCacheModel.displayDate = Long.MIN_VALUE;
+		}
+
+		dealerCacheModel.status = getStatus();
+
+		dealerCacheModel.statusByUserId = getStatusByUserId();
+
+		dealerCacheModel.statusByUserName = getStatusByUserName();
+
+		String statusByUserName = dealerCacheModel.statusByUserName;
+
+		if ((statusByUserName != null) && (statusByUserName.length() == 0)) {
+			dealerCacheModel.statusByUserName = null;
+		}
+
+		Date statusDate = getStatusDate();
+
+		if (statusDate != null) {
+			dealerCacheModel.statusDate = statusDate.getTime();
+		}
+		else {
+			dealerCacheModel.statusDate = Long.MIN_VALUE;
+		}
+
 		return dealerCacheModel;
 	}
 
@@ -1799,6 +2098,11 @@ public class DealerModelImpl
 	private String _openingHoursCurrentLanguageId;
 	private BigDecimal _latitude;
 	private BigDecimal _longitude;
+	private Date _displayDate;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
 
 	public <T> T getColumnValue(String columnName) {
 		columnName = _attributeNames.getOrDefault(columnName, columnName);
@@ -1847,6 +2151,11 @@ public class DealerModelImpl
 		_columnOriginalValues.put("openingHours", _openingHours);
 		_columnOriginalValues.put("latitude", _latitude);
 		_columnOriginalValues.put("longitude", _longitude);
+		_columnOriginalValues.put("displayDate", _displayDate);
+		_columnOriginalValues.put("status", _status);
+		_columnOriginalValues.put("statusByUserId", _statusByUserId);
+		_columnOriginalValues.put("statusByUserName", _statusByUserName);
+		_columnOriginalValues.put("statusDate", _statusDate);
 	}
 
 	private static final Map<String, String> _attributeNames;
@@ -1906,6 +2215,16 @@ public class DealerModelImpl
 		columnBitmasks.put("latitude", 65536L);
 
 		columnBitmasks.put("longitude", 131072L);
+
+		columnBitmasks.put("displayDate", 262144L);
+
+		columnBitmasks.put("status", 524288L);
+
+		columnBitmasks.put("statusByUserId", 1048576L);
+
+		columnBitmasks.put("statusByUserName", 2097152L);
+
+		columnBitmasks.put("statusDate", 4194304L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}

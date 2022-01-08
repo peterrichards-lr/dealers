@@ -16,6 +16,7 @@
 						sin(radians(latitude)))
 					) AS distance 
 				FROM raybia_dealer
+				WHERE status = ?
 			) AS nearestDealer
 			WHERE distance < ? 
 			ORDER BY distance
@@ -38,6 +39,7 @@
                     ) AS distance 
                 FROM raybia_dealer
                 WHERE groupId = ?
+				AND status = ?                
             ) AS nearestDealer
             WHERE distance < ? 
             ORDER BY distance

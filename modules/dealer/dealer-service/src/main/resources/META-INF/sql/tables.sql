@@ -16,5 +16,10 @@ create table Raybia_Dealer (
 	phoneNumber VARCHAR(75) null,
 	openingHours STRING null,
 	latitude DECIMAL(30, 16) null,
-	longitude DECIMAL(30, 16) null
+	longitude DECIMAL(30, 16) null,
+	displayDate DATE null,
+	status INTEGER,
+	statusByUserId LONG,
+	statusByUserName VARCHAR(75) null,
+	statusDate DATE null
 );

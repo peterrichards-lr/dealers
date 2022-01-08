@@ -20,6 +20,11 @@
 		<field localized="true" name="openingHours" type="String" />
 		<field name="latitude" type="BigDecimal" />
 		<field name="longitude" type="BigDecimal" />
+		<field name="displayDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
 	</model>
 	<model name="com.liferay.raybia.dealer.model.NearestDealer">
 		<field name="dealerId" type="long" />

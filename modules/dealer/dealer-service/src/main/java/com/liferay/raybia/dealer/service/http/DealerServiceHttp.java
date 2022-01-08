@@ -101,6 +101,106 @@ public class DealerServiceHttp {
 		}
 	}
 
+	public static com.liferay.raybia.dealer.model.Dealer addDealer(
+			HttpPrincipal httpPrincipal, long groupId,
+			java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				DealerServiceUtil.class, "addDealer",
+				_addDealerParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, groupId, nameMap, streetMap, localityMap, stateMap,
+				postalCode, emailAddress, phoneNumber, openingHoursMap,
+				latitude, longitude, displayDate, serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.liferay.raybia.dealer.model.Dealer)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	public static com.liferay.raybia.dealer.model.Dealer updateDealer(
+			HttpPrincipal httpPrincipal, long dealerId,
+			java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				DealerServiceUtil.class, "updateDealer",
+				_updateDealerParameterTypes2);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, dealerId, nameMap, streetMap, localityMap, stateMap,
+				postalCode, emailAddress, phoneNumber, openingHoursMap,
+				serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.liferay.raybia.dealer.model.Dealer)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
 	public static com.liferay.raybia.dealer.model.Dealer updateDealer(
 			HttpPrincipal httpPrincipal, long dealerId,
 			java.util.Map<java.util.Locale, String> nameMap,
@@ -116,12 +216,63 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "updateDealer",
-				_updateDealerParameterTypes1);
+				_updateDealerParameterTypes3);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, dealerId, nameMap, streetMap, localityMap, stateMap,
 				postalCode, emailAddress, phoneNumber, openingHoursMap,
 				latitude, longitude, serviceContext);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception exception) {
+				if (exception instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						exception;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					exception);
+			}
+
+			return (com.liferay.raybia.dealer.model.Dealer)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException
+					systemException) {
+
+			_log.error(systemException, systemException);
+
+			throw systemException;
+		}
+	}
+
+	public static com.liferay.raybia.dealer.model.Dealer updateDealer(
+			HttpPrincipal httpPrincipal, long dealerId,
+			java.util.Map<java.util.Locale, String> nameMap,
+			java.util.Map<java.util.Locale, String> streetMap,
+			java.util.Map<java.util.Locale, String> localityMap,
+			java.util.Map<java.util.Locale, String> stateMap, String postalCode,
+			String emailAddress, String phoneNumber,
+			java.util.Map<java.util.Locale, String> openingHoursMap,
+			java.math.BigDecimal latitude, java.math.BigDecimal longitude,
+			java.util.Date displayDate,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				DealerServiceUtil.class, "updateDealer",
+				_updateDealerParameterTypes4);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, dealerId, nameMap, streetMap, localityMap, stateMap,
+				postalCode, emailAddress, phoneNumber, openingHoursMap,
+				latitude, longitude, displayDate, serviceContext);
 
 			Object returnObj = null;
 
@@ -158,7 +309,7 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "deleteDealer",
-				_deleteDealerParameterTypes2);
+				_deleteDealerParameterTypes5);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, dealerId);
@@ -198,7 +349,7 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "getDealer",
-				_getDealerParameterTypes3);
+				_getDealerParameterTypes6);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, dealerId);
@@ -237,7 +388,7 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "getDealersByGroupId",
-				_getDealersByGroupIdParameterTypes4);
+				_getDealersByGroupIdParameterTypes7);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, groupId);
 
@@ -273,7 +424,7 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "getDealersByKeywords",
-				_getDealersByKeywordsParameterTypes5);
+				_getDealersByKeywordsParameterTypes8);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, groupId, keywords, start, end, orderByComparator);
@@ -306,7 +457,7 @@ public class DealerServiceHttp {
 		try {
 			MethodKey methodKey = new MethodKey(
 				DealerServiceUtil.class, "getDealersCountByKeywords",
-				_getDealersCountByKeywordsParameterTypes6);
+				_getDealersCountByKeywordsParameterTypes9);
 
 			MethodHandler methodHandler = new MethodHandler(
 				methodKey, groupId, keywords);
@@ -341,27 +492,47 @@ public class DealerServiceHttp {
 		java.math.BigDecimal.class,
 		com.liferay.portal.kernel.service.ServiceContext.class
 	};
-	private static final Class<?>[] _updateDealerParameterTypes1 = new Class[] {
+	private static final Class<?>[] _addDealerParameterTypes1 = new Class[] {
+		long.class, java.util.Map.class, java.util.Map.class,
+		java.util.Map.class, java.util.Map.class, String.class, String.class,
+		String.class, java.util.Map.class, java.math.BigDecimal.class,
+		java.math.BigDecimal.class, java.util.Date.class,
+		com.liferay.portal.kernel.service.ServiceContext.class
+	};
+	private static final Class<?>[] _updateDealerParameterTypes2 = new Class[] {
+		long.class, java.util.Map.class, java.util.Map.class,
+		java.util.Map.class, java.util.Map.class, String.class, String.class,
+		String.class, java.util.Map.class,
+		com.liferay.portal.kernel.service.ServiceContext.class
+	};
+	private static final Class<?>[] _updateDealerParameterTypes3 = new Class[] {
 		long.class, java.util.Map.class, java.util.Map.class,
 		java.util.Map.class, java.util.Map.class, String.class, String.class,
 		String.class, java.util.Map.class, java.math.BigDecimal.class,
 		java.math.BigDecimal.class,
 		com.liferay.portal.kernel.service.ServiceContext.class
 	};
-	private static final Class<?>[] _deleteDealerParameterTypes2 = new Class[] {
+	private static final Class<?>[] _updateDealerParameterTypes4 = new Class[] {
+		long.class, java.util.Map.class, java.util.Map.class,
+		java.util.Map.class, java.util.Map.class, String.class, String.class,
+		String.class, java.util.Map.class, java.math.BigDecimal.class,
+		java.math.BigDecimal.class, java.util.Date.class,
+		com.liferay.portal.kernel.service.ServiceContext.class
+	};
+	private static final Class<?>[] _deleteDealerParameterTypes5 = new Class[] {
 		long.class
 	};
-	private static final Class<?>[] _getDealerParameterTypes3 = new Class[] {
+	private static final Class<?>[] _getDealerParameterTypes6 = new Class[] {
 		long.class
 	};
-	private static final Class<?>[] _getDealersByGroupIdParameterTypes4 =
+	private static final Class<?>[] _getDealersByGroupIdParameterTypes7 =
 		new Class[] {long.class};
-	private static final Class<?>[] _getDealersByKeywordsParameterTypes5 =
+	private static final Class<?>[] _getDealersByKeywordsParameterTypes8 =
 		new Class[] {
 			long.class, String.class, int.class, int.class,
 			com.liferay.portal.kernel.util.OrderByComparator.class
 		};
-	private static final Class<?>[] _getDealersCountByKeywordsParameterTypes6 =
+	private static final Class<?>[] _getDealersCountByKeywordsParameterTypes9 =
 		new Class[] {long.class, String.class};
 
 }

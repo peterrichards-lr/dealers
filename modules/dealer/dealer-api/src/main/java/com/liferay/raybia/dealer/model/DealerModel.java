@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.model.GroupedModel;
 import com.liferay.portal.kernel.model.LocalizedModel;
 import com.liferay.portal.kernel.model.ShardedModel;
 import com.liferay.portal.kernel.model.StagedAuditedModel;
+import com.liferay.portal.kernel.model.WorkflowedModel;
 
 import java.math.BigDecimal;
 
@@ -44,7 +45,7 @@ import org.osgi.annotation.versioning.ProviderType;
 @ProviderType
 public interface DealerModel
 	extends BaseModel<Dealer>, GroupedModel, LocalizedModel, ShardedModel,
-			StagedAuditedModel {
+			StagedAuditedModel, WorkflowedModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -782,6 +783,165 @@ public interface DealerModel
 	 * @param longitude the longitude of this dealer
 	 */
 	public void setLongitude(BigDecimal longitude);
+
+	/**
+	 * Returns the display date of this dealer.
+	 *
+	 * @return the display date of this dealer
+	 */
+	public Date getDisplayDate();
+
+	/**
+	 * Sets the display date of this dealer.
+	 *
+	 * @param displayDate the display date of this dealer
+	 */
+	public void setDisplayDate(Date displayDate);
+
+	/**
+	 * Returns the status of this dealer.
+	 *
+	 * @return the status of this dealer
+	 */
+	@Override
+	public int getStatus();
+
+	/**
+	 * Sets the status of this dealer.
+	 *
+	 * @param status the status of this dealer
+	 */
+	@Override
+	public void setStatus(int status);
+
+	/**
+	 * Returns the status by user ID of this dealer.
+	 *
+	 * @return the status by user ID of this dealer
+	 */
+	@Override
+	public long getStatusByUserId();
+
+	/**
+	 * Sets the status by user ID of this dealer.
+	 *
+	 * @param statusByUserId the status by user ID of this dealer
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId);
+
+	/**
+	 * Returns the status by user uuid of this dealer.
+	 *
+	 * @return the status by user uuid of this dealer
+	 */
+	@Override
+	public String getStatusByUserUuid();
+
+	/**
+	 * Sets the status by user uuid of this dealer.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this dealer
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid);
+
+	/**
+	 * Returns the status by user name of this dealer.
+	 *
+	 * @return the status by user name of this dealer
+	 */
+	@AutoEscape
+	@Override
+	public String getStatusByUserName();
+
+	/**
+	 * Sets the status by user name of this dealer.
+	 *
+	 * @param statusByUserName the status by user name of this dealer
+	 */
+	@Override
+	public void setStatusByUserName(String statusByUserName);
+
+	/**
+	 * Returns the status date of this dealer.
+	 *
+	 * @return the status date of this dealer
+	 */
+	@Override
+	public Date getStatusDate();
+
+	/**
+	 * Sets the status date of this dealer.
+	 *
+	 * @param statusDate the status date of this dealer
+	 */
+	@Override
+	public void setStatusDate(Date statusDate);
+
+	/**
+	 * Returns <code>true</code> if this dealer is approved.
+	 *
+	 * @return <code>true</code> if this dealer is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved();
+
+	/**
+	 * Returns <code>true</code> if this dealer is denied.
+	 *
+	 * @return <code>true</code> if this dealer is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied();
+
+	/**
+	 * Returns <code>true</code> if this dealer is a draft.
+	 *
+	 * @return <code>true</code> if this dealer is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft();
+
+	/**
+	 * Returns <code>true</code> if this dealer is expired.
+	 *
+	 * @return <code>true</code> if this dealer is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired();
+
+	/**
+	 * Returns <code>true</code> if this dealer is inactive.
+	 *
+	 * @return <code>true</code> if this dealer is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive();
+
+	/**
+	 * Returns <code>true</code> if this dealer is incomplete.
+	 *
+	 * @return <code>true</code> if this dealer is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete();
+
+	/**
+	 * Returns <code>true</code> if this dealer is pending.
+	 *
+	 * @return <code>true</code> if this dealer is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending();
+
+	/**
+	 * Returns <code>true</code> if this dealer is scheduled.
+	 *
+	 * @return <code>true</code> if this dealer is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled();
 
 	@Override
 	public String[] getAvailableLanguageIds();
