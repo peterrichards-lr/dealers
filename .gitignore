@@ -13,6 +13,7 @@
 **/.web_bundle_build
 .gradle
 .idea
+.metadata
 /libs
 /bundles
 /gradle-*.properties
@@ -24,4 +25,3 @@
 /plugins-sdk/dist
 /plugins-sdk/lib
 test-results
-/.metadata/
